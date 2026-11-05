@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Into the Cosmos with Gemini</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#000;overflow:hidden;font-family:'IBM Plex Sans',system-ui,sans-serif}
+#stage{position:fixed;inset:0;overflow:hidden}
+#deck{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
+#deck>section{position:absolute!important;left:0!important;top:0!important;
+  width:1920px!important;height:1080px!important}
+#bar{position:fixed;left:0;right:0;bottom:0;height:4px;background:#1a2440}
+#bar>i{display:block;height:100%;background:#5AC8E8;transition:width .2s}
+#n{position:fixed;right:14px;bottom:14px;font:500 15px ui-monospace,monospace;color:#44506f}
+#notes{position:fixed;inset:auto 0 0 0;max-height:42vh;overflow:auto;background:#0b1020f2;
+  color:#cfd6e8;padding:26px 34px;font-size:17px;line-height:1.6;white-space:pre-wrap;display:none;
+  border-top:1px solid #2A3A66}
+#notes.on{display:block}
+#help{position:fixed;left:14px;bottom:12px;font:500 13px ui-monospace,monospace;color:#2f3950}
+</style></head><body>
+<div id="stage"><div id="deck">
+<section id="cover" data-section="Four commands, and the terminal is talking to NASA." data-transition="fade" style="background:radial-gradient(ellipse at 70% 30%, #16224A 0%, #070C18 68%);color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<h1 style="font-size:124px;font-weight:700;line-height:1;width:860px">Into the Cosmos with Gemini</h1>
+<p style="font-size:46px;line-height:1.3;color:#5AC8E8;width:840px">Ten things an agent needs before it can answer one question.</p>
+<iframe style="position:absolute;left:1040px;top:100px;width:752px;height:752px;opacity:0.85;border:0;background:transparent" scrolling="no" srcdoc="&lt;!doctype html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;background:transparent}&lt;/style&gt;&lt;style&gt;
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;overflow:hidden}
+.sys{position:absolute;inset:0}
+.orb{position:absolute;left:50%;top:50%;border:1.5px solid #27365F;border-radius:50%;transform:translate(-50%,-50%) rotate(0deg);animation:spin linear infinite}
+.p{position:absolute;left:50%;top:0;border-radius:50%;transform:translate(-50%,-50%)}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.sun{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:radial-gradient(circle at 38% 34%,#FFF0C4,#FFB454);box-shadow:0 0 54px 20px rgba(255,180,84,.3)}
+.ring{position:absolute;left:50%;top:0;width:62px;height:18px;border:2.5px solid #F0DCA8;border-radius:50%;transform:translate(-50%,-50%);opacity:.75}
+&lt;/style&gt;
+&lt;div class=&quot;sys&quot;&gt;
+&lt;div class=&quot;orb&quot; style=&quot;width:108px;height:108px;animation-duration:7s&quot;&gt;&lt;i class=&quot;p&quot; style=&quot;width:11px;height:11px;background:#B8B0A8&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div class=&quot;orb&quot; style=&quot;width:160px;height:160px;animation-duration:11s&quot;&gt;&lt;i class=&quot;p&quot; style=&quot;width:16px;height:16px;background:#F0D6A0&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div class=&quot;orb&quot; style=&quot;width:216px;height:216px;animation-duration:15s&quot;&gt;&lt;i class=&quot;p&quot; style=&quot;width:17px;height:17px;background:#6FA8E8&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div class=&quot;orb&quot; style=&quot;width:280px;height:280px;animation-duration:21s&quot;&gt;&lt;i class=&quot;p&quot; style=&quot;width:13px;height:13px;background:#D97A4E&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div class=&quot;orb&quot; style=&quot;width:372px;height:372px;animation-duration:34s&quot;&gt;&lt;i class=&quot;p&quot; style=&quot;width:38px;height:38px;background:radial-gradient(circle at 36% 32%,#F3D6A8,#C9964E)&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div class=&quot;orb&quot; style=&quot;width:464px;height:464px;animation-duration:46s&quot;&gt;&lt;i class=&quot;ring&quot;&gt;&lt;/i&gt;&lt;i class=&quot;p&quot; style=&quot;width:30px;height:30px;background:radial-gradient(circle at 36% 32%,#FBEEC8,#D8B873)&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div class=&quot;orb&quot; style=&quot;width:548px;height:548px;animation-duration:60s&quot;&gt;&lt;i class=&quot;p&quot; style=&quot;width:24px;height:24px;background:#9FE0E8&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div class=&quot;orb&quot; style=&quot;width:612px;height:612px;animation-duration:76s&quot;&gt;&lt;i class=&quot;p&quot; style=&quot;width:23px;height:23px;background:#6F8FE8&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;div class=&quot;sun&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+"></iframe>
+<p style="position:absolute;left:128px;bottom:64px;font-size:26px;color:#6F7A99">Aayush Arora · FilterPixel</p>
+
+</section>
+
+<section id="the-question" data-section="One ordinary question, and the ten things needed to answer it." data-transition="push" style="background:#121B36;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">The whole talk is one question</p>
+<h2 style="font-size:76px;font-weight:700;line-height:1.05;width:1560px">“Is it worth going outside tonight?”</h2>
+<iframe style="position:absolute;left:128px;top:330px;width:1664px;height:560px;border:0;background:transparent" scrolling="no" srcdoc="&lt;!doctype html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;background:transparent}&lt;/style&gt;&lt;style&gt;
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;overflow:hidden;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.l{opacity:0;font-size:48px;line-height:1.62;color:#8D97B8;animation:in 15s ease-out infinite}
+@keyframes in{0%,3%{opacity:0;transform:translateY(10px)}8%,86%{opacity:1;transform:translateY(0)}100%{opacity:0}}
+.x{color:#FF6B5A;font-weight:700;margin-right:14px}
+.fin{color:#FFB454;font-weight:600;font-size:52px}
+&lt;/style&gt;
+&lt;div class=&quot;l&quot; style=&quot;animation-delay:0s&quot;&gt;&lt;span class=&quot;x&quot;&gt;✗&lt;/span&gt;It has no idea what tonight’s sky is doing.&lt;/div&gt;
+&lt;div class=&quot;l&quot; style=&quot;animation-delay:1.5s&quot;&gt;&lt;span class=&quot;x&quot;&gt;✗&lt;/span&gt;It doesn’t know what city you’re standing in.&lt;/div&gt;
+&lt;div class=&quot;l&quot; style=&quot;animation-delay:3s&quot;&gt;&lt;span class=&quot;x&quot;&gt;✗&lt;/span&gt;It doesn’t know you only own binoculars.&lt;/div&gt;
+&lt;div class=&quot;l&quot; style=&quot;animation-delay:4.5s&quot;&gt;&lt;span class=&quot;x&quot;&gt;✗&lt;/span&gt;It can’t look anything up.&lt;/div&gt;
+&lt;div class=&quot;l&quot; style=&quot;animation-delay:6s&quot;&gt;&lt;span class=&quot;x&quot;&gt;✗&lt;/span&gt;And it forgets all of this by tomorrow.&lt;/div&gt;
+&lt;div class=&quot;l fin&quot; style=&quot;animation-delay:7.8s&quot;&gt;Ten things are missing. We add them one at a time.&lt;/div&gt;
+"></iframe>
+<p style="position:absolute;left:128px;bottom:64px;font-size:32px;color:#A8B2CC;width:1664px">By the end, it answers this on its own — <b style="color:#F2F4FA">every morning, before you wake up.</b></p>
+
+</section>
+
+<section id="cant-answer" data-transition="fade" style="background:#1A0E0E;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:30px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FF6B5A;letter-spacing:5px;text-transform:uppercase">Ask it cold</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">It cannot know. Not won't &#8212; <span style="color:#FF6B5A">cannot.</span></h2>
+<div style="position:absolute;left:128px;top:306px;width:1664px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:26px;align-items:center;background:#0E0B0B;padding:28px 32px;border-radius:14px;border-left:6px solid #FF6B5A">
+<p style="font-size:34px;font-weight:700;color:#F2F4FA;width:430px">Where you are</p>
+<p style="font-size:31px;line-height:1.35;color:#A8B2CC;width:1120px">You never told it. It has no location, no IP, no guess worth making.</p>
+</div>
+<div style="display:flex;gap:26px;align-items:center;background:#0E0B0B;padding:28px 32px;border-radius:14px;border-left:6px solid #FF6B5A">
+<p style="font-size:34px;font-weight:700;color:#F2F4FA;width:430px">Tonight's weather</p>
+<p style="font-size:31px;line-height:1.35;color:#A8B2CC;width:1120px">A measurement that did not exist when it was trained. No amount of reading fixes this.</p>
+</div>
+<div style="display:flex;gap:26px;align-items:center;background:#0E0B0B;padding:28px 32px;border-radius:14px;border-left:6px solid #FF6B5A">
+<p style="font-size:34px;font-weight:700;color:#F2F4FA;width:430px">Tonight's sky</p>
+<p style="font-size:31px;line-height:1.35;color:#A8B2CC;width:1120px">Saturn is somewhere specific, at a specific height, right now. That is arithmetic, not knowledge.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:34px;line-height:1.4;color:#A8B2CC;width:1664px">A model with no senses and no memory. <b style="color:#F2F4FA">Everything from here is giving it both.</b></p>
+
+</section>
+
+<section id="what-were-building" data-section="What we are building, and what you will be able to build." data-transition="push" style="background:#121B36;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:30px">
+<h2 style="font-size:62px;font-weight:700;line-height:1.05;width:1664px">This is what we are building</h2>
+<iframe style="position:absolute;left:128px;top:252px;width:1664px;height:300px;border:0;background:transparent" scrolling="no" srcdoc="&lt;!doctype html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;background:transparent}&lt;/style&gt;&lt;style&gt;
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;overflow:hidden;color:#F2F4FA;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.bx{position:absolute;border-radius:14px;border:2px solid #2A3A66;background:#0B1020;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:12px}
+.t{font-size:30px;font-weight:700}.s{font-size:24px;color:#8D97B8}
+.ar{position:absolute;height:3px;background:#3A4A7A}
+.ar:after{content:&#x27;&#x27;;position:absolute;right:-2px;top:-6px;border-left:12px solid #3A4A7A;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.dot{position:absolute;width:16px;height:16px;border-radius:50%;background:#FFB454;
+  box-shadow:0 0 16px 6px rgba(255,180,84,.55);animation:go 7s ease-in-out infinite}
+@keyframes go{0%,4%{left:180px;top:132px}24%,32%{left:560px;top:132px}52%,60%{left:960px;top:132px}80%,100%{left:1340px;top:132px}}
+&lt;/style&gt;
+&lt;div class=&quot;bx&quot; style=&quot;left:40px;top:80px;width:280px;height:110px;border-color:#5AC8E8&quot;&gt;&lt;div class=&quot;t&quot;&gt;You ask&lt;/div&gt;&lt;div class=&quot;s&quot;&gt;one sentence&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;ar&quot; style=&quot;left:320px;top:134px;width:70px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;bx&quot; style=&quot;left:390px;top:80px;width:300px;height:110px;border-color:#7CE0A8&quot;&gt;&lt;div class=&quot;t&quot;&gt;Gemini decides&lt;/div&gt;&lt;div class=&quot;s&quot;&gt;which tool, what arguments&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;ar&quot; style=&quot;left:690px;top:134px;width:70px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;bx&quot; style=&quot;left:760px;top:34px;width:400px;height:200px;border-color:#FFB454;background:#1A1206&quot;&gt;
+  &lt;div class=&quot;t&quot; style=&quot;color:#FFB454&quot;&gt;Your 4 tools&lt;/div&gt;
+  &lt;div class=&quot;s&quot; style=&quot;font-size:23px;line-height:1.6&quot;&gt;sky_conditions&amp;#160;&amp;#160;&amp;#160;&amp;#160;clouds&lt;br&gt;planets_tonight&amp;#160;&amp;#160;what is up&lt;br&gt;moon_tonight&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;the spoiler&lt;br&gt;space_weather&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;aurora&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;ar&quot; style=&quot;left:1160px;top:134px;width:70px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;bx&quot; style=&quot;left:1230px;top:80px;width:300px;height:110px;border-color:#C9A6F5&quot;&gt;&lt;div class=&quot;t&quot;&gt;Live data&lt;/div&gt;&lt;div class=&quot;s&quot;&gt;no key, anywhere on Earth&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;dot&quot;&gt;&lt;/div&gt;
+"></iframe>
+<p style="position:absolute;left:128px;top:600px;font-size:40px;line-height:1.35;color:#F2F4FA;width:1664px">The blue half is <b style="color:#7CE0A8">fifteen lines</b>. The orange box is <b style="color:#FFB454">the rest of the talk</b>.</p>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Everything that goes wrong tonight goes wrong <b style="color:#F2F4FA">in the orange box.</b> Never in the loop.</p>
+
+</section>
+
+<section id="fifteen-lines" data-section="The part every tutorial gets wrong." data-transition="push" style="background:#121B36;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:38px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">What every tutorial gets wrong</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.05;width:1600px">You own the loop</h2>
+<table style="font-family:'IBM Plex Sans', Arial, sans-serif;font-size:33px;color:#F2F4FA;padding:26px 24px">
+<tr style="background:#0B1020"><th style="width:50%;text-align:left;font-weight:600;color:#FF6B5A">What you’ll find online</th><th style="width:50%;text-align:left;font-weight:600;color:#7CE0A8">What the docs say now</th></tr>
+<tr><td><span style="color:#A8B2CC">client.models.</span>generate_content</td><td><span style="color:#A8B2CC">client.</span>interactions.create</td></tr>
+<tr style="background:#101831"><td>Pass Python functions</td><td>Pass declaration dicts</td></tr>
+<tr><td>The SDK calls them for you</td><td><b style="color:#FFB454">It does not.</b> You do.</td></tr>
+</table>
+<div style="background:#0B1020;padding:40px 44px;border-left:6px solid #FFB454;border-radius:12px">
+<p style="font-size:40px;line-height:1.4;color:#F2F4FA">“The model doesn’t execute the function itself. Extract the name and args and execute in your application.”</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:29px;color:#A8B2CC;width:1664px">Nobody retries. Nobody stops it. <b style="color:#F2F4FA">So your agent is only as good as your tools.</b></p>
+
+</section>
+
+<section id="the-declaration" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">What you actually hand it</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">The model never sees your code</h2>
+<div style="position:absolute;left:128px;top:300px;width:1030px;background:#05080F;padding:30px 34px;border:1px solid #2A3A66;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#D8DEF0">
+<p style="font-size:26px">{</p>
+<p style="font-size:26px">&#160;&#160;<span style="color:#7CE0A8">"name"</span>: <span style="color:#FFB454">"sky_conditions"</span>,</p>
+<p style="font-size:26px">&#160;&#160;<span style="color:#7CE0A8">"description"</span>: <span style="color:#FFB454">"How cloudy will it be</span></p>
+<p style="font-size:26px">&#160;&#160;&#160;&#160;<span style="color:#FFB454">tonight at this place, hour by hour.</span></p>
+<p style="font-size:26px">&#160;&#160;&#160;&#160;<span style="color:#FFB454">0 is clear; above about 40 there is</span></p>
+<p style="font-size:26px">&#160;&#160;&#160;&#160;<span style="color:#FFB454">no point going outside."</span>,</p>
+<p style="font-size:26px">&#160;&#160;<span style="color:#7CE0A8">"parameters"</span>: {<span style="color:#7CE0A8">"lat"</span>, <span style="color:#7CE0A8">"lon"</span>}</p>
+<p style="font-size:26px">}</p>
+</div>
+<div style="position:absolute;left:1206px;top:300px;width:586px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#121B36;padding:26px 28px;border-radius:12px;border-left:5px solid #5AC8E8">
+<p style="font-size:30px;line-height:1.4;color:#D8DEF0">A name, a sentence, some parameters. <b style="color:#F2F4FA">That is the whole interface.</b></p>
+</div>
+<div style="background:#1A1206;padding:26px 28px;border-radius:12px;border-left:5px solid #FFB454">
+<p style="font-size:30px;line-height:1.4;color:#D8DEF0">Not your function body. Not your types. <b style="color:#FFB454">Not your intentions.</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:34px;line-height:1.4;color:#A8B2CC;width:1664px">A function called <span style="font-family:'JetBrains Mono', 'Courier New', monospace;color:#F2F4FA">process()</span> described as <span style="font-family:'JetBrains Mono', 'Courier New', monospace;color:#F2F4FA">"processes data"</span> is <b style="color:#F2F4FA">invisible</b> to an agent.</p>
+
+</section>
+
+<section id="the-loop" data-transition="fade" style="background:#070C18;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:22px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#5AC8E8;letter-spacing:5px;text-transform:uppercase">The green half &#183; all fifteen lines of it</p>
+<h2 style="font-size:62px;font-weight:700;line-height:1.05;width:1600px">Four moves. That is the whole agent.</h2>
+<div style="position:absolute;left:128px;top:296px;width:1090px;background:#0E1526;padding:26px 30px;border:1px solid #2A3A66;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.54;color:#D8DEF0">
+<p style="font-size:24px"><span style="color:#FFB454;font-weight:700">1</span>&#160;&#160;interaction = client.<span style="color:#5AC8E8">interactions.create</span>(</p>
+<p style="font-size:24px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;model=<span style="color:#7CE0A8">"gemini-3.8-flash"</span>,</p>
+<p style="font-size:24px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;input=<span style="color:#7CE0A8">"Is it worth going outside tonight?"</span>,</p>
+<p style="font-size:24px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;tools=my_four_tools)</p>
+<p style="font-size:24px;color:#4A5578">&#160;</p>
+<p style="font-size:24px"><span style="color:#FFB454;font-weight:700">2</span>&#160;&#160;<span style="color:#C9A6F5">for</span> step <span style="color:#C9A6F5">in</span> interaction.<span style="color:#5AC8E8">steps</span>:</p>
+<p style="font-size:24px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#C9A6F5">if</span> step.type == <span style="color:#7CE0A8">"function_call"</span>:</p>
+<p style="font-size:24px;color:#4A5578">&#160;</p>
+<p style="font-size:24px"><span style="color:#FFB454;font-weight:700">3</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;result = <span style="color:#5AC8E8">sky_conditions</span>(**step.arguments)</p>
+<p style="font-size:24px;color:#4A5578">&#160;</p>
+<p style="font-size:24px"><span style="color:#FFB454;font-weight:700">4</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;client.<span style="color:#5AC8E8">interactions.create</span>(</p>
+<p style="font-size:24px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;input=[{<span style="color:#7CE0A8">"type"</span>: <span style="color:#7CE0A8">"function_result"</span>,</p>
+<p style="font-size:24px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">"call_id"</span>: step.id,</p>
+<p style="font-size:24px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">"result"</span>: [...]}],</p>
+<p style="font-size:24px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;previous_interaction_id=interaction.id)</p>
+</div>
+<div style="position:absolute;left:1270px;top:296px;width:522px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;gap:16px;align-items:center;background:#0B1020;padding:18px 20px;border-radius:11px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:32px;font-weight:700;color:#FFB454;width:30px">1</p>
+<p style="font-size:28px;line-height:1.3;color:#F2F4FA;width:420px"><b>Ask.</b> <span style="color:#8D97B8">Question in, tools attached.</span></p>
+</div>
+<div style="display:flex;gap:16px;align-items:center;background:#0B1020;padding:18px 20px;border-radius:11px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:32px;font-weight:700;color:#FFB454;width:30px">2</p>
+<p style="font-size:28px;line-height:1.3;color:#F2F4FA;width:420px"><b>Look.</b> <span style="color:#8D97B8">Did it ask for a tool?</span></p>
+</div>
+<div style="display:flex;gap:16px;align-items:center;background:#0B1020;padding:18px 20px;border-radius:11px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:32px;font-weight:700;color:#FFB454;width:30px">3</p>
+<p style="font-size:28px;line-height:1.3;color:#F2F4FA;width:420px"><b>Run it yourself.</b> <span style="color:#8D97B8">Gemini never does.</span></p>
+</div>
+<div style="display:flex;gap:16px;align-items:center;background:#0B1020;padding:18px 20px;border-radius:11px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:32px;font-weight:700;color:#FFB454;width:30px">4</p>
+<p style="font-size:28px;line-height:1.3;color:#F2F4FA;width:420px"><b>Hand it back.</b> <span style="color:#8D97B8">Then loop.</span></p>
+</div>
+<div style="background:#1A1206;padding:22px 24px;border-radius:11px;border-left:5px solid #FFB454;margin-top:10px">
+<p style="font-size:28px;line-height:1.35;color:#D8DEF0">Line <b style="color:#FFB454">3</b> is the one everyone gets wrong. <b style="color:#F2F4FA">You</b> call the function &#8212; Gemini never does.</p>
+</div>
+</div>
+
+</section>
+
+<section id="cloud-code" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:48px">
+<h2 style="font-size:66px;font-weight:700;line-height:1.05;width:1664px">Will it be clear?</h2>
+<div style="background:#05080F;padding:44px 48px;border:1px solid #2A3A66;border-radius:16px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:34px;line-height:1.62;color:#D8DEF0;width:1664px">
+<p style="font-size:34px"><span style="color:#7CE0A8">"https://api.open-meteo.com/v1/forecast"</span></p>
+<p style="font-size:34px">&#160;&#160;?latitude=<span style="color:#FFB454">26.73</span>&amp;longitude=<span style="color:#FFB454">88.40</span></p>
+<p style="font-size:34px">&#160;&#160;&amp;hourly=<span style="color:#FFB454">cloud_cover</span></p>
+</div>
+<p style="font-size:36px;line-height:1.3;color:#A8B2CC;width:1664px">Three lines. <b style="color:#F2F4FA">The first of the agent's senses.</b></p>
+
+</section>
+
+<section id="cloud-tonight" data-transition="magic" style="background:#05080F;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:72px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<h2 style="font-size:54px;font-weight:700;line-height:1.05;width:1664px">Tonight, over your heads</h2>
+<img src="img/siliguri_cloud.webp" alt="An animated cloud-cover forecast map of north-east India for the evening of 5 November 2026, running from late afternoon to late evening. Patches of cloud drift across Bhutan and Bangladesh while the area around Siliguri, marked with an orange ring, stays almost completely clear." style="position:absolute;left:190px;top:206px;width:1540px;height:731px;object-fit:contain;border-radius:14px">
+<p style="position:absolute;left:128px;bottom:40px;font-size:34px;line-height:1.3;color:#A8B2CC;width:1664px"><b style="color:#F2F4FA">3% cloud, all evening.</b> The gap sits right over us. <span style="color:#6F7A99;font-size:28px">open-meteo &#183; real forecast</span></p>
+
+</section>
+
+<section id="sky-code" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:48px">
+<h2 style="font-size:66px;font-weight:700;line-height:1.05;width:1664px">What is up there tonight?</h2>
+<div style="background:#05080F;padding:44px 48px;border:1px solid #2A3A66;border-radius:16px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:34px;line-height:1.62;color:#D8DEF0;width:1664px">
+<p style="font-size:34px"><span style="color:#7CE0A8">"https://ssd.jpl.nasa.gov/api/horizons.api"</span></p>
+<p style="font-size:34px">&#160;&#160;?COMMAND=<span style="color:#FFB454">'699'</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#6F7A99"># Saturn</span></p>
+<p style="font-size:34px">&#160;&#160;&amp;SITE_COORD=<span style="color:#FFB454">'88.40,26.73,0'</span>&#160;&#160;<span style="color:#6F7A99"># Siliguri</span></p>
+<p style="font-size:34px">&#160;&#160;&amp;QUANTITIES=<span style="color:#FFB454">'4,9'</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#6F7A99"># how high, how bright</span></p>
+</div>
+<p style="font-size:36px;line-height:1.3;color:#A8B2CC;width:1664px">JPL will compute the sky from any point on Earth. <b style="color:#F2F4FA">No key.</b></p>
+
+</section>
+
+<section id="sky-tonight" data-transition="magic" style="background:#05080F;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:72px 128px 96px;display:flex;flex-direction:column;gap:20px">
+<h2 style="font-size:54px;font-weight:700;line-height:1.05;width:1664px">Tonight, over Siliguri</h2>
+<img src="img/siliguri_sky.webp" alt="An animated horizon chart of the sky over Siliguri on the night of 5 November 2026, running from early evening to dawn. Saturn rises in the east, arcs to about 64 degrees above the southern horizon around 21:00 and sets in the west; Jupiter and Mars climb late; the Moon does not rise until about 03:00. The clock in the corner counts forward in Indian Standard Time." style="position:absolute;left:190px;top:206px;width:1540px;height:731px;object-fit:contain;border-radius:14px">
+<p style="position:absolute;left:128px;bottom:40px;font-size:34px;line-height:1.3;color:#A8B2CC;width:1664px"><b style="color:#F2F4FA">Saturn, 64&#176; up at 21:00.</b> The Moon stays down until 03:00. <span style="color:#6F7A99;font-size:28px">JPL Horizons &#183; real positions</span></p>
+
+</section>
+
+<section id="memory-code" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:44px">
+<h2 style="font-size:66px;font-weight:700;line-height:1.05;width:1664px">It should not ask twice</h2>
+<div style="background:#05080F;padding:40px 46px;border:1px solid #2A3A66;border-radius:16px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:33px;line-height:1.6;color:#D8DEF0;width:1664px">
+<p style="font-size:33px"><span style="color:#C9A6F5">def</span> <span style="color:#5AC8E8">recall</span>() -&gt; <span style="color:#C9A6F5">dict</span>:</p>
+<p style="font-size:33px">&#160;&#160;&#160;&#160;<span style="color:#FFB454">"""Call this FIRST, before asking the user anything.</span></p>
+<p style="font-size:33px">&#160;&#160;&#160;&#160;<span style="color:#FFB454">If it already has their location, do not ask again."""</span></p>
+</div>
+<div style="display:flex;gap:28px;width:1664px">
+<div style="flex:1;background:#121B36;padding:28px 30px;border-radius:12px;border-left:5px solid #5AC8E8">
+<p style="font-size:30px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">previous_interaction_id</b> carries the conversation.</p>
+</div>
+<div style="flex:1;background:#121B36;padding:28px 30px;border-radius:12px;border-left:5px solid #FFB454">
+<p style="font-size:30px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">A file</b> carries what outlives it.</p>
+</div>
+</div>
+
+</section>
+
+<section id="memory-night-one" data-transition="fade" style="background:#05080F;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:30px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#8D97B8;letter-spacing:5px;text-transform:uppercase">Night one &#183; real output</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">It knows nothing, so it asks</h2>
+<div style="position:absolute;left:128px;top:308px;width:1030px;background:#0B1020;padding:30px 34px;border:1px solid #2A3A66;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:29px;line-height:1.6;color:#D8DEF0">
+<p style="font-size:29px;color:#6F7A99">&#8627; recall()</p>
+<p style="font-size:29px;color:#FF6B5A">{"known": "nothing yet &#8212; this is the first night"}</p>
+<p style="font-size:29px;color:#4A5578">&#160;</p>
+<p style="font-size:29px;color:#6F7A99">&#8627; remember(key=<span style="color:#FFB454">'location'</span>, &#8230;)</p>
+<p style="font-size:29px;color:#6F7A99">&#8627; remember(key=<span style="color:#FFB454">'equipment'</span>, &#8230;)</p>
+</div>
+<div style="position:absolute;left:1206px;top:308px;width:586px;background:#121B36;padding:28px 30px;border-radius:12px;border-left:5px solid #8D97B8">
+<p style="font-size:31px;line-height:1.4;color:#D8DEF0">&#8220;Where are you, and what have you got?&#8221;</p>
+<p style="font-size:29px;line-height:1.4;color:#8D97B8;margin-top:14px">Asking once is fine. <b style="color:#F2F4FA">Asking every night is not.</b></p>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:34px;line-height:1.4;color:#A8B2CC;width:1664px">So it writes the answers down.</p>
+
+</section>
+
+<section id="memory-night-two" data-transition="magic" style="background:#05080F;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:30px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#7CE0A8;letter-spacing:5px;text-transform:uppercase">Night two, a week later &#183; real output</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">No questions at all</h2>
+<div style="position:absolute;left:128px;top:308px;width:1030px;background:#0B1020;padding:30px 34px;border:2px solid #1F4A38;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:29px;line-height:1.6;color:#D8DEF0">
+<p style="font-size:29px;color:#6F7A99">&#8627; recall()</p>
+<p style="font-size:29px">{</p>
+<p style="font-size:29px">&#160;<span style="color:#7CE0A8">"location"</span>: <span style="color:#FFB454">"Siliguri"</span>,</p>
+<p style="font-size:29px">&#160;<span style="color:#7CE0A8">"equipment"</span>: <span style="color:#FFB454">"10x50 binoculars"</span>,</p>
+<p style="font-size:29px">&#160;<span style="color:#7CE0A8">"seen"</span>: <span style="color:#FFB454">"Saturn, 5 Nov"</span></p>
+<p style="font-size:29px">}</p>
+</div>
+<div style="position:absolute;left:1206px;top:308px;width:586px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#0B1A10;padding:28px 30px;border-radius:12px;border-left:5px solid #7CE0A8">
+<p style="font-size:31px;line-height:1.4;color:#D8DEF0">&#8220;Clear again. You had Saturn last week &#8212; <b style="color:#7CE0A8">try Jupiter</b>, it clears the rooftops by eleven.&#8221;</p>
+</div>
+<div style="background:#121B36;padding:26px 28px;border-radius:12px;border-left:5px solid #FFB454">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0">It does not just stop asking. <b style="color:#F2F4FA">It stops recommending Saturn.</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:34px;line-height:1.4;color:#A8B2CC;width:1664px">Without this, every night starts from zero. <b style="color:#F2F4FA">That is not an assistant, it is a form.</b></p>
+
+</section>
+
+<section id="the-chain" data-transition="fade" style="background:#05080F;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:88px 128px 120px;display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Each call chosen by the last</p>
+<h2 style="font-size:62px;font-weight:700;line-height:1.05;width:1664px">This is the part that is an agent</h2>
+<div style="position:absolute;left:128px;top:280px;width:1664px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:24px;align-items:center;background:#0B1020;padding:26px 30px;border-radius:12px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:29px;color:#5AC8E8;width:300px">recall()</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#D8DEF0;width:430px">location: Siliguri</p>
+<p style="font-size:29px;color:#7CE0A8;width:800px">&#8594; never asks where you are</p>
+</div>
+<div style="display:flex;gap:24px;align-items:center;background:#0B1020;padding:26px 30px;border-radius:12px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:29px;color:#5AC8E8;width:300px">sky_conditions()</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#D8DEF0;width:430px">3% &#8594; 1% by 23:00</p>
+<p style="font-size:29px;color:#7CE0A8;width:800px">&#8594; clear, so there is a point continuing</p>
+</div>
+<div style="display:flex;gap:24px;align-items:center;background:#0B1020;padding:26px 30px;border-radius:12px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:29px;color:#5AC8E8;width:300px">moon_tonight()</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#D8DEF0;width:430px">rises 03:00</p>
+<p style="font-size:29px;color:#7CE0A8;width:800px">&#8594; the whole evening is dark. No hurry</p>
+</div>
+<div style="display:flex;gap:24px;align-items:center;background:#0B1020;padding:26px 30px;border-radius:12px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:29px;color:#5AC8E8;width:300px">planets_tonight()</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#D8DEF0;width:430px">Saturn 64&#176; at 21:00</p>
+<p style="font-size:29px;color:#7CE0A8;width:800px">&#8594; that is the thing to look at</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:34px;line-height:1.4;color:#A8B2CC;width:1664px">Not one of these is in a fixed script. <b style="color:#F2F4FA">The order comes out of the answers.</b></p>
+
+</section>
+
+<section id="the-silence" data-transition="push" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:44px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;font-weight:500;color:#FFB454;letter-spacing:6px;text-transform:uppercase">The fifth call</p>
+<div style="display:flex;gap:30px;align-items:center;width:1664px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:40px;color:#5AC8E8;width:420px">space_weather()</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:40px;color:#D8DEF0;width:300px">Kp 0.67</p>
+<p style="font-size:40px;color:#FFB454;width:860px">&#8594; <b style="color:#F2F4FA">say nothing about it</b></p>
+</div>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;width:1664px">Knowing when to leave something out <span style="color:#FFB454">is also a decision</span></h2>
+<p style="font-size:36px;line-height:1.4;color:#A8B2CC;width:1664px">A tool that comes back &#8220;no&#8221; is not a wasted call. <b style="color:#F2F4FA">It is the reason the answer is short.</b></p>
+
+</section>
+
+<section id="the-answer" data-transition="push" style="display:flex; flex-direction:column; gap:40px; justify-content:center; padding:128px; background:#07140c">
+  <p style="font-family:'JetBrains Mono', 'Courier New', monospace; font-size:28px; font-weight:500; letter-spacing:6px; text-transform:uppercase; color:#7ce0a8">The question, answered</p>
+  <h1 style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:150px; font-weight:700; line-height:1; color:#7ce0a8">Yes. Go outside.</h1>
+  <div style="width:1664px; display:flex; flex-direction:row; gap:28px">
+    <div style="display:flex; flex-direction:column; flex:1; padding:34px 32px; background:#0b1a10; border-radius:14px">
+      <p style="font-family:'JetBrains Mono', 'Courier New', monospace; font-size:52px; font-weight:700; color:#f2f4fa">3%</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:30px; line-height:1.3; color:#a8b2cc">cloud, all evening</p>
+    </div>
+    <div style="display:flex; flex-direction:column; flex:1; padding:34px 32px; background:#0b1a10; border-radius:14px">
+      <p style="font-family:'JetBrains Mono', 'Courier New', monospace; font-size:52px; font-weight:700; color:#f2f4fa">64°</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:30px; line-height:1.3; color:#a8b2cc">Saturn, at 21:00</p>
+    </div>
+    <div style="display:flex; flex-direction:column; flex:1; padding:34px 32px; background:#0b1a10; border-radius:14px">
+      <p style="font-family:'JetBrains Mono', 'Courier New', monospace; font-size:52px; font-weight:700; color:#f2f4fa">Kp 0.7</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:30px; line-height:1.3; color:#a8b2cc">quiet — no aurora</p>
+    </div>
+    <div style="display:flex; flex-direction:column; flex:1; padding:34px 32px; background:#0b1a10; border-radius:14px">
+      <p style="font-family:'JetBrains Mono', 'Courier New', monospace; font-size:52px; font-weight:700; color:#f2f4fa">03:00</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:30px; line-height:1.3; color:#a8b2cc">before the Moon rises</p>
+    </div>
+  </div>
+  <p style="width:1664px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:36px; line-height:1.35; color:#a8b2cc">Four tools. One loop. <span style="color:#f2f4fa"><b>Nothing here was in the model.</b></span></p>
+  
+</section>
+
+<section id="what-it-cost" data-section="Everything you just watched broke at least once." data-transition="push" style="background:#1A0E0E;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:48px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;font-weight:500;color:#FF6B5A;letter-spacing:6px;text-transform:uppercase">Second half</p>
+<h1 style="font-size:96px;font-weight:700;line-height:1.08;width:1664px">Everything you just watched<br><span style="color:#FF6B5A">broke at least once</span></h1>
+<p style="font-size:40px;line-height:1.4;color:#A8B2CC;width:1664px">Not the model. Not the loop. <b style="color:#F2F4FA">The four functions.</b></p>
+<p style="font-size:34px;line-height:1.4;color:#8D97B8;width:1664px">Six of them, in the order they happened to me &#8212; and every one is a bug with a diff.</p>
+
+</section>
+
+<section id="the-six" data-section="Six ways tools break, and the last three are infrastructure." data-transition="push" style="background:#121B36;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">All six happened to me building this talk</p>
+<h2 style="font-size:66px;font-weight:700;line-height:1.05;width:1600px">Six ways your tools break</h2>
+<table style="font-family:'IBM Plex Sans', Arial, sans-serif;font-size:27px;color:#F2F4FA;padding:16px 18px">
+<tr style="background:#0B1020"><th style="width:7%;text-align:left;font-weight:600;color:#5AC8E8">#</th><th style="width:48%;text-align:left;font-weight:600;color:#5AC8E8">What goes wrong</th><th style="width:45%;text-align:left;font-weight:600;color:#5AC8E8">What fixes it</th></tr>
+<tr><td>1</td><td>It calls your tool wrong, over and over</td><td>The docstring is the API</td></tr>
+<tr style="background:#101831"><td>2</td><td>One bad lookup kills the run</td><td>Return a result, not an exception</td></tr>
+<tr><td>3</td><td>It gets stuck after an error</td><td>Write the error for the model</td></tr>
+<tr style="background:#101831"><td>4</td><td>Your tool takes ten minutes</td><td>Move the slow part off the loop</td></tr>
+<tr><td>5</td><td>The upstream API is flaky</td><td>Retry inside the tool</td></tr>
+<tr style="background:#101831"><td>6</td><td>You can’t tell if it worked</td><td>Score it against ground truth</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;font-size:30px;color:#A8B2CC;width:1664px">The first three are craft. <b style="color:#FFB454">The last three are infrastructure</b> — and that’s where the cloud comes in.</p>
+
+</section>
+
+<section id="l1-docstring" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Lesson 1</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">Ask for Mars, get a spacecraft</h2>
+<div style="position:absolute;left:128px;top:300px;width:812px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#0E1526;padding:24px 26px;border:2px solid #4A2630;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;color:#D8DEF0">
+<p style="font-size:27px">COMMAND=<span style="color:#FF6B5A">'Mars'</span></p>
+</div>
+<div style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:25px;line-height:1.7;color:#8D97B8">
+<p style="font-size:25px;color:#FF6B5A">Multiple major-bodies match:</p>
+<p style="font-size:25px">&#160;&#160;&#160;&#160;4&#160;&#160;&#160;Mars Barycenter</p>
+<p style="font-size:25px">&#160;&#160;499&#160;&#160;Mars</p>
+<p style="font-size:25px;color:#FFB454">&#160;&#160;&#160;-3&#160;&#160;Mars Orbiter Mission</p>
+<p style="font-size:25px;color:#FFB454">&#160;&#160;-41&#160;&#160;Mars Express</p>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#A8B2CC">No ephemeris. <b style="color:#F2F4FA">No error either.</b></p>
+</div>
+<div style="position:absolute;left:980px;top:300px;width:812px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#0E1526;padding:24px 26px;border:2px solid #1F4A38;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;line-height:1.5;color:#D8DEF0">
+<p style="font-size:27px">body: {<span style="color:#7CE0A8">"description"</span>:</p>
+<p style="font-size:27px">&#160;&#160;<span style="color:#7CE0A8">"JPL code, not the name.</span></p>
+<p style="font-size:27px">&#160;&#160;<span style="color:#7CE0A8">499 Mars, 699 Saturn."</span>}</p>
+</div>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:25px;line-height:1.7;color:#7CE0A8">&#8594; 79&#176; altitude, magnitude 0.78</p>
+<p style="font-size:28px;line-height:1.4;color:#A8B2CC">One sentence of English. <b style="color:#7CE0A8">First try.</b></p>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Your schema, your service names, your table called <span style="font-family:'JetBrains Mono', 'Courier New', monospace;color:#F2F4FA">accounts</span> that everyone calls customers. <b style="color:#F2F4FA">The description is the only place that can live.</b></p>
+
+</section>
+
+<section id="l2-returns" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Lesson 2</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">Empty is an answer</h2>
+<div style="position:absolute;left:128px;top:300px;width:812px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#0E1526;padding:26px 28px;border:2px solid #4A2630;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.5;color:#D8DEF0">
+<p style="font-size:26px"><span style="color:#C9A6F5">if not</span> visible:</p>
+<p style="font-size:26px">&#160;&#160;&#160;&#160;<span style="color:#C9A6F5">raise</span> <span style="color:#FF6B5A">ValueError</span>(<span style="color:#7CE0A8">"nothing up"</span>)</p>
+</div>
+<p style="font-size:29px;line-height:1.4;color:#A8B2CC">The run dies. <b style="color:#F2F4FA">No answer about the clouds, the Moon or the aurora either.</b></p>
+</div>
+<div style="position:absolute;left:980px;top:300px;width:812px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#0E1526;padding:26px 28px;border:2px solid #1F4A38;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.5;color:#D8DEF0">
+<p style="font-size:26px"><span style="color:#C9A6F5">return</span> {<span style="color:#7CE0A8">"visible"</span>: [],</p>
+<p style="font-size:26px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">"note"</span>: <span style="color:#7CE0A8">"nothing up tonight"</span>}</p>
+</div>
+<p style="font-size:29px;line-height:1.4;color:#7CE0A8">&#8220;No planets &#8212; but it is dark and clear. Look for the Milky Way instead.&#8221;</p>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">An exception ends the conversation. <b style="color:#F2F4FA">A result continues it.</b></p>
+
+</section>
+
+<section id="l3-errors" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Lesson 3 &#183; this one really happened</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">Write the error for the model</h2>
+<div style="position:absolute;left:128px;top:306px;width:1664px;background:#05080F;padding:30px 34px;border:2px solid #4A2630;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;line-height:1.6;color:#D8DEF0">
+<p style="font-size:28px;color:#FF6B5A">space_weather: AttributeError: 'dict' object has no attribute 'index'</p>
+</div>
+<p style="position:absolute;left:128px;top:428px;font-size:31px;line-height:1.4;color:#A8B2CC;width:1664px">My bug, first run. NOAA returns a list of <b style="color:#F2F4FA">dicts</b>, not rows. <b style="color:#F2F4FA">The model cannot do anything with that sentence.</b></p>
+<div style="position:absolute;left:128px;top:552px;width:1664px;background:#05080F;padding:30px 34px;border:2px solid #1F4A38;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;line-height:1.6;color:#D8DEF0">
+<p style="font-size:28px"><span style="color:#C9A6F5">return</span> {<span style="color:#7CE0A8">"error"</span>: <span style="color:#7CE0A8">"space weather unavailable"</span>,</p>
+<p style="font-size:28px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">"can_continue"</span>: <span style="color:#FFB454">True</span>}</p>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Now it answers with three tools and says so. <b style="color:#F2F4FA">Your error messages are prompts now.</b></p>
+
+</section>
+
+<section id="the-traps" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:28px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Three things that will cost you an hour</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">On your first attempt</h2>
+<div style="position:absolute;left:128px;top:300px;width:1664px;display:flex;flex-direction:column;gap:22px">
+<div style="background:#05080F;padding:28px 32px;border-radius:14px;border-left:6px solid #5AC8E8">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:31px;color:#5AC8E8">call_id == step.id</p>
+<p style="font-size:30px;line-height:1.35;color:#A8B2CC;margin-top:10px">Answer the exact step that asked. Get it wrong and the model never sees your result.</p>
+</div>
+<div style="background:#05080F;padding:28px 32px;border-radius:14px;border-left:6px solid #7CE0A8">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:31px;color:#7CE0A8">"result": [ &#8230; ]</p>
+<p style="font-size:30px;line-height:1.35;color:#A8B2CC;margin-top:10px">A list of content blocks, not a string. This one surprises everybody.</p>
+</div>
+<div style="background:#05080F;padding:28px 32px;border-radius:14px;border-left:6px solid #FFB454">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:31px;color:#FFB454">response_format</p>
+<p style="font-size:30px;line-height:1.35;color:#A8B2CC;margin-top:10px">Not <span style="font-family:'JetBrains Mono', 'Courier New', monospace">response_schema</span>. Every older example online says the wrong one.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">None of these throw a useful error. <b style="color:#F2F4FA">They just quietly do nothing.</b></p>
+
+</section>
+
+<section id="l4-latency" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Lesson 4 &#183; measured</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">A slow tool cannot live in the loop</h2>
+<div style="position:absolute;left:128px;top:306px;width:1000px;background:#05080F;padding:30px 34px;border:1px solid #2A3A66;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;line-height:1.7;color:#D8DEF0">
+<p style="font-size:30px">sky_conditions&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">1.12s</span></p>
+<p style="font-size:30px">planets_tonight&#160;&#160;&#160;<span style="color:#FF6B5A">4.31s</span></p>
+<p style="font-size:30px">moon_tonight&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">1.08s</span></p>
+<p style="font-size:30px">space_weather&#160;&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">0.48s</span></p>
+<p style="font-size:30px;color:#4A5578">&#160;</p>
+<p style="font-size:30px">total&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#FFB454">6.99s</span></p>
+</div>
+<div style="position:absolute;left:1180px;top:306px;width:612px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#1A1206;padding:26px 28px;border-radius:12px;border-left:5px solid #FF6B5A">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">Why 4.31s?</b> It calls Horizons once per planet. Four round trips, one after another.</p>
+</div>
+<div style="background:#121B36;padding:26px 28px;border-radius:12px;border-left:5px solid #7CE0A8">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0">Fan them out at once, or compute the whole night <b style="color:#F2F4FA">before anyone asks.</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Seven seconds of tools, several rounds deep, <b style="color:#F2F4FA">is a person watching a blank screen.</b></p>
+
+</section>
+
+<section id="l5-retries" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Lesson 5</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">Retry inside the tool</h2>
+<div style="position:absolute;left:128px;top:306px;width:1664px;background:#05080F;padding:30px 34px;border:1px solid #2A3A66;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;line-height:1.6;color:#D8DEF0">
+<p style="font-size:28px"><span style="color:#C9A6F5">for</span> n <span style="color:#C9A6F5">in</span> <span style="color:#5AC8E8">range</span>(<span style="color:#FFB454">3</span>):</p>
+<p style="font-size:28px">&#160;&#160;&#160;&#160;<span style="color:#C9A6F5">try</span>: <span style="color:#C9A6F5">return</span> urlopen(req, timeout=<span style="color:#FFB454">60</span>).<span style="color:#5AC8E8">read</span>()</p>
+<p style="font-size:28px">&#160;&#160;&#160;&#160;<span style="color:#C9A6F5">except</span> Exception: time.<span style="color:#5AC8E8">sleep</span>(<span style="color:#FFB454">1.5</span> * (n + <span style="color:#FFB454">1</span>))</p>
+</div>
+<div style="position:absolute;left:128px;top:500px;width:1664px;display:flex;gap:24px">
+<div style="flex:1;background:#121B36;padding:26px 28px;border-radius:12px;border-left:5px solid #FF6B5A">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0">JPL and NOAA both drop requests that work <b style="color:#F2F4FA">a second later.</b></p>
+</div>
+<div style="flex:1;background:#121B36;padding:26px 28px;border-radius:12px;border-left:5px solid #FFB454">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0">So does the model. <span style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px">gemini-3.8-flash</span> gave me <b style="color:#F2F4FA">503, repeatedly,</b> building this talk.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Never make a language model reason about HTTP. <b style="color:#F2F4FA">It will apologise instead of trying again.</b></p>
+
+</section>
+
+<section id="l6-scoring" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Lesson 6 &#183; the one that matters</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">I thought all four tools worked</h2>
+<div style="position:absolute;left:128px;top:306px;width:812px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#05080F;padding:26px 28px;border:2px solid #4A2630;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.6;color:#D8DEF0">
+<p style="font-size:26px;color:#7CE0A8">&#10003; sky_conditions</p>
+<p style="font-size:26px;color:#7CE0A8">&#10003; planets_tonight</p>
+<p style="font-size:26px;color:#7CE0A8">&#10003; moon_tonight</p>
+<p style="font-size:26px;color:#FF6B5A">&#10007; space_weather</p>
+<p style="font-size:26px;color:#4A5578">&#160;</p>
+<p style="font-size:26px;color:#FF6B5A">3/4 tools working</p>
+</div>
+<p style="font-size:29px;line-height:1.4;color:#A8B2CC">First run, today. <b style="color:#F2F4FA">I would have sworn it was four.</b></p>
+</div>
+<div style="position:absolute;left:980px;top:306px;width:812px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#121B36;padding:26px 28px;border-radius:12px;border-left:5px solid #FFB454">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0">Nothing crashed. The agent would simply have <b style="color:#F2F4FA">stopped mentioning the aurora.</b></p>
+</div>
+<div style="background:#121B36;padding:26px 28px;border-radius:12px;border-left:5px solid #7CE0A8">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0">One command, no API key, four seconds:</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#7CE0A8;margin-top:10px">tonight.py --tools-only</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">An agent degrades <b style="color:#F2F4FA">quietly.</b> If you are not counting, you are guessing.</p>
+
+</section>
+
+<section id="real-transcript" data-transition="fade" style="background:#05080F;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#7CE0A8;letter-spacing:5px;text-transform:uppercase">Unedited &#183; no API key needed</p>
+<h2 style="font-size:60px;font-weight:700;line-height:1.05;width:1664px">The check, after the fix</h2>
+<div style="position:absolute;left:128px;top:294px;width:1664px;background:#0B1020;padding:30px 36px;border:1px solid #2A3A66;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;line-height:1.62;color:#D8DEF0">
+<p style="font-size:27px;color:#8D97B8">$ python demo/tonight.py --tools-only</p>
+<p style="font-size:27px;color:#4A5578">&#160;</p>
+<p style="font-size:27px"><span style="color:#7CE0A8">&#10003;</span> {<span style="color:#8D97B8">"evening"</span>: {<span style="color:#8D97B8">"20:00"</span>: <span style="color:#FFB454">3</span>, <span style="color:#8D97B8">"23:00"</span>: <span style="color:#FFB454">1</span>}, <span style="color:#8D97B8">"average_cloud_pct"</span>: <span style="color:#FFB454">3</span>}</p>
+<p style="font-size:27px"><span style="color:#7CE0A8">&#10003;</span> {<span style="color:#8D97B8">"planet"</span>: <span style="color:#7CE0A8">"Saturn"</span>, <span style="color:#8D97B8">"highest_altitude_deg"</span>: <span style="color:#FFB454">64.2</span>, <span style="color:#8D97B8">"at_local_time"</span>: <span style="color:#7CE0A8">"21:00"</span>}</p>
+<p style="font-size:27px"><span style="color:#7CE0A8">&#10003;</span> {<span style="color:#8D97B8">"above_horizon_tonight"</span>: <span style="color:#FFB454">true</span>, <span style="color:#8D97B8">"rises_local"</span>: <span style="color:#7CE0A8">"03:00"</span>}</p>
+<p style="font-size:27px"><span style="color:#7CE0A8">&#10003;</span> {<span style="color:#8D97B8">"kp_index"</span>: <span style="color:#FFB454">0.67</span>, <span style="color:#8D97B8">"aurora_possible"</span>: <span style="color:#FFB454">false</span>}</p>
+<p style="font-size:27px;color:#4A5578">&#160;</p>
+<p style="font-size:27px;color:#7CE0A8">4/4 tools working</p>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Every number on the answer slide came out of <b style="color:#F2F4FA">these four lines.</b> None of it was in the model.</p>
+
+</section>
+
+<section id="architecture" data-section="Two of those you cannot fix on a laptop." data-transition="fade" style="background:#070C18;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Lesson 4, as a picture</p>
+<h2 style="font-size:62px;font-weight:700;line-height:1.05;width:1664px">Move the slow part off the loop</h2>
+<iframe style="position:absolute;left:128px;top:286px;width:1664px;height:430px;border:0;background:transparent" scrolling="no" srcdoc="&lt;!doctype html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;background:transparent}&lt;/style&gt;&lt;style&gt;
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;overflow:hidden;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#F2F4FA}
+.bx{position:absolute;height:112px;border-radius:14px;border:2px solid #2A3A66;background:#0E1526;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:10px}
+.t{font-size:27px;font-weight:700}.s{font-size:23px;color:#8D97B8}
+.ar{position:absolute;height:3px;background:#3A4A7A}
+.ar:after{content:&#x27;&#x27;;position:absolute;right:-2px;top:-6px;border-left:12px solid #3A4A7A;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.lane{position:absolute;font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.dot{position:absolute;width:15px;height:15px;border-radius:50%;background:#FFB454;box-shadow:0 0 15px 5px rgba(255,180,84,.5);animation:go 8s ease-in-out infinite}
+@keyframes go{0%,6%{left:150px;top:300px}30%,38%{left:560px;top:300px}62%,70%{left:980px;top:300px}92%,100%{left:1380px;top:300px}}
+&lt;/style&gt;
+&lt;div class=&quot;lane&quot; style=&quot;left:0;top:4px;color:#FF6B5A&quot;&gt;Slow lane &amp;#183; once, at sunset&lt;/div&gt;
+&lt;div class=&quot;bx&quot; style=&quot;left:40px;top:34px;width:330px;border-color:#FF6B5A&quot;&gt;&lt;div class=&quot;t&quot;&gt;Cloud Run Job&lt;/div&gt;&lt;div class=&quot;s&quot;&gt;every city, 7s each, in parallel&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;ar&quot; style=&quot;left:370px;top:88px;width:60px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;bx&quot; style=&quot;left:430px;top:34px;width:290px;border-color:#C9A6F5&quot;&gt;&lt;div class=&quot;t&quot;&gt;BigQuery&lt;/div&gt;&lt;div class=&quot;s&quot;&gt;one row per city per night&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;vr&quot; style=&quot;left:560px;top:146px;width:3px;height:96px;background:#3A4A7A;position:absolute&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;lane&quot; style=&quot;left:0;top:216px;color:#7CE0A8&quot;&gt;Fast lane &amp;#183; when somebody asks&lt;/div&gt;
+&lt;div class=&quot;bx&quot; style=&quot;left:40px;top:246px;width:220px;border-color:#5AC8E8&quot;&gt;&lt;div class=&quot;t&quot;&gt;You ask&lt;/div&gt;&lt;div class=&quot;s&quot;&gt;one sentence&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;ar&quot; style=&quot;left:260px;top:300px;width:150px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;bx&quot; style=&quot;left:410px;top:246px;width:290px;border-color:#7CE0A8&quot;&gt;&lt;div class=&quot;t&quot;&gt;read one row&lt;/div&gt;&lt;div class=&quot;s&quot;&gt;40 ms, not 7 seconds&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;ar&quot; style=&quot;left:700px;top:300px;width:130px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;bx&quot; style=&quot;left:830px;top:246px;width:290px&quot;&gt;&lt;div class=&quot;t&quot;&gt;Gemini&lt;/div&gt;&lt;div class=&quot;s&quot;&gt;decides, explains&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;ar&quot; style=&quot;left:1120px;top:300px;width:130px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;bx&quot; style=&quot;left:1250px;top:246px;width:290px;border-color:#FFB454&quot;&gt;&lt;div class=&quot;t&quot;&gt;&amp;#8220;Go outside&amp;#8221;&lt;/div&gt;&lt;div class=&quot;s&quot;&gt;instantly&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;dot&quot;&gt;&lt;/div&gt;
+"></iframe>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">The sky over Siliguri is the same for everyone in Siliguri. <b style="color:#F2F4FA">Compute it once, not once per question.</b></p>
+
+</section>
+
+<section id="scoreboard-sql" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Lesson 6, as one query</p>
+<h2 style="font-size:62px;font-weight:700;line-height:1.05;width:1664px">Was it right?</h2>
+<div style="position:absolute;left:128px;top:300px;width:1000px;background:#05080F;padding:30px 34px;border:1px solid #2A3A66;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;line-height:1.6;color:#D8DEF0">
+<p style="font-size:27px"><span style="color:#C9A6F5">SELECT</span></p>
+<p style="font-size:27px">&#160;&#160;COUNT(*) <span style="color:#C9A6F5">AS</span> nights,</p>
+<p style="font-size:27px">&#160;&#160;SUM(said_go) <span style="color:#C9A6F5">AS</span> told_them_to_go,</p>
+<p style="font-size:27px">&#160;&#160;SAFE_DIVIDE(</p>
+<p style="font-size:27px">&#160;&#160;&#160;&#160;SUM(said_go <span style="color:#C9A6F5">AND</span> was_clear),</p>
+<p style="font-size:27px">&#160;&#160;&#160;&#160;SUM(said_go)) <span style="color:#C9A6F5">AS</span> <span style="color:#FFB454">right_when_it_said_yes</span></p>
+<p style="font-size:27px"><span style="color:#C9A6F5">FROM</span> nights;</p>
+</div>
+<div style="position:absolute;left:1176px;top:300px;width:616px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#121B36;padding:26px 28px;border-radius:12px;border-left:5px solid #7CE0A8">
+<p style="font-size:30px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">The truth arrives for free.</b> Tomorrow, open-meteo publishes what the sky actually did.</p>
+</div>
+<div style="background:#1A1206;padding:26px 28px;border-radius:12px;border-left:5px solid #FFB454">
+<p style="font-size:30px;line-height:1.4;color:#D8DEF0">Send somebody out under cloud twice and <b style="color:#F2F4FA">they stop trusting you.</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Your tickets, your PRs, last quarter's forecasts. <b style="color:#F2F4FA">The past is already labelled.</b></p>
+
+</section>
+
+<section id="mcp" data-transition="push" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#C9A6F5;letter-spacing:5px;text-transform:uppercase">You will not own every tool</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">Somebody else's tools, plugged in</h2>
+<div style="position:absolute;left:128px;top:300px;width:900px;background:#05080F;padding:30px 34px;border:1px solid #2A3A66;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;line-height:1.6;color:#D8DEF0">
+<p style="font-size:28px">McpServer(</p>
+<p style="font-size:28px">&#160;&#160;name=<span style="color:#7CE0A8">"observatory"</span>,</p>
+<p style="font-size:28px">&#160;&#160;streamable_http_transport=</p>
+<p style="font-size:28px">&#160;&#160;&#160;&#160;StreamableHttpTransport(url=<span style="color:#FFB454">...</span>))</p>
+</div>
+<div style="position:absolute;left:1076px;top:300px;width:716px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#121B36;padding:24px 26px;border-radius:12px;border-left:5px solid #C9A6F5">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">Remote only.</b> There is no local transport in the type.</p>
+</div>
+<div style="background:#121B36;padding:24px 26px;border-radius:12px;border-left:5px solid #5AC8E8">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">Streamable HTTP.</b> A url and headers. That is the whole surface.</p>
+</div>
+<div style="background:#1A1206;padding:24px 26px;border-radius:12px;border-left:5px solid #FFB454">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0"><b style="color:#FFB454">Not supported in Vertex AI.</b> Verbatim from the SDK.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Four tools you wrote, any number you did not. <b style="color:#F2F4FA">The loop does not change.</b></p>
+
+</section>
+
+<section id="worlds-live" data-transition="magic" style="background:#05080F;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 160px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#7CE0A8;letter-spacing:5px;text-transform:uppercase">The output &#183; recorded from the live map</p>
+<h2 style="font-size:60px;font-weight:700;line-height:1.05;width:1180px">Now watch those eight lines run</h2>
+<img src="img/olympus_flyover.webp" alt="A descent over Mars assembled from NASA Viking orbiter imagery: the view starts about 2,350 kilometres across showing the whole Olympus Mons shield and its surrounding aureole, then zooms smoothly in to the summit, ending on the nested collapse craters of the caldera about 267 kilometres across." style="position:absolute;left:128px;top:286px;width:1180px;height:620px;object-fit:cover;border-radius:14px">
+<div style="position:absolute;left:1340px;top:286px;width:452px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#0B1020;padding:22px 24px;border-radius:12px;border-left:5px solid #7CE0A8">
+<p style="font-size:28px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">2,350 km</b> across, down to <b style="color:#F2F4FA">267 km</b>. Every pixel is Viking orbiter imagery.</p>
+</div>
+<div style="background:#0B1020;padding:22px 24px;border-radius:12px;border-left:5px solid #5AC8E8">
+<p style="font-size:28px;line-height:1.4;color:#D8DEF0">Olympus Mons is <b style="color:#F2F4FA">three times the height of Everest</b> and as wide as France.</p>
+</div>
+<div style="background:#0B1020;padding:22px 24px;border-radius:12px;border-left:5px solid #FFB454">
+<p style="font-size:28px;line-height:1.4;color:#D8DEF0">The dark pits at the end are the <b style="color:#F2F4FA">summit caldera</b> &#8212; where the roof fell in.</p>
+</div>
+<p style="font-size:26px;line-height:1.4;color:#8D97B8">Recorded, so it cannot fail. <b style="color:#A8B2CC">worlds.html</b> is tab 1 if you want to fly it yourself.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:124px;font-size:31px;line-height:1.4;color:#A8B2CC;width:1664px">Nobody at NASA built this for you. <b style="color:#F2F4FA">They published the tiles and went home.</b></p>
+<p style="position:absolute;left:128px;bottom:64px;font-size:25px;color:#6F7A99;width:1664px">NASA/JPL &#183; USGS Astrogeology &#183; Mars Viking MDIM21 colour mosaic, 232 m/pixel &#183; trek.nasa.gov, keyless</p>
+
+</section>
+
+<section id="earth-live" data-transition="magic" style="background:#05080F;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 160px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#7CE0A8;letter-spacing:5px;text-transform:uppercase">The output &#183; 13 real photographs &#183; 1 November 2026</p>
+<h2 style="font-size:60px;font-weight:700;line-height:1.05;width:1120px">One day of Earth, from a million miles away</h2>
+<img src="img/earth_day.webp" alt="Thirteen full-disc photographs of Earth taken on 1 November 2026 by the DSCOVR spacecraft, cross-faded in sequence so the planet appears to rotate: the Pacific and Australia swing out of view, Asia and Africa come round, then the Atlantic and the Americas." style="position:absolute;left:1104px;top:214px;width:688px;height:688px;object-fit:contain;border-radius:14px">
+<div style="position:absolute;left:128px;top:300px;width:900px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#0B1020;padding:24px 26px;border-radius:12px;border-left:5px solid #5AC8E8">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0">Not a render. Not a composite of old imagery. <b style="color:#F2F4FA">Thirteen photographs taken on one day</b>, in the order they were taken.</p>
+</div>
+<div style="background:#0B1020;padding:24px 26px;border-radius:12px;border-left:5px solid #7CE0A8">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0">00:59 UTC to 22:36 UTC. <b style="color:#F2F4FA">324&#176; of rotation</b> &#8212; very nearly a whole turn.</p>
+</div>
+<div style="background:#0B1020;padding:24px 26px;border-radius:12px;border-left:5px solid #FFB454">
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0">Every cloud you can see <b style="color:#F2F4FA">was where it was that day.</b> Yours will be different, and it is one GET away.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:124px;font-size:31px;line-height:1.4;color:#A8B2CC;width:950px">Six lines of code and a spacecraft somebody else paid for. <b style="color:#F2F4FA">That is the whole trick.</b></p>
+<p style="position:absolute;left:128px;bottom:64px;font-size:25px;color:#6F7A99;width:1664px">NASA/NOAA DSCOVR EPIC &#183; natural colour &#183; 13 frames cross-faded &#183; epic.gsfc.nasa.gov, keyless</p>
+
+</section>
+
+<section id="worlds-found" data-transition="magic" style="background:#05080F;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 160px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#5AC8E8;letter-spacing:5px;text-transform:uppercase">One query &#183; no key &#183; every world we know</p>
+<h2 style="font-size:60px;font-weight:700;line-height:1.05;width:1180px">Watch the sky fill up</h2>
+<iframe style="position:absolute;left:128px;top:262px;width:1180px;height:520px;border:0;background:transparent" scrolling="no" srcdoc="&lt;!doctype html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;background:transparent}&lt;/style&gt;&lt;style&gt;
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#05080F;overflow:hidden;font-family:ui-monospace,Menlo,Consolas,monospace}
+canvas{display:block}
+&lt;/style&gt;
+&lt;canvas id=&quot;c&quot; width=&quot;1180&quot; height=&quot;520&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+const D=&quot;WPYP||Q2|Hr|NqlqZpjqFpHr|Tq|KqVqVpgqPqFr|GsdplpGrOpQrgqepmpdpMqdqip|cqFqdqFmaqWneqGropgqRrqqZqppNr|ZokqJqgqppkphqfpfpprjqWp|tqarsqopjpgqAsipmqhpdpmpnpIflqlpFrqpoqbqMnKpcqmpgqkrJnGlmq|qqqpgqlphqnpWqopUqQrZrVmfqcpkpkqApcqpqgqiq|Uk7PEagqOeiqmqLXCqkqRkFrGqBpVqkqgqqqGoZrFpFr|FjDpgplpppUlqqgrfqopormqEpJqjpkqOaDrPkrRupOeWnPrJparorCTnqGrGqfpInIc|Hrlqiqlqaq_pLWcbJqdpspHloqmqGpPpiprqSXiqRrEsDqCpmqHr|diGugqGtEqlrnpArmqkpFrGphqCsaqhqEtFnfqFrfpEnaqDpbqjqmqTqfqlqGmAshqQpInfqGsGbkplqiqgqepgqHXjpercqfpfqNT|9xmqEuUriqCtlpbqcrlpwuoqtpfrjpGsDseqipBtZp_qFsbpBp_q_qmqlqhqHpsqsqvqFpcleqcqorOcGpYpkqLqHdLVHofqtnlpTdDtIr|BUFnFrgpnrGsGw8q8sFpfqpqdpqqnphpaqlqhrtqZdlrYoxphqgpFripHqFZsqqqcqlqkrtqfqrpGVTbGsnphqkpiqhqgqHR8OmplpqpkripnpFqpqpqfqRrlpgqLqHuzqGsfpjpfqlpZqhpdqgpHaoqlqinUqFL|HsInHhGqHbkqplJqITfrgqvpHoGugrMPUTgoGpqqHrDsFrfqHPkqFnWqlpVqhpcloqPjNViqmrGq_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_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_xJWQSFNGmVSFURTFoGpHnNV7XJORWKQLTcqHKjqkqFSRTQX7JSIIpHNkmkpFsGSHrwpJQHqIvFVTWLIMlLTOPPODnpqLKHpFu5IPVBvPUHs9LOZOaTPDVFtNOKMNWDRLjspOVllSPMWDsiqJUKGIN7Kol3GJgKQMbGLKVLN8ISbEOCLnrWcDKNPkqMTMRwgJSDFMoMSKQHUUTkpRQPWPZJPIRIYFr9MKKJKPUKJGUnpHtKVOXLoQIMQIUJTPUNQLTGoLUIMMRJRGUDpIIKqVXPeIpfqOMNSBEGsLSNSMNOSOWEQNNCYGWGQgqCoGMLYTY5DEJRRFq|5KHOOTDEGKKNQlKeIhFKISMQGJLNVSIKFwKdNgUm9JITHULUGnBGblHJDMIrbhLrNTDBCtHtDrIPIrFLYgRPNlDpDTPPKF8rFldXIrRXLXQYHHQVNaSZWcNMPaMXGrrpPRNTKTCsvpHOIJHrFqNYFq7NHtOWRPEpEw_pDNOUlqYTGqQVmpIrBomfNVHoUbDvFmOKyqSUUZirUoIOFHXlAWFVNlNYooOYIpFQJY_qWUIpwqFuFW9OIHrqGYYZRVHcFpGJMHSNxpXZHtILSmPQOjDGKVwpLWHvLnEHGRFuMNZXxoXbHqHvROIPdqNPcrupENFsKKTYDXNSVbNREoGGHpGQJQMQ|BNPVFkKj7qGYKqMq7KNSYiKcLkSqSl7YLGOTTIJmRnGRBn8cBVIUOdAKOUlqKPOQ4LMVRUXTCPLVOZEuHkKRloGPKPPWNkXWLUIo5JipIRDoAHKojaeeDKVURVINCoMnNUJQOYMJPHJINOEtMTPXGRGdGQEoGNGaPlaVHtDrPdVaSVGthpMaOPIUILDpJSQUHhaWNHIuJJTWPNprLGPTRWNWLPZVYUASakWTupVWSKUVRVWaGNMVLLLQPWSZMKNPNJdVIPMVIKJHaXVWbZJRGIPUmqOpdVDFLcTXGLQREsLVQTGJ9KXhOXipNTHhOVFO7NLoKlGOXVGqQXDQVXjlJNVUMoHZFGGpLXHISRGoObCqbRHKDXWVVY_wLLFTGlJVAFRZWaISPQDULNPXSZgqDPRXSWKSFHrj9xMSIp|CJFOJULSOTPVBKCJQYDd7L6MMTPYSXPV5KHMNXNMLVQW3C7sEmLTDGKWHOMWJLKUNbIQJNHGLUeqRUeqIQFpSUclMQRMNPOZTVISbVPRVXNMUSdrLIJEKTPPNWOYORJRLpSaEMfrKPDrXVerLWGMFSJHKPSRONNXTSHANOGNtqILGrJPMWyoOUFJNSPZBCTRCrDKJQKTPhUUMRSajfGFLYGL-p6JIFPTORGTGvQJMQQSCmBKIMMVGLNVOfIOCCUUNdRVOWOVSVKHKTJKTSDMKVJOHMGDcfiqYYVWOSJJQUOO_pRrNWJWLJFqZWORGtIUUVNUCtGUMQcpHROUhqSXISVbCoQULQKTTZNNjmPUhlSTEoJl8BCwUW7McWJRCpMTNImkmpIrNTFqWXPQIRGINVDfTZMKEQGMVWQS7ILORRIGBPEIRUEKSShpDRJP8NcpMQHM_pKOMSOUHRPVHMINipJHGrGPKSGOHSQWKQXaGSMZBFQTGHIRWeKQ5LEUDLPfTYHrESKTRUJINJKMRJNUSTKLFqLQMWGRKUSVFVELrZ5MHFNNlo9LSVGMIUPOMoaTSUKJLQENTXVSYQKKNXspGGSWJPRQGWUSEN7GZYDqFTHS-qMMITHlVRNTHOFpRaOTKWJJRXJKIMXWKJFqOHMRIJNSopQfFtMUXTJZIUJRFNppVoOUVWEMNQPSGMhqafTVNpKJOUJEMTNpENNTYZGoTXHuSUQqerRVgqKNUSLXNSNMPPNNLZMUPVYSJKyrZUJPIeRSLSLT3JOJTSEJTUAoORPSEAOeNUMXSWLVFDHTOSPXHsXbPTFURXNUOTWWHLAOManqFN7JPOTLqpBI9HGJ-pGcFTLPEOOZEMLWhqJRHFHZHVSWJKMRMnKCOSTWELLOUMMYcoXZVWbqKPBMJZMUkqHMUWekxqKXITSJJZEtHOOVLTJINRURUQPVgpPp6NFPTTKIIQQWEJXYTUfrPcCTHpLLIJMUQJOYMUerMNQV8LQSNMYSSRHWJaOWOWGqMTNPJUdr_pTbLWJVHXIvjk9OKVerWbQVTUNXqpHVerHpHMZUYXPRLMFWETJpGo|FI6J6O4J3N3KEIMQTnJRRgVZEJIMDoOSNbJVRZPUORCLGoHgEK8OKLYZHPTTzp-pqr7NdqLaJoCUYiHmKR_p9KIO_phqORHUxpDsBtZY-pLpLLEQFRAYBJLUNplpqpMNLSqq8DDqMQFqNUNOORMQFmnqLSOWKELeOUBQQrkqMfIKVaGjUUNUHJvpLQEWKlwpXmXW_oPqOSLLKnGrzpJvNRppzpNThqRYaRGq9MhpWoKD_pUcDvAV7JCNGJGb_oFcHUJVXl_pFqajQakqGLdoxpXTYnSd7OkriqHLJTHNNdho_oPTJnMS_p_pGWIZJZPSLaOPPWzoMPJPFv7K_piq9KJS-oNZ-pEU_p-p-pKWDIIsopMHDVThPOupCUjpCLRWorptQUco-pKSLXGrGq_pyoMXIKoq-p_o_pJRPQTc47QVIOvpFqDtHX9PCT_pRlEc_oMFHaEM_pKcJLYqeqJSIJ_oQqgnQIBrKUMX_pLKQbLVwqwpupPoQSHdQdFyGrLVioIKzpMIupVoANEOObLRgpPdFPQQFazpNSMVHpDUOQNTeZmqROprrqGTRiepGDspKHWezqQhFGMm_pxpTDGrJRmpEoLoTqPQHJFRLmFtHWJTPXTYGU|HhYlRFGODG9NJoPZUXMQLUYiQkUmEoHjIfOfAWBoFocmBQJrEHJSjqMPSSeoNH8KJSLRNSPVSQTUVULVZrfXJTH7ILKSGTIXapRaGKXRJlpqNYBkITJPGnIXRWppGtHQKSGtOIFLGqNUQjPPLoFXdcMTGYqqjpVpGdMTsq6OprMauqERMSMLGqHvPMoqHJJNLTLbXhDJGHJOYa7JkpITFLtqJUOMSRRKGdhlGMHYGsEPIJqpKWHNHdKMGnaoFNPVOSYbhrNMCXwprqHsFrFurpPWcpURMSWaUc7EISpqUUxqFqMTSgMVLQupGDGr_pOQIpOFNPGkIcIUVdHrFqMpFJDhMUMMXoQVLVGGRSUcHuVpfqCYXWYVPKFUOVPTHMGXHHipGNPVAXWmInHLFrKoaTsq9HPVNnHp_orosqQoP_FWGfDkOdMbMT9rLjvpSnrqRoQTJFVPcMLPSjENCuMQdQGSZVMPPNPUgpbSHNYVopSRKoSSqpglVTMnNSDqJM_ptpknaYHsKmJpNOGpLPioHtF9IpGYKQHzLXFqIpeporFqKPKOJTCCPZOSPTrrQadphpJXah7W|DLKkTiHiOR1ILnNjdRNOLTGqSUGjQSRtFsGLJVIIDnXnIcITHwHpNYIqopDROpGq8HMV_oKV65LWQkJgGVTUInzpTPIoHdIrHrkpHSQUIRIaWoWoHTJTESFsEqHOKUKQMVOYBUCoEUToEuPj4MOd7G89MpPYKmBqDMGnOpMjMOOW64HmEGQYHUHtKTupdmBuOXORGskiZSEqJaGTRaRfHRBSQUUeRoAWEJKXtqISHLLUISPVKWPSKPspGqBIJTFCGmMpKSHsNXvpOV4FWlXqEoaXDnNNMVKpYoKUIRKRFmJPDIOUANRGHlopCUPnIdNFErYn77UlKPFNbrJVQSCPOTMTKUKQIsETERTVHnGqRSMNNXNSHKVXdWCONVlpLaESIT6JISHh8CIGHNQUKNHeFUHSGuGVHf8PZYC9QqFKDoFtbq8ZBJAhNQQiLX|IrLc2HIcScKFFlKMFKQMVTJOSREMGO_sMiItHofgGq9MGafVNaFtFpGrYaBIFpMnGqFWImNk0nHVqpOkJSHPNOWqsqiSFLmZBpDmIRIrFqFfPnVSKpQnIgRbLmJVLSKpIKIPlqUTrrIQCSKoSmRYJoHWSSRffpLXDnhrJGTTipHpBQKWSUHCNQXlci1qWpdqPSIBEtCpLoJGrpGnHoJlIIhqqndpJgKTOWuq4GEaIVISaSFqHPFOQnGqJACsVPFlGYMFDOSOIWJeWdLoGdVZKpSW6NNXGrKMJVFpErIsJcItOmGrhpYoHMGnAVGrDBHnkqTSJqGIDTMGPTUnITHJIrOXNRETMdYjYrAsRgJnGrOoMQLVMMDqFskqGqDGaqGnzIcWdqLUXnDsJREqSbMnJnBuDHIVwpHuirHGPPTYMKFsJe|1MKKopLSQSSTJQGTIhHSGa2GGTOoGYROLRRnSSJMCJSnESVTJSSLTUJOJTUSDULRBMGZNVKWGtHSILMUupHTIVEPKVHSeqHSPSHVKTDLCLSZGtPPBeMVKXMTKTFYLOGeHmFnCuGRuqHoHjGUxpRnkqKVGuGgEQHWJTRkEnEoLUFcHUMnBJ_rIfFjHWIadpHTJTDZMUFhNSRXITKNHVGmEo9QOQVpJQGYKWGNWVLR2IFSKSDcQnCTLSEVQVupJSDPAoFRdqQXeqYiVTHTNpCJ8cFjIMUYNZEYQUXYFSLSBSETJJLnLWIUMdJUMWJcFnLSIZGTIrGgDUTNGaZoNYJYBLFqkrLUHqIJGbEghrtqNnLhGT9LJNRPKVJYLQJd5KYeEKGjIRHIIUFoTjOT_pNUanEfLSJhNUDO8MGpbqUnJKbpZqupHVSWHrFqhqGSWkIVHSGvGiGVwpJrJWJSLRFmDPFUKSGWRLFSKWGiNL7IVnRLGeMRHnHMItJTrqNTGZTUHWImGZMYKeJxQUJRJYDYHGITIYJSDZ8ONYLcGJOSJMKIJRHXEVFqQKQUgqISOiNVJWbnIlLRGTLgRV9PKiMaGcLUNSLlNTNVFsMPDpLbJhIMEbqpIQFWVXGXOWgqJVLXQnQnARFaJVVodq&quot;.split(&quot;|&quot;);
+const A=&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_&quot;;
+const IX={}; for(let i=0;i&lt;64;i++) IX[A[i]]=i;
+const g=document.getElementById(&quot;c&quot;).getContext(&quot;2d&quot;),W=1180,H=520;
+const L=74,R=18,T=16,B=46;
+const px=u=&gt;L+u/63*(W-L-R), py=v=&gt;H-B-v/63*(H-T-B);
+let yi=0, shown=[], hold=0, total=0, finished=false, sd=12345;
+function axes(){
+  g.strokeStyle=&quot;#141D36&quot;;g.lineWidth=1;
+  g.fillStyle=&quot;#5A647F&quot;;g.font=&quot;19px ui-monospace,monospace&quot;;
+  const l0=Math.log10(0.2),l1=Math.log10(20000);
+  for(const [v,t] of [[0.2,&quot;0.2&quot;],[1,&quot;1&quot;],[10,&quot;10&quot;],[100,&quot;100&quot;],[1000,&quot;1k&quot;],[20000,&quot;20k&quot;]]){
+    const x=px((Math.log10(v)-l0)/(l1-l0)*63);
+    g.beginPath();g.moveTo(x,T);g.lineTo(x,H-B);g.stroke();g.fillText(t,x-8,H-B+22);}
+  const r0=Math.log10(0.3),r1=Math.log10(30);
+  for(const v of [0.3,1,3,10,30]){const y=py((Math.log10(v)-r0)/(r1-r0)*63);
+    g.beginPath();g.moveTo(L,y);g.lineTo(W-R,y);g.stroke();g.fillText(v+&quot;x&quot;,14,y+5);}
+  g.fillStyle=&quot;#6F7A99&quot;;g.font=&quot;20px ui-monospace,monospace&quot;;
+  g.fillText(&quot;year length, days&quot;,W/2-70,H-8);
+  g.save();g.translate(22,H/2+52);g.rotate(-Math.PI/2);g.fillText(&quot;size vs Earth&quot;,0,0);g.restore();
+}
+function mark(per,rad,label,col){
+  const l0=Math.log10(0.2),l1=Math.log10(20000),r0=Math.log10(0.3),r1=Math.log10(30);
+  const x=px((Math.log10(per)-l0)/(l1-l0)*63), y=py((Math.log10(rad)-r0)/(r1-r0)*63);
+  g.strokeStyle=col;g.lineWidth=2;g.setLineDash([3,3]);
+  g.beginPath();g.arc(x,y,10,0,6.2832);g.stroke();g.setLineDash([]);
+  g.fillStyle=col;g.font=&quot;bold 20px ui-monospace,monospace&quot;;g.fillText(label,x+14,y+6);
+}
+function frame(){
+  g.clearRect(0,0,W,H);axes();
+  for(const p of shown){
+    g.globalAlpha=p.a;g.fillStyle=p.c;
+    g.beginPath();g.arc(p.x,p.y,p.r,0,6.2832);g.fill();
+    if(p.a&lt;0.62)p.a+=0.03; if(p.r&gt;2.1)p.r-=0.12;
+  }
+  g.globalAlpha=1;
+  mark(365.25,1,&quot;Earth&quot;,&quot;#7CE0A8&quot;);mark(4333,11.2,&quot;Jupiter&quot;,&quot;#FFB454&quot;);
+  g.fillStyle=&quot;#F2F4FA&quot;;g.font=&quot;bold 54px ui-monospace,monospace&quot;;
+  g.fillText(String(1992+Math.min(yi,D.length-1)),L+26,62);
+  g.fillStyle=&quot;#5AC8E8&quot;;g.font=&quot;bold 40px ui-monospace,monospace&quot;;
+  g.fillText(total.toLocaleString()+&quot; worlds&quot;,L+26,106);
+  if(hold&gt;0){hold--;}
+  else if(yi&lt;D.length){
+    const s=D[yi];
+    for(let i=0;i&lt;s.length;i+=2){
+      sd=(sd*16807)%2147483647;const jx=(sd/2147483647-0.5)*15;sd=(sd*16807)%2147483647;const jy=(sd/2147483647-0.5)*13;shown.push({x:px(IX[s[i]])+jx,y:py(IX[s[i+1]])+jy,a:0,r:7,
+                  c:(yi&gt;=17&amp;&amp;yi&lt;=24)?&quot;#5AC8E8&quot;:&quot;#8FA7D8&quot;});
+      total++;
+    }
+    yi++;hold=7;
+  }
+  else if(!finished){finished=true;hold=220;}
+  else {finished=false;yi=0;shown=[];total=0;sd=12345;}
+  requestAnimationFrame(frame);
+}
+frame();
+&lt;/script&gt;"></iframe>
+<div style="position:absolute;left:1340px;top:262px;width:452px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;font-weight:700;color:#7CE0A8;letter-spacing:2px;text-transform:uppercase">The whole tool</p>
+<div style="background:#0B1020;padding:20px 22px;border:1px solid #2A3A66;border-radius:12px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#D8DEF0">
+<p style="font-size:24px"><span style="color:#C9A6F5">select</span> pl_name, disc_year,</p>
+<p style="font-size:24px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;pl_orbper, pl_rade</p>
+<p style="font-size:24px"><span style="color:#C9A6F5">from</span> pscomppars</p>
+<p style="font-size:24px"><span style="color:#C9A6F5">where</span> disc_year <span style="color:#C9A6F5">is not null</span></p>
+</div>
+<p style="font-size:26px;line-height:1.4;color:#A8B2CC">One HTTPS GET to the NASA Exoplanet Archive. <b style="color:#F2F4FA">6,451 rows, 445 KB, no key.</b></p>
+<div style="background:#121B36;padding:18px 20px;border-radius:11px;border-left:5px solid #FFB454">
+<p style="font-size:25px;line-height:1.35;color:#D8DEF0">Hand <b style="color:#FFB454">that</b> to Gemini as one tool and it can answer almost anything about planets.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:124px;font-size:30px;line-height:1.4;color:#A8B2CC;width:1664px">The blue burst is <b style="color:#F2F4FA">Kepler, 2009&#8211;2016</b>. Earth sits almost alone &#8212; not because small planets are rare, <b style="color:#F2F4FA">but because they are faint.</b></p>
+<p style="position:absolute;left:128px;bottom:64px;font-size:25px;color:#6F7A99;width:1664px">6,050 of the 6,451 confirmed planets have both a measured size and period &#8212; those are the dots. Fetched 5 Nov 2026 &#183; demo/data/planets.json</p>
+
+</section>
+<section id="recap-six" data-section="The six, in one picture." data-transition="push" style="background:#121B36;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Take a photo of this one</p>
+<h2 style="font-size:66px;font-weight:700;line-height:1.05;width:1600px">Six rules for agent tools</h2>
+<iframe style="position:absolute;left:128px;top:320px;width:1664px;height:430px;border:0;background:transparent" scrolling="no" srcdoc="&lt;!doctype html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;background:transparent}&lt;/style&gt;&lt;style&gt;
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;overflow:hidden;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.r{position:absolute;left:0;display:flex;align-items:baseline;gap:20px;height:52px;opacity:0;animation:up 10s ease-out infinite}
+@keyframes up{0%,3%{opacity:0;transform:translateX(-14px)}9%,92%{opacity:1;transform:translateX(0)}100%{opacity:0}}
+.n{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:26px;font-weight:700;color:#4A5578;width:42px}
+.c{font-size:32px;font-weight:700;color:#FFB454;width:600px}
+.k{font-size:28px;color:#8D97B8}
+&lt;/style&gt;
+&lt;div class=&quot;r&quot; style=&quot;top:0px;animation-delay:0s&quot;&gt;&lt;span class=&quot;n&quot;&gt;01&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;Write the docstring first&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;it is the only interface the model sees&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot; style=&quot;top:62px;animation-delay:.3s&quot;&gt;&lt;span class=&quot;n&quot;&gt;02&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;Return results, not exceptions&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;empty is information&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot; style=&quot;top:124px;animation-delay:.6s&quot;&gt;&lt;span class=&quot;n&quot;&gt;03&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;Write errors for the model&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;they are control flow now&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot; style=&quot;top:186px;animation-delay:.9s&quot;&gt;&lt;span class=&quot;n&quot;&gt;04&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;Answer in seconds&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;or move the slow part off the loop&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot; style=&quot;top:248px;animation-delay:1.2s&quot;&gt;&lt;span class=&quot;n&quot;&gt;05&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;Retry inside the tool&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;never make it reason about HTTP&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot; style=&quot;top:310px;animation-delay:1.5s&quot;&gt;&lt;span class=&quot;n&quot;&gt;06&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;Score against ground truth&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;or you have a demo, not a system&lt;/span&gt;&lt;/div&gt;
+"></iframe>
+<p style="position:absolute;left:128px;bottom:64px;font-size:31px;color:#A8B2CC;width:1664px">Not one of these is about Gemini. <b style="color:#F2F4FA">Swap the model next year and all six still hold.</b></p>
+
+</section>
+
+<section id="tonight" data-section="What to go and try tonight." data-transition="push" style="background:#FFB454;color:#0B1020;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:58px">
+<h2 style="font-size:88px;font-weight:700;line-height:1.05">Go and build one of these</h2>
+<div style="display:flex;gap:30px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#0B1020;padding:58px;border-radius:18px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:29px;font-weight:700;color:#FFB454">TONIGHT · 10 MIN</p>
+<h3 style="font-size:40px;font-weight:600;line-height:1.2;color:#F2F4FA">“Will I see an aurora from my city this week?”</h3>
+<p style="font-size:26px;line-height:1.4;color:#8D97B8">One sentence. It already has the space-weather tool.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#0B1020;padding:58px;border-radius:18px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:29px;font-weight:700;color:#FFB454">THIS WEEKEND</p>
+<h3 style="font-size:40px;font-weight:600;line-height:1.2;color:#F2F4FA">A live page of everything passing closer than the Moon</h3>
+<p style="font-size:26px;line-height:1.4;color:#8D97B8">Refreshes itself each morning. Send the link to one friend.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#0B1020;padding:58px;border-radius:18px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:29px;font-weight:700;color:#7CE0A8">THE ACTUAL POINT</p>
+<h3 style="font-size:40px;font-weight:600;line-height:1.2;color:#F2F4FA">Throw away the telescope. Plug in something of yours.</h3>
+<p style="font-size:26px;line-height:1.4;color:#8D97B8">Your tickets, your repo, your database. Same six rules.</p>
+</div>
+</div>
+<p style="font-size:44px;line-height:1.3;width:1600px">Nothing tonight was about astronomy. It was about handing a model a tool and asking in plain English.</p>
+
+</section>
+
+<section id="close" data-transition="fade" style="background:radial-gradient(ellipse at 24% 74%, #16224A 0%, #070C18 66%);color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<h2 style="font-size:96px;font-weight:700;line-height:1.05;width:1180px">Go and point it at something</h2>
+<div style="width:1180px;background:#0E1526;padding:36px 40px;border:1px solid #2A3A66;border-radius:16px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;color:#5AC8E8">pip install google-genai</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;color:#5AC8E8">export GEMINI_API_KEY="…"</p>
+<p style="font-size:26px;line-height:1.4;color:#8D97B8">Free key at aistudio.google.com · the free tier runs gemini-3.8-flash</p>
+</div>
+<p style="font-size:32px;line-height:1.4;color:#A8B2CC;width:1180px">All of it is in the repo — the code, the slides, and <b style="color:#F2F4FA">every failure</b>. Plus a facts file with the query behind every number I quoted.</p>
+<div style="position:absolute;right:128px;top:300px;width:320px;height:320px;background:#F2F4FA;border-radius:18px;display:flex;align-items:center;justify-content:center"><p style="font-size:28px;font-weight:600;color:#6F7A99;text-align:center;width:240px">[ QR code: repo ]</p></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:26px;color:#6F7A99;width:1664px">Aayush Arora · data from NASA Exoplanet Archive, Kepler, MAST, JPL and the NASA Image Library</p>
+
+</section>
+
+</div></div>
+<div id="bar"><i></i></div><div id="n"></div>
+<div id="help">← → navigate · N notes · F fullscreen</div>
+<div id="notes"></div>
+<script>
+const NOTES = ["The solar system on the right is live \u2014 the planets really orbit, at speeds in the right order. Let it run while people file in.\n\nSay almost nothing. Title up, one breath, go.\n\n\"Four commands. That's the whole setup. Then we go looking at planets.\"\n\nNote: animation plays in the web view and while presenting. A PDF or PowerPoint export freezes it to a still frame, which is fine.", "This is the spine of the whole talk, so set it up properly and don't rush the list.\n\nSay the question out loud like a person, not a demo prompt. It is the most ordinary question in the world and a language model cannot answer it. Not because it is stupid \u2014 because five separate things are missing, and by the end of the talk you will have counted ten.\n\nLet the red lines land one at a time. Students recognise every single one of these failures; they have all asked a chatbot something it couldn't know.\n\nThen make the promise on the bottom line and mean it, because the talk delivers it on rung 9: the same question, answered automatically, in your inbox at six in the morning.\n\nPromising the ending here is what makes the middle feel like one thing instead of six demos. Come back to this question explicitly on rungs 3, 8 and 9.", "Keep this short and do not mock the model \u2014 the point is structural, not a joke at its expense.\n\nAsk the question cold and you get something fluent and useless. A paragraph about how stargazing depends on conditions. It is not being evasive. Look at the three things on this slide and notice that none of them is knowledge.\n\nWhere you are: you never told it.\n\nTonight's weather: that measurement did not exist when the model was trained. There is no amount of reading that fixes it.\n\nAnd tonight's sky: Saturn is at a specific height above a specific horizon right now. That is arithmetic somebody has to do, not a fact to recall.\n\nSo the fix is not a better model or a cleverer prompt. It is senses and memory, and the rest of this talk is me giving it both, one at a time.\n\nIf you want the demo: ask it live from your phone before the talk and screenshot the answer. It will be politely useless and that lands better than anything I can print here.", "Walk the dot once, left to right. You ask in English. Gemini picks a tool and its arguments. Your code runs it. Live data comes back.\n\nThen name the two halves, because this is the argument of the whole talk. The blue half \u2014 you, the model, the loop between you \u2014 is about fifteen lines, and you will see all of them in two slides. The orange box is four Python functions I wrote, and that box is where every single thing that went wrong, went wrong.\n\nThe bottom line is the instruction for how to watch the next half hour.\n\nOne sentence if you are short: the model is the part you don't control, the tools are the part you do.", "This is the hinge of the whole talk. Everything after it depends on the room accepting this one fact.\n\nSet it up by admitting the cost: this took you most of a day, because every tutorial and every Stack Overflow answer is written against the older surface.\n\nRead the quote out loud, slowly. It is Google's own documentation, verbatim.\n\nThen the consequence, which is the thesis: nobody calls your function for you. Nobody retries. Nobody decides when to stop. All of that is your code now \u2014 which means the quality of your agent is the quality of your tools.\n\nIf someone asks whether the old way still works: say you have not tested it, point them at the docs, and move on. Do not guess on stage.\n\nVerified 5 Nov 2026. Re-check before you present \u2014 this surface is moving.", "This slide did not exist until late and it is the one that makes lesson one inevitable. Spend a minute.\n\nHere is what you actually pass. Not a Python function \u2014 a dictionary. A name, a description, and the parameters.\n\nRead the description out loud, including the second half: zero is clear, above about forty there is no point going outside. That sentence is not for you. It is the only thing telling the model what a useful answer looks like.\n\nThen the line on the right, and say it plainly: the model never sees your function body. It does not see your type hints, your tests, or what you meant. It sees three fields.\n\nWhich is why the bottom line is true. A function called process, described as \"processes data\", is not badly documented. It is invisible. The model has nothing to choose it by.\n\nHold that thought \u2014 it comes back as lesson one with numbers attached.", "Do NOT read this code. Read the four numbers on the right, in order, and point at the matching number in the code as you say each one.\n\nOne: you ask. The question goes in, your four tools go in with it.\n\nTwo: you look at what came back. Each thing the model did is a step. Did any of them ask for a tool?\n\nThree \u2014 and stop here, because this is the line everyone gets wrong \u2014 YOU call the function. Gemini does not. It hands you a name and a dictionary of arguments and waits. Every tutorial you will find online says otherwise; they were written against the old API.\n\nFour: you hand the result back, with the call_id matching the step you are answering, and you loop.\n\nThat is it. That is an agent. Four moves, fifteen lines, and the next twenty minutes are about the four functions, not about this.\n\nThe bottom line is reference material. Say it fast \u2014 these are the three things that will cost them an hour on their first attempt \u2014 and promise it is in the repo. Do not explain them.\n\nIf someone asks about MCP: it works, remote servers only, Streamable HTTP, and no hyphen in the server name.", "Twenty seconds. Two parameters: where, and what you want to know.\n\nThis is the first sense you give it. Until now the model has no idea whether it is cloudy anywhere, because that is not knowledge \u2014 it is a measurement that did not exist when it was trained.\n\nTurn the page.", "Let it run once. Clouds drift over Bhutan and down into Bangladesh, and the hole stays where we are.\n\nOne sentence: three per cent cloud here all evening, and you can see why \u2014 the weather is going round us tonight.\n\nDo not labour it. The point is that the agent now knows something about the actual world that no amount of training could have told it.", "Thirty seconds. Point at the three parameters, not the URL.\n\nWhich body. Where you are standing. What you want to know \u2014 how high it is and how bright.\n\nThat is a tool. Hand it to Gemini and it can look up at the sky from anywhere on the planet, on any night, past or future.\n\nThen turn the page.", "Say nothing. Let it run one pass \u2014 about seven seconds \u2014 and let them watch Saturn climb.\n\nThen one sentence: at nine o'clock tonight, Saturn is sixty-four degrees above the southern horizon, which is almost overhead, and the Moon does not rise until three in the morning, so the whole evening is properly dark.\n\nPoint at the faint arcs: those are the paths of Jupiter and Mars, still climbing. They are a dawn show, not an evening one.\n\nDo not explain the chart. North, east, south, west along the bottom; height up the side. People get it in two seconds.\n\nThis is computed from real ephemeris for this date. Re-run refresh-live-data.sh on the morning of the talk or the sky will be wrong.", "Thirty seconds, and the docstring is the whole slide.\n\nNotice what it says: call this FIRST. That is not documentation, it is instruction, and it is the only way the model knows the order to do things in.\n\nThen the distinction, which is worth being precise about because people conflate them. previous_interaction_id keeps tonight's conversation together \u2014 what you said two messages ago. It does nothing for next week. Facts that outlive the conversation need somewhere to sit, and in my case that is a JSON file with three keys in it.\n\nTurn the page and show them the difference it makes.", "Both of these outputs are real \u2014 I ran the store twice with a week of imagined time between them.\n\nFirst night, recall comes back empty. It has no choice but to ask: where are you, and what are you looking through. That is a perfectly good question to ask once.\n\nThen watch the next two lines. It does not just use the answers, it stores them. Two calls to remember, and that is the entire mechanism.\n\nSet up the turn: the interesting slide is the next one, because that is where the memory earns its place.", "A week later it opens knowing three things, and the third is the one that matters.\n\nLocation and kit stop it asking. Fine, that is convenience. But \"seen: Saturn\" changes what it recommends \u2014 it moves you on to something you have not looked at.\n\nThat is the difference between a tool that answers and an assistant that knows you.\n\nBe straight about provenance: the recall output is real, the sentence in the green box is how the system is built to answer. The free tier would not complete a live run while I was making this, so take the wording as mine and the data as real.\n\nLand the bottom line hard. Everyone in this room has filled in the same form twice and hated it.", "Every number in the middle column is a real tool result from tonight.\n\nWalk down it slowly, one row at a time, and say the right-hand column out loud \u2014 that is the decision each result forces.\n\nIt recalls, so it does not ask. It checks the sky, finds it clear, and that is what makes continuing worthwhile \u2014 if that had come back at eighty per cent, the right move is to stop here and say so. It checks the Moon and finds it stays down until three, which means the whole evening is usable rather than just the early part. Then it finds Saturn high at nine.\n\nFour calls, and not one of them is on a fixed list. The order falls out of what came back.\n\nThere is a fifth call. It is on the next slide, and it is the interesting one.", "Give this a whole slide and a whole beat. It is the best idea in the talk and it goes past people if you bury it in a list.\n\nThe agent checks space weather. Kp is nought point six seven, which is about as quiet as it gets. There will be no aurora over north-east India tonight, and there was never going to be.\n\nSo what does it do with that? Nothing. It does not mention aurorae at all.\n\nThat is the bit worth sitting with. We spend all our time making agents produce more \u2014 more tools, more detail, more words. The good answer tonight is short precisely because one of the five calls told it what to leave out.\n\nIf you want the general rule: a tool returning \"no\" has not failed and has not wasted your money. It has bought you a shorter, better answer. Most agent output is long because nobody taught it to be quiet.", "This is the slide the talk has been walking towards since the second minute. Do not hurry it. Read the headline, then stop. Then the four numbers, slowly, one each: three per cent cloud all evening. Saturn sixty-four degrees up at nine. Geomagnetically quiet, so do not bother looking north for an aurora. And the Moon stays out of the way until three in the morning. Then the line that closes the loop with the opening: not one of those four numbers was in the model. It did not know where I live, what the weather is, or where Saturn is tonight. Four small functions gave it senses, and the loop let it use them in the order it chose. If you want one beat of theatre: ask whether anyone is going to go and look. Somebody always says yes.", "This is the hinge of the talk. The question is answered, the room has had its payoff, and if you just carry on they will feel the talk should have stopped.\n\nSo stop, and tell them you are starting the second half deliberately.\n\nSay it plainly: everything they watched in the last twenty minutes broke at least once while I was building it. Not the model \u2014 the model was fine. Not the loop \u2014 the loop is fifteen lines and it worked the first time. The four functions in the orange box.\n\nThen the promise, and keep it: six of them, in the order they actually happened, and every one is a real bug with a real diff. No hypotheticals.\n\nThis is also your permission to speed up. The first half was a story and you took your time. The second half is craft and it should move.", "This is the map. Promise it, then deliver it in order.\n\nThe line that earns their attention: every one of these six happened to me while building the demos for this talk. Not hypotheticals \u2014 bugs with diffs.\n\nPoint at the split on the bottom line. One to three you fix by typing better Python. Four to six you cannot fix on a laptop at all, and that is the honest reason Google Cloud is in this talk \u2014 not because it is a Google event, but because a ten-minute tool and a five-hundred-star evaluation are infrastructure problems.\n\nIf you are running over, spend an extra ten seconds here and cut elsewhere. This is the slide that makes the rest feel like one argument instead of six tips.", "This is where the talk stops being advice and starts being evidence. Say that.\n\nThe model does the obvious thing: it asks for Mars. And JPL comes back with four things called Mars \u2014 the barycentre, the planet, and two spacecraft that are orbiting it right now. Ask for Mars, get a spacecraft.\n\nNow the part that matters: that is not an error. No exception, no 400, no \"bad request\". It is a perfectly successful HTTP response containing a menu. Your code reads it looking for an ephemeris, finds none, and returns nothing useful \u2014 and the model has no idea why.\n\nThe fix is one sentence on the parameter: it takes a JPL code, not a name, and here are two examples.\n\nThen make it theirs, slowly: nobody's model has heard of your internal service names, or that your customers table is called accounts. There is no recovery path for those. The description is the only place that knowledge can exist.\n\nIf asked whether this is just prompt engineering: no \u2014 it is on the function, so it travels with the tool into every agent that imports it.", "Short. Forty seconds.\n\nA night with no planets up is not an error. It is a fact about tonight, and it is one the model can work with \u2014 it can still tell you the sky is dark and clear and point you at something else.\n\nRaise instead, and you do not just lose that tool. You lose the whole answer, including the three tools that worked.\n\nThe rule: your tool should only raise when the caller genuinely cannot continue. \"I looked and there was nothing\" is not that.", "This is a real traceback from the first time I ran the four tools. NOAA changed shape on me \u2014 I expected rows with a header, it sends a list of dictionaries.\n\nRead it out and then ask: what is a language model supposed to do with that? It is a sentence about Python internals. It cannot fix my parser and it cannot tell the user anything useful.\n\nThe fix is not to hide the failure. It is to say what failed, in words aimed at the reader \u2014 which is now a model \u2014 and whether the rest of the job can go on.\n\nThen it answers with three tools instead of four and tells the user the aurora check was unavailable. That is a good night's work, not a crash.\n\nThe sentence to leave them with: once you hand tools to a model, your error strings stopped being for you.", "Reference slide. Forty seconds, do not explain them deeply \u2014 promise the repo and move on.\n\nThe call_id one: each thing the model did is a step with an id, and when you hand back a result you have to say which step you are answering. Get it wrong and your result goes nowhere; the model waits, then gives up.\n\nThe result one catches everyone, including me. It is not a string. It is a list of content blocks, and if you pass a string it is simply ignored.\n\nAnd the third is a documentation problem rather than a design one. Structured output is response_format. A great deal of what is online says response_schema, because that is what the older API used, and it will not work.\n\nThe bottom line is the reason this slide exists at all: none of these raise anything useful. They fail silently, which is the worst way for anything to fail, and you will lose an evening to each one.", "These are measured, on my laptop, on a good connection. Say that.\n\nThe interesting one is planets_tonight. It looks like one tool and it is really four HTTP calls in a row, because I wrote a loop over the planets. Nobody reviews that and thinks \"this is the slow one\" \u2014 you find out by timing it.\n\nNow put it in context. The model may call tools across several rounds. Seven seconds of tool time, two or three rounds deep, is twenty seconds of someone staring at nothing.\n\nTwo fixes and they are both boring. Fan the four requests out concurrently. Or notice that the sky tonight is the same for everyone in this city, compute it once at sunset, and serve it from a row.\n\nThe second one is the one that leads into the cloud section.", "Three lines, and they are the difference between a demo that works and one that works on stage.\n\nEvery one of these endpoints is free and public and occasionally drops a request that succeeds a second later. If that failure reaches the model, it does the polite human thing \u2014 it tells the user it could not check, and gives up. It will not retry, because nothing told it to.\n\nThen the honest confession, and it is a good one: the model did this to me too. The free tier of gemini-3.8-flash returned 503 over and over while I was building this, and then stopped answering altogether, which is why some of tonight is recorded rather than live.\n\nSo the retry belongs one layer down, in the tool, where it is three lines and nobody has to think about it.", "This is the lesson I would protect over every other one, and today it caught me.\n\nI wrote four tools. I was certain all four worked. I ran the check and three did \u2014 NOAA had changed the shape of its response and my parser was wrong.\n\nNow notice what would have happened without the check. Nothing visible. No crash, no red text. The agent would have answered the question perfectly well using three tools and quietly stopped ever mentioning the aurora. I would have demoed that on this stage and never known.\n\nThat is how agents fail. Not loudly. They just get a bit less useful, and nobody notices for a month.\n\nThe habit: a command that exercises every tool, with no model and no key, that you run after every change. Mine takes four seconds.\n\nThen the bigger version, if you have time: the real score is whether the answer was right, and for that you need ground truth you held back. Everyone in this room has some \u2014 closed tickets, last quarter's forecasts, the past is already labelled.", "Hold this up for a few seconds. It is the least glamorous slide in the talk and it is the one I would keep.\n\nFour tools, four live endpoints, no API key, about seven seconds. That is the whole instrument panel.\n\nWalk the four results and point back at the answer slide as you go \u2014 three per cent cloud, Saturn at sixty-four degrees at nine, Moon up at three, Kp nought point six seven. Every number the agent told us came from one of these lines. The model supplied the sentence, not the facts.\n\nThen the practical note for anyone writing this down: this mode needs no key, so it runs in CI. That is the cheapest safety net you will ever add to an agent.", "This is lesson four turned into shape. Walk the two lanes, do not talk about syntax.\n\nTop lane runs once, at sunset, and nobody is waiting for it. A Cloud Run Job works through every city you care about \u2014 seven seconds each, hundreds at a time, because they do not depend on each other \u2014 and writes one row per city per night into BigQuery.\n\nBottom lane is what happens when somebody actually asks. The agent reads one row. Forty milliseconds instead of seven seconds.\n\nThen the line at the bottom, which is the whole idea and is not really about the cloud at all: the sky over this city tonight is the same for everybody in this city tonight. There is no reason to compute it per question.\n\nSame container image, two entry points. That is the trick, and it is the one that makes a slow tool survive contact with real users.\n\nSay honestly that this is architecture \u2014 the gcloud commands are in the repo, and I have never run them, because there is no billing account behind this talk.", "Do not read the SQL. Say what it does: of all the nights it told somebody to go outside, on how many was the sky actually clear?\n\nThen the thing that makes this domain lucky, and point at it: the ground truth turns up on its own. Tomorrow morning, open-meteo publishes what the cloud cover actually was last night. You do not have to label anything. You just have to write down what you said, and check.\n\nThat is the whole habit. One row per night: what it advised, and what happened. One query. Run it weekly.\n\nAnd the consequence is human, not technical. Send somebody out into cloud twice and they stop opening your app. Nothing in your logs tells you that happened.\n\nFinish on the bottom line and make it theirs, because it is the most transferable sentence in the talk. Everybody here already has ground truth and has not noticed. Closed tickets. Merged pull requests. Last quarter's forecasts against what actually happened. The past is labelled \u2014 hold some back and score against it.", "Ninety seconds, and do not oversell it.\n\nEverything so far has been tools I wrote. In real life you will not own all of them \u2014 somebody has already built the one you need, and MCP is how you plug it in without writing it.\n\nThe shape is the slide. A name and a URL. From the loop's point of view nothing changes: the model still asks for a tool by name, you still run the round trip, you still hand the result back.\n\nThen the three constraints, and all three came out of the SDK this afternoon rather than from a blog post.\n\nRemote only \u2014 there is no stdio transport in the type at all, so the local servers people run on their laptops are not what this is.\n\nStreamable HTTP, a url and headers, and that is the entire surface.\n\nAnd the one to say slowly, because half this room will be on Google Cloud: the SDK's own docstring says this type is not supported in Vertex AI. So the enterprise path and the MCP path are not the same path today. Worth checking before you design around it.\n\nIf someone asks for a public server to try: do not name one from memory. Test it the morning of.", "They have just read eight lines of code. This is those eight lines running. Say that first, then stop talking and let the descent play \u2014 it is about six seconds and it loops.\n\nStart wide: that whole bruise-shaped feature is Olympus Mons and the aureole of material that has slumped off it over billions of years. Two thousand three hundred kilometres across the frame.\n\nAs it closes in, name the scale once: three times the height of Everest, and the base would cover France.\n\nThen the ending, and let it sit there: those nested pits are the summit caldera. Not an impact crater \u2014 that is where the magma chamber emptied and the roof collapsed, over and over.\n\nThe line that matters for a talk about agents is the one at the bottom. Nobody at NASA built this experience. They published map tiles in the same z/y/x format the whole web already uses, and went home. Everything you have watched tonight is someone else's archive, plus a little code.\n\nSay \"recorded\" once, honestly. It is recorded because the embedded panels in these slides cannot reach the network at all \u2014 which is itself worth knowing if anyone asks why you are not doing it live.", "Put it up and say nothing for one full loop. Six seconds. People do not expect this one.\n\nThen: that is not a render, and it is not a composite of archive imagery. Those are thirteen photographs taken on the first of November, in the order they were taken, by a spacecraft sitting a million miles away. The planet is turning because it turned.\n\nPoint out what is passing: Australia and the Pacific at the start, then Asia and Africa, then the Atlantic and the Americas. Three hundred and twenty-four degrees \u2014 nearly a whole day.\n\nThen the honest note, because somebody will ask: the fade between frames is mine, to make the rotation read. The thirteen pictures are untouched.\n\nLand on the bottom line and make it theirs: six lines of code, and a spacecraft somebody else paid for. Every one of you can have today's version of this picture before you leave the room.\n\nIf they ask whether the agent can use it: it already does. It is latest_earth_image, and the question on slide two \u2014 is it worth going outside tonight \u2014 is partly answered by looking at where the clouds are.", "Let it run a full cycle before you talk. It takes about twenty seconds and it is the biggest number in the talk.\n\nWhat they are watching: every confirmed planet around another star, placed by its size and the length of its year, appearing in the year we found it.\n\nCall the beats as they pass. 1992 \u2014 the first two, and they were not around a sun, they were around a pulsar, the corpse of a star. 1995 \u2014 the first around a normal star. Then the blue burst from 2009: that is Kepler, and in 2014 and 2016 alone more than three thousand arrive.\n\nThen stop on the final frame and point at Earth, sitting almost on its own in the bottom right. That emptiness is not a discovery. It is a blind spot \u2014 a 58-parts-per-million dip, exactly what they watched fail to show up on the previous slide.\n\nNow the Gemini point, which is why this slide is in a talk about agents and not an astronomy lecture: the panel on the right is the entire tool. One SELECT, one GET, no key. Hand that to a model as a single function and it can answer almost any question anyone asks about planets \u2014 but it will also inherit this chart's bias without ever knowing it is there. That is your job, not the model's.", "Stand still. Let them photograph it.\n\nRead only the amber column. The grey notes are for the photo, not your voice.\n\nThen the closing argument, and it is the reason to give this talk at all: not one of those six rules mentions Gemini. They are true of any model you plug in, this year or next. The model is the part that will change and the part you do not control. Your tools are the part you own.\n\nFinish with the inversion of where we started: \"I showed you the agent in eight lines at the beginning and told you that was the easy part. These six are the hard part \u2014 and they are the part that is still yours.\"\n\nIf somebody asks which one matters most: one and six. A tool nobody calls, and a system nobody scored.", "Stand still. Let them photograph this.\n\nRead the three headlines only. The grey lines are for the photo.\n\nThe third card is the whole talk. Say it properly: not one thing you saw tonight needed astronomy. It needed a tool and a sentence. Swap NASA for their university timetable, their own repository, a spreadsheet their boss cares about \u2014 the six rules do not change.\n\nIf one student does the third card this week, this talk worked.\n\nGood closing beat before the last slide: \"You now know something that did not exist as a skill two years ago, and the whole loop is four moves.\"", "Replace the white box with a real QR code to the repo. Nobody types a URL off a slide.\n\nSay it simply. Everything is in there \u2014 the code, these slides, and the failures. And a facts file with the query behind every number, so they can check you were not making it up.\n\nThen thank them and stop talking. Leave this slide up for the whole Q&A \u2014 it answers \"where do I start\" without you repeating yourself ten times at the coffee break.\n\nThe two commands are deliberately the API, not the CLI. An earlier version of this talk used Gemini CLI; if anyone asks about it, the CLI is a different product and the local-MCP trap from the loop slide is the practical difference.\n\nLikely questions and short answers are at the end of EASY-SCRIPT.md."];
+const S=[...document.querySelectorAll('#deck>section')];
+S.forEach(s=>s.style.setProperty('display','none','important'));
+let i=0;
+function fit(){const d=document.getElementById('deck');
+  const k=Math.min(innerWidth/1920,innerHeight/1080);
+  d.style.transform='translate('+(-960*k)+'px,'+(-540*k)+'px) scale('+k+')';}
+function show(k){
+  i=Math.max(0,Math.min(S.length-1,k));
+  S.forEach((s,j)=>{s.style.setProperty('display', j===i?'flex':'none','important');});
+  document.querySelector('#bar>i').style.width=((i+1)/S.length*100)+'%';
+  document.getElementById('n').textContent=(i+1)+' / '+S.length;
+  document.getElementById('notes').textContent=NOTES[i]||'(no notes)';
+  location.hash='#'+(i+1);
+}
+addEventListener('resize',fit);
+addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Home')show(0);
+  else if(e.key==='End')show(S.length-1);
+  else if(e.key.toLowerCase()==='n')document.getElementById('notes').classList.toggle('on');
+  else if(e.key.toLowerCase()==='f'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
+});
+addEventListener('click',e=>{if(!e.target.closest('#notes'))show(i+1);});
+fit(); show(parseInt(location.hash.slice(1))-1||0);
+</script></body></html>
