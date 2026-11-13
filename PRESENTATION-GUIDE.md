@@ -182,7 +182,7 @@ Then the part that matters: nobody calls your function for you. Nobody retries. 
 
 If someone asks whether the old way still works: say you haven't tested it, point them at the docs, and move on. Don't guess on stage.
 
-Verified 5 Nov 2026. Re-check before you present. This API is still changing.
+Verified 13 Nov 2026. Re-check before you present. This API is still changing.
 
 ## 7 · `the-declaration` · 1 min
 
@@ -253,7 +253,7 @@ Every tool in this talk is these four steps and nothing else.
 
 Let it run once. Clouds drift over Bhutan and down into Bangladesh, and the hole stays where we are.
 
-One sentence: three per cent cloud here all evening, and you can see why. The weather is going round us tonight.
+One sentence: fifteen per cent cloud over the town all evening. Then the detail worth having: the ridge twenty kilometres north is at a hundred per cent, and you can see the band parked on it. The weather is going round us tonight.
 
 Don't labour it. The point is that the agent now knows something about the actual world that no amount of training could have told it.
 
@@ -496,7 +496,7 @@ Hold this up for a few seconds. It's the least glamorous slide in the talk and i
 
 Four tools, four live endpoints, no API key, about seven seconds. That's the whole instrument panel.
 
-Walk the four results and point back at the answer slide as you go: three per cent cloud, Saturn at sixty-four degrees at nine, Moon up at three, Kp nought point six seven. Every number the agent told us came from one of these lines. The model supplied the sentence, not the facts.
+Walk the four results and point back at the answer slide as you go: fifteen per cent cloud, Saturn at sixty-four degrees at half past eight, the Moon gone by twenty to eight, Kp one. Every number the agent told us came from one of these lines. The model supplied the sentence, not the facts.
 
 Then the practical note for anyone writing this down: this mode needs no key, so it runs in CI. That's the cheapest safety net you'll ever put on an agent.
 
@@ -504,7 +504,7 @@ Then the practical note for anyone writing this down: this mode needs no key, so
 
 **Yes. Go outside.** — *The question, answered*
 
-This is the slide the talk has been walking towards since the second minute. Don't hurry it. Read the headline, then stop. Then the four numbers, slowly, one each: three per cent cloud all evening. Saturn sixty-four degrees up at nine. Geomagnetically quiet, so don't bother looking north for an aurora. And the Moon stays out of the way until three in the morning. Then the line that closes the loop with the opening: not one of those four numbers was in the model. It didn't know where I live, what the weather is, or where Saturn is tonight. Four small functions gave it senses, and the loop let it use them in the order it chose. If you want one beat of theatre: ask whether anyone is going to go and look. Somebody always says yes.
+This is the slide the talk has been walking towards since the second minute. Don't hurry it. Read the headline, then stop. Then the four numbers, slowly, one each: fifteen per cent cloud all evening. Saturn sixty-four degrees up at half past eight. Geomagnetically quiet, so don't bother looking north for an aurora. And the Moon stays out of the way until three in the morning. Then the line that closes the loop with the opening: not one of those four numbers was in the model. It didn't know where I live, what the weather is, or where Saturn is tonight. Four small functions gave it senses, and the loop let it use them in the order it chose. If you want one beat of theatre: ask whether anyone is going to go and look. Somebody always says yes.
 
 
 # ACT TWO — everything you just watched broke
