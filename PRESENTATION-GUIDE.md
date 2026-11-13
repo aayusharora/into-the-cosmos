@@ -1,6 +1,6 @@
 # Your presentation, explained
 
-**48 slides. 44.5 minutes as written.** This is the only file you need on the day.
+**75 slides. 45 minutes as written.** This is the only file you need on the day.
 
 ---
 
@@ -10,7 +10,7 @@
 > answer it. Ten things are missing. We add them one at a time —
 > and then everything you just watched breaks.**
 
-Asked on slide 2, answered on slide 31. Slide 32 turns the talk over.
+Asked on slide 2, answered on slide 46. Slide 50 turns the talk over.
 
 ## The rhythm
 
@@ -30,12 +30,12 @@ that anticipation is the reason they exist. Do not read them twice.
 
 | Slides | | Runs |
 |---|---|---|
-| 1–31 | **Act One.** The question, and the system that answers it | 26 min |
-| 32–42 | **Act Two.** Everything you just watched broke | 12.5 min |
-| 43–45 | **Coda.** Point the same four moves somewhere else | 3.25 min |
-| 46–48 | **Close.** The six rules, and what to build on Monday | 2.75 min |
+| 1–46 | **Act One.** The question, and the system that answers it | 25.25 min |
+| 50–63 | **Act Two.** Everything you just watched broke | 12.75 min |
+| 64–70 | **Coda.** Point the same four moves somewhere else | 3.25 min |
+| 71–75 | **Close.** The six rules, and what to build on Monday | 2.75 min |
 
-**Slide 32 is the hinge.** Stop there. The question
+**Slide 50 is the hinge.** Stop there. The question
 is answered and the room has had its payoff — if you simply carry on
 they will feel the talk should have ended. Say you are starting the
 second half on purpose, then speed up.
@@ -44,41 +44,41 @@ second half on purpose, then speed up.
 
 | | Needs | Gap | Code | Output |
 |---|---|---|---|---|
-| 1–3 | Eyes, a loop, a first tool | — | 9 | 11 |
-| 4 | Something to look at | 12 | 13 | 14 |
-| 5 | A sense of when | 15 | 16 | 17 |
-| 6 | Memory | 18 | 19 | 22 |
-| 7 | Judgement to chain | 23 | 24 | 24 |
-| 8 | The nerve to say nothing | 25 | 26 | 26 |
-| 9 | Somebody else's tools | 27 | 28 | 28 |
-| 10 | A way to know it was right | 29 | 30 | 30 |
+| 1–3 | Eyes, a loop, a first tool | — | 14 | 19 |
+| 4 | Something to look at | 20 | 21 | 22 |
+| 5 | A sense of when | 23 | 24 | 25 |
+| 6 | Memory | 26 | 27 | 32 |
+| 7 | Judgement to chain | 33 | 34 | 34 |
+| 8 | The nerve to say nothing | 38 | 39 | 39 |
+| 9 | Somebody else's tools | 40 | 41 | 41 |
+| 10 | A way to know it was right | 44 | 45 | 45 |
 
 ## Cutting to fit
 
 | Cut | Slides | Saves | Leaves |
 |---|---|---|---|
-| 1 | the coda — 43, 44, 45 | 3.25 | **41.25** |
-| 2 | `l2-returns` + `the-traps` — 35, 37 | 1.5 | **39.75** |
-| 3 | MCP — 27, 28 | 1.75 | **38** |
-| 4 | Google Cloud — 41, 42 | 3 | **35** |
-| 5 | `l3-errors` + `l5-retries` — 36, 39 | 2 | **33** |
+| 1 | the coda — 64, 67, 70 | 3.25 | **41.75** |
+| 2 | `l2-returns` + `the-traps` — 54, 56 | 1.75 | **40** |
+| 3 | MCP — 40, 41 | 1.25 | **38.75** |
+| 4 | Google Cloud — 62, 63 | 3 | **35.75** |
+| 5 | `l3-errors` + `l5-retries` — 55, 60 | 2 | **33.75** |
 
 Cut evidence last. `l2-returns` and `the-traps` are the only two
 lessons with no measured number behind them.
 
-**Never cut:** 2, 3, 4, 10, 11, 14, 20, 24, 26, 31, 32, 34 — and never cut a gap slide without cutting its code and output too.
+**Never cut:** 2, 3, 6, 15, 19, 22, 28, 34, 39, 46, 50, 53 — and never cut a gap slide without cutting its code and output too.
 
 ## Three things to say honestly
 
 1. **The tools are real and ran today.** `python demo/tonight.py
    --tools-only` hits four live endpoints with no API key in about
-   seven seconds. Every number on slides 11, 14, 17, 30 and 31 came out of it.
+   seven seconds. Every number on slides 19, 22, 25, 45 and 46 came out of it.
 2. **There is no recorded agent transcript in this deck, deliberately.**
    The Gemini free tier hung on every attempt — including past a hard
    100-second deadline, with the SDK's own timeout failing to fire.
    Rather than fake one, the deck shows the real tool results and says
    who chose what. If you get a clean run before the talk, add it after
-   slide 8.
+   slide 10.
 3. **The sky on slides 11, 14 and 17 is rendered for one night.**
    `./refresh-live-data.sh` redraws them for the real date and prints
    every number that moves. **`cloud/` has never been executed.**
@@ -87,10 +87,10 @@ lessons with no measured number behind them.
 
 - [ ] Re-render the sky, cloud and moon charts for the actual date
 - [ ] `python demo/tonight.py --tools-only` — expect 4/4
-- [ ] Present from the web view, not a PDF — 11 slides move
+- [ ] Present from the web view, not a PDF — 15 slides move
 - [ ] Screenshot Gemini failing the question from your phone; it beats
       slide 3
-- [ ] QR code on slide 48
+- [ ] QR code on slide 75
 
 ---
 
@@ -125,7 +125,7 @@ Then make the promise on the bottom line and mean it, because the talk delivers 
 
 Promising the ending here is what makes the middle feel like one thing instead of six demos. Come back to this question explicitly on rungs 3, 8 and 9.
 
-## 3 · `cant-answer` · 1 min
+## 3 · `cant-answer-1` · 15 sec
 
 **It’s not dodging the question. It can’t answer it.** — *Ask it cold*
 
@@ -133,17 +133,25 @@ Keep this short and don't mock the model. The point isn't that the model is stup
 
 Ask the question cold and you get something fluent and useless. A paragraph about how stargazing depends on conditions. It isn't being evasive. Look at the three things on this slide and notice that none of them is knowledge.
 
+## 4 · `cant-answer-2` · 15 sec
+
+**It’s not dodging the question. It can’t answer it.** — *Ask it cold*
+
 Where you are: you never told it.
 
 Tonight's weather: that measurement didn't exist when the model was trained. There's no amount of reading that fixes it.
 
 And tonight's sky: Saturn is at a specific height above a specific horizon right now. Somebody has to work that out. It isn't a fact you can look up.
 
+## 5 · `cant-answer-3` · 30 sec
+
+**It’s not dodging the question. It can’t answer it.** — *Ask it cold*
+
 So the fix isn't a better model or a cleverer prompt. It's senses and memory, and the rest of this talk is me giving it both, one at a time.
 
 If you want the demo: ask it live from your phone before the talk and screenshot the answer. It'll be politely useless and that lands better than anything I can print here.
 
-## 4 · `ten-things` · 1 min
+## 6 · `ten-things` · 1 min
 
 **Ten things it’s missing**
 
@@ -155,7 +163,7 @@ Then the bottom line, which is the contract: we add them one at a time, and when
 
 If you're running short this is the slide to linger on and the individual code slides to speed through. People remember the shape.
 
-## 5 · `what-were-building` · 1.25 min
+## 7 · `what-were-building` · 1.25 min
 
 **Here’s what we’re building**  
 *animated panel*
@@ -168,7 +176,7 @@ The bottom line is the instruction for how to watch the next half hour.
 
 One sentence if you're short: the model is the part you don't control, the tools are the part you do.
 
-## 6 · `fifteen-lines` · 1 min
+## 8 · `fifteen-lines` · 1 min
 
 **You write the loop yourself** — *What every tutorial gets wrong*
 
@@ -184,7 +192,7 @@ If someone asks whether the old way still works: say you haven't tested it, poin
 
 Verified 13 Nov 2026. Re-check before you present. This API is still changing.
 
-## 7 · `the-declaration` · 1 min
+## 9 · `the-declaration` · 1 min
 
 **The model never sees your code** — *1 of 10 · Something it can call*
 
@@ -200,7 +208,7 @@ Which is why the bottom line is true. A function called process, described as "p
 
 Hold that thought. It comes back as lesson one with numbers attached.
 
-## 8 · `the-loop` · 1.25 min
+## 10 · `the-loop-1` · 15 sec
 
 **Four moves, and that’s the whole agent** — *2 of 10 · A loop you write yourself*
 
@@ -208,19 +216,31 @@ Do NOT read this code. Read the four numbers on the right, in order, and point a
 
 One: you ask. The question goes in, your four tools go in with it.
 
+## 11 · `the-loop-2` · 15 sec
+
+**Four moves, and that’s the whole agent** — *2 of 10 · A loop you write yourself*
+
 Two: you look at what came back. Each thing the model did is a step. Did any of them ask for a tool?
 
 Three. Stop here, because this is the line everyone gets wrong. YOU call the function. Gemini doesn't. It hands you a name and a dictionary of arguments and waits. Every tutorial you'll find online says otherwise; they were written against the old API.
+
+## 12 · `the-loop-3` · 15 sec
+
+**Four moves, and that’s the whole agent** — *2 of 10 · A loop you write yourself*
 
 Four: you hand the result back, with the call_id matching the step you're answering, and you loop.
 
 That's it. That's an agent. Four moves, fifteen lines, and the next twenty minutes are about the four functions, not about this.
 
+## 13 · `the-loop-4` · 30 sec
+
+**Four moves, and that’s the whole agent** — *2 of 10 · A loop you write yourself*
+
 The bottom line is reference material. Say it fast. These are the three things that will cost them an hour on their first attempt. Then promise it's in the repo. Don't explain them.
 
 If someone asks about MCP: it works, remote servers only, Streamable HTTP, and no hyphen in the server name.
 
-## 9 · `cloud-code` · 30 sec
+## 14 · `cloud-code` · 30 sec
 
 **Will it be clear?** — *3 of 10 · Knowing if it’s cloudy*
 
@@ -230,7 +250,7 @@ This is the first sense you give it. Until now the model has no idea whether it'
 
 Turn the page.
 
-## 10 · `endpoint-to-tool` · 1.25 min
+## 15 · `endpoint-to-tool-1` · 15 sec
 
 **An API response isn’t a tool yet** — *3 of 10 · Knowing if it’s cloudy*
 
@@ -238,15 +258,27 @@ This is the slide people will photograph, and it's the one I kept forgetting to 
 
 Everybody can call an API. The question nobody answers is what happens between the response and the model, and the answer is that you do it.
 
+## 16 · `endpoint-to-tool-2` · 15 sec
+
+**An API response isn’t a tool yet** — *3 of 10 · Knowing if it’s cloudy*
+
 Walk the four rows. NASA sends two days of hourly readings because that's what the endpoint does. Twelve hundred bytes, forty-eight numbers, almost none of them about tonight. Your function throws most of it away and keeps six hours and an average. The docstring tells the model what the numbers mean, including where the threshold is. And then the model sees a hundred and thirty-three bytes it can actually reason about.
 
+## 17 · `endpoint-to-tool-3` · 15 sec
+
+**An API response isn’t a tool yet** — *3 of 10 · Knowing if it’s cloudy*
+
 Say the ratio out loud: ten times smaller.
+
+## 18 · `endpoint-to-tool-4` · 30 sec
+
+**An API response isn’t a tool yet** — *3 of 10 · Knowing if it’s cloudy*
 
 And then the rule you can take away: never hand a model a raw API response. It will cost you tokens, it will slow you down, and it will find something in there to be confused by. Shape it first. That's your job.
 
 Every tool in this talk is these four steps and nothing else.
 
-## 11 · `cloud-tonight` · 1 min
+## 19 · `cloud-tonight` · 1 min
 
 **Tonight, over your heads** — *3 of 10 · Knowing if it’s cloudy*  
 *recorded demo, animated*
@@ -257,7 +289,7 @@ One sentence: fifteen per cent cloud over the town all evening. Then the detail 
 
 Don't labour it. The point is that the agent now knows something about the actual world that no amount of training could have told it.
 
-## 12 · `gap-eyes` · 15 sec
+## 20 · `gap-eyes` · 15 sec
 
 **It knows the sky is clear. It has no idea what’s in it.** — *Next · 4 of 10 · Knowing what’s up there*
 
@@ -267,7 +299,7 @@ Knowing the sky is clear tells you nothing about whether there's anything worth 
 
 So the next thing it needs is eyes.
 
-## 13 · `sky-code` · 30 sec
+## 21 · `sky-code` · 30 sec
 
 **What’s up there tonight?** — *4 of 10 · Knowing what’s up there*
 
@@ -279,7 +311,7 @@ That's a tool. Hand it to Gemini and it can look up at the sky from anywhere on 
 
 Then turn the page.
 
-## 14 · `sky-tonight` · 1.25 min
+## 22 · `sky-tonight` · 1.25 min
 
 **And here’s what’s in it** — *4 of 10 · Knowing what’s up there*  
 *recorded demo, animated*
@@ -294,7 +326,7 @@ Don't explain the chart. North, east, south, west along the bottom; height up th
 
 This is computed from real ephemeris for this date. Re-run refresh-live-data.sh on the morning of the talk or the sky will be wrong.
 
-## 15 · `gap-moon` · 15 sec
+## 23 · `gap-moon` · 15 sec
 
 **It can point at Saturn. It doesn’t know the Moon will wash it out.** — *Next · 5 of 10 · Knowing when to go out*
 
@@ -304,7 +336,7 @@ Clear and dark are two different questions and people conflate them constantly.
 
 Thing five.
 
-## 16 · `moon-code` · 30 sec
+## 24 · `moon-code` · 30 sec
 
 **What will wash it out?** — *5 of 10 · Knowing when to go out*
 
@@ -316,7 +348,7 @@ Note the second half of the docstring, because that's the part doing the work: i
 
 Same JPL endpoint as the planets, body code 301.
 
-## 17 · `moon-tonight` · 1 min
+## 25 · `moon-tonight` · 1 min
 
 **The Moon is gone by twenty to eight** — *5 of 10 · Knowing when to go out*  
 *recorded demo, animated*
@@ -331,7 +363,7 @@ The agent needs this because "is it clear" isn't the same question as "is it dar
 
 That's thing five.
 
-## 18 · `gap-memory` · 15 sec
+## 26 · `gap-memory` · 15 sec
 
 **Every night it asks where you live. And what you own. And what you’ve already seen.** — *Next · 6 of 10 · Remembering you*
 
@@ -341,7 +373,7 @@ It works. It's accurate. And every single night it starts by asking you three qu
 
 Thing six.
 
-## 19 · `memory-code` · 30 sec
+## 27 · `memory-code` · 30 sec
 
 **It shouldn’t have to ask twice** — *6 of 10 · Remembering you*
 
@@ -353,7 +385,7 @@ Then the distinction, which is worth being precise about because people conflate
 
 Turn the page and show them the difference it makes.
 
-## 20 · `where-state-lives` · 1.25 min
+## 28 · `where-state-lives-1` · 30 sec
 
 **What it remembers, and for how long** — *6 of 10 · Remembering you*
 
@@ -361,15 +393,23 @@ Memory is the word everyone uses for three completely different things, and conf
 
 Left: the model itself holds nothing. Not a thing. Every call starts from zero, and people are genuinely surprised by this.
 
+## 29 · `where-state-lives-2` · 30 sec
+
+**What it remembers, and for how long** — *6 of 10 · Remembering you*
+
 Middle: previous_interaction_id keeps tonight's conversation together, and Google holds that thread for you. It's the right tool for "what did I just say". It's the wrong tool for anything that should outlive the session.
 
 Right: facts that survive. Where you live. What you own. What you've already seen. Nobody holds those for you. You store them, and it can be as small as you like.
+
+## 30 · `where-state-lives-3` · 45 sec
+
+**What it remembers, and for how long** — *6 of 10 · Remembering you*
 
 Then the orange line, which is the actual failure mode: people reach for the conversation id to do the third job. It works beautifully in testing, because testing is one session. Then a real user comes back a week later and the agent has never heard of them.
 
 Mine is a JSON file with three keys. That's the entire memory system in this talk, and it's enough.
 
-## 21 · `memory-night-one` · 45 sec
+## 31 · `memory-night-one` · 45 sec
 
 **It knows nothing, so it asks** — *6 of 10 · Remembering you*
 
@@ -381,7 +421,7 @@ Then watch the next two lines. It doesn't just use the answers, it stores them. 
 
 Set up the turn: the interesting slide is the next one, because that's where the memory earns its place.
 
-## 22 · `memory-night-two` · 45 sec
+## 32 · `memory-night-two` · 45 sec
 
 **No questions at all** — *6 of 10 · Remembering you*
 
@@ -395,7 +435,7 @@ Be straight about provenance: the recall output is real, the sentence in the gre
 
 Land the bottom line hard. Everyone in this room has filled in the same form twice and hated it.
 
-## 23 · `gap-chain` · 15 sec
+## 33 · `gap-chain` · 15 sec
 
 **Four tools. Four answers. Nobody decided anything.** — *Next · 7 of 10 · Deciding what to ask next*
 
@@ -407,21 +447,33 @@ An agent is different because what comes back changes what it asks next. If the 
 
 Thing seven.
 
-## 24 · `the-chain` · 1.5 min
+## 34 · `the-chain-1` · 15 sec
 
 **This is where it becomes an agent** — *7 of 10 · Deciding what to ask next*
 
 Every number in the middle column is a real tool result from tonight.
 
+## 35 · `the-chain-2` · 15 sec
+
+**This is where it becomes an agent** — *7 of 10 · Deciding what to ask next*
+
 Walk down it slowly, one row at a time, and say the right-hand column out loud. That's the decision each result forces.
+
+## 36 · `the-chain-3` · 15 sec
+
+**This is where it becomes an agent** — *7 of 10 · Deciding what to ask next*
 
 It recalls, so it doesn't ask. It checks the sky, finds it clear, and that's what makes continuing worthwhile. If that had come back at eighty per cent, the right move is to stop here and say so. It checks the Moon and finds it already setting, which means the whole evening is usable rather than just the early part. Then it finds Saturn high at nine.
 
 Four calls, and not one of them is on a fixed list. The order falls out of what came back.
 
+## 37 · `the-chain-4` · 30 sec
+
+**This is where it becomes an agent** — *7 of 10 · Deciding what to ask next*
+
 There's a fifth call. It's on the next slide, and it's the interesting one.
 
-## 25 · `gap-silence` · 15 sec
+## 38 · `gap-silence` · 15 sec
 
 **It tells you everything it found. Including the nothing.** — *Next · 8 of 10 · Knowing what to leave out*
 
@@ -431,7 +483,7 @@ It checked space weather and found nothing interesting. The bad version reports 
 
 Thing eight.
 
-## 26 · `the-silence` · 1 min
+## 39 · `the-silence` · 1 min
 
 **Leaving it out is a decision too** — *8 of 10 · Knowing what to leave out*
 
@@ -445,7 +497,7 @@ That's the bit worth sitting with. We spend all our time making agents produce m
 
 If you want the general rule: a tool returning "no" hasn't failed and hasn't wasted your money. It has bought you a shorter, better answer. Most agent output is long because nobody taught it to be quiet.
 
-## 27 · `gap-mcp` · 15 sec
+## 40 · `gap-mcp` · 15 sec
 
 **You won’t write every tool. Somebody’s already built the one you need.** — *Next · 9 of 10 · Tools you didn’t write*
 
@@ -455,7 +507,7 @@ Everything so far is mine: four functions, about a hundred lines. In real work y
 
 Thing nine.
 
-## 28 · `mcp` · 1.5 min
+## 41 · `mcp-1` · 30 sec
 
 **Somebody else’s tools, plugged in** — *9 of 10 · Tools you didn’t write*
 
@@ -465,9 +517,17 @@ Everything so far has been tools I wrote. In real life you won't own all of them
 
 The shape is the slide. A name and a URL. From the loop's point of view nothing changes: the model still asks for a tool by name, you still run the round trip, you still hand the result back.
 
+## 42 · `mcp-2` · 30 sec
+
+**Somebody else’s tools, plugged in** — *9 of 10 · Tools you didn’t write*
+
 Then the three constraints, and all three came out of the SDK this afternoon rather than from a blog post.
 
 Remote only. There's no stdio transport in the type at all, so the local servers people run on their laptops aren't what this is.
+
+## 43 · `mcp-3` · 45 sec
+
+**Somebody else’s tools, plugged in** — *9 of 10 · Tools you didn’t write*
 
 Streamable HTTP, a url and headers, and that's the entire surface.
 
@@ -475,7 +535,7 @@ And the one to say slowly, because half this room will be on Google Cloud: the S
 
 If someone asks for a public server to try: don't name one from memory. Test it the morning of.
 
-## 29 · `gap-right` · 15 sec
+## 44 · `gap-right` · 15 sec
 
 **It sounds right. Is it?** — *Next · 10 of 10 · A way to check it was right*
 
@@ -487,7 +547,7 @@ That's the default failure mode of every agent anybody ships: fluent and wrong, 
 
 Thing ten, and the reason the second half of this talk exists.
 
-## 30 · `real-transcript` · 1 min
+## 45 · `real-transcript` · 1 min
 
 **Does it actually work?** — *10 of 10 · A way to check it was right*  
 *terminal output*
@@ -500,7 +560,25 @@ Walk the four results and point back at the answer slide as you go: fifteen per 
 
 Then the practical note for anyone writing this down: this mode needs no key, so it runs in CI. That's the cheapest safety net you'll ever put on an agent.
 
-## 31 · `the-answer` · 1.5 min
+## 46 · `the-answer-1` · 15 sec
+
+**Yes. Go outside.** — *The question, answered*
+
+This is the slide the talk has been walking towards since the second minute. Don't hurry it. Read the headline, then stop. Then the four numbers, slowly, one each: fifteen per cent cloud all evening. Saturn sixty-four degrees up at half past eight. Geomagnetically quiet, so don't bother looking north for an aurora. And the Moon stays out of the way until three in the morning. Then the line that closes the loop with the opening: not one of those four numbers was in the model. It didn't know where I live, what the weather is, or where Saturn is tonight. Four small functions gave it senses, and the loop let it use them in the order it chose. If you want one beat of theatre: ask whether anyone is going to go and look. Somebody always says yes.
+
+## 47 · `the-answer-2` · 15 sec
+
+**Yes. Go outside.** — *The question, answered*
+
+This beat reveals: 64° Saturn, at 20:30
+
+## 48 · `the-answer-3` · 15 sec
+
+**Yes. Go outside.** — *The question, answered*
+
+This beat reveals: Kp 1.0 quiet, no aurora
+
+## 49 · `the-answer-4` · 30 sec
 
 **Yes. Go outside.** — *The question, answered*
 
@@ -509,7 +587,7 @@ This is the slide the talk has been walking towards since the second minute. Don
 
 # ACT TWO — everything you just watched broke
 
-## 32 · `what-it-cost` · 30 sec
+## 50 · `what-it-cost` · 30 sec
 
 **Everything you just watched broke at least once** — *Now the honest part*
 
@@ -523,7 +601,7 @@ Then the promise, and keep it: six of them, in the order they actually happened,
 
 This is also your permission to speed up. The first half was a story and you took your time. The second half is craft and it should move.
 
-## 33 · `the-six` · 1 min
+## 51 · `the-six-1` · 30 sec
 
 **Six ways your tools break** — *All six happened to me building this talk*
 
@@ -531,11 +609,15 @@ This is the map. Promise it, then deliver it in order.
 
 The line that earns their attention: every one of these six happened to me while building the demos for this talk. Not hypotheticals. Real bugs with real diffs.
 
+## 52 · `the-six-2` · 45 sec
+
+**Six ways your tools break** — *All six happened to me building this talk*
+
 Point at the split on the bottom line. One to three you fix by typing better Python. Four to six you can't fix on a laptop at all, and that's the honest reason Google Cloud is in this talk. Not because it's a Google event, but because a ten-minute tool and a five-hundred-star evaluation are infrastructure problems.
 
 If you're running over, spend an extra ten seconds here and cut elsewhere. This is the slide that makes the rest feel like one argument instead of six tips.
 
-## 34 · `l1-docstring` · 2 min
+## 53 · `l1-docstring` · 2 min
 
 **Ask for Mars, get a spacecraft** — *Lesson 1*
 
@@ -551,7 +633,7 @@ Then make it theirs, slowly: nobody's model has heard of your internal service n
 
 If asked whether this is just prompt engineering: no. It's on the function, so it travels with the tool into every agent that imports it.
 
-## 35 · `l2-returns` · 45 sec
+## 54 · `l2-returns` · 45 sec
 
 **Empty is an answer** — *Lesson 2*
 
@@ -563,7 +645,7 @@ Raise instead, and you don't just lose that tool. You lose the whole answer, inc
 
 The rule: your tool should only raise when the caller genuinely can't continue. "I looked and there was nothing" isn't that.
 
-## 36 · `l3-errors` · 1.25 min
+## 55 · `l3-errors` · 1.25 min
 
 **Write the error for the model** — *Lesson 3 · this one really happened*
 
@@ -577,7 +659,7 @@ Then it answers with three tools instead of four and tells the user the aurora c
 
 The sentence to leave them with: once you hand tools to a model, your error strings stopped being for you.
 
-## 37 · `the-traps` · 45 sec
+## 56 · `the-traps-1` · 15 sec
 
 **Three things that’ll cost you an hour** — *On your first attempt*
 
@@ -585,13 +667,21 @@ Reference slide. Forty seconds, don't explain them deeply. Promise the repo and 
 
 The call_id one: each thing the model did is a step with an id, and when you hand back a result you've to say which step you're answering. Get it wrong and your result goes nowhere; the model waits, then gives up.
 
+## 57 · `the-traps-2` · 15 sec
+
+**Three things that’ll cost you an hour** — *On your first attempt*
+
 The result one catches everyone, including me. It's not a string. It's a list of content blocks, and if you pass a string it's simply ignored.
+
+## 58 · `the-traps-3` · 15 sec
+
+**Three things that’ll cost you an hour** — *On your first attempt*
 
 And the third is a documentation problem rather than a design one. Structured output is response_format. A great deal of what is online says response_schema, because that's what the older API used, and it won't work.
 
 The bottom line is the reason this slide exists at all: none of these raise anything useful. They fail silently, which is the worst way for anything to fail, and you'll lose an evening to each one.
 
-## 38 · `l4-latency` · 1.25 min
+## 59 · `l4-latency` · 1.25 min
 
 **A slow tool can’t sit inside the loop** — *Lesson 4 · measured*
 
@@ -605,7 +695,7 @@ Two fixes and they're both boring. Fan the four requests out concurrently. Or no
 
 The second one is the one that leads into the cloud section.
 
-## 39 · `l5-retries` · 45 sec
+## 60 · `l5-retries` · 45 sec
 
 **Retry inside the tool** — *Lesson 5*
 
@@ -617,7 +707,7 @@ Then the honest confession, and it's a good one: the model did this to me too. T
 
 So the retry belongs one layer down, in the tool, where it's three lines and nobody has to think about it.
 
-## 40 · `l6-scoring` · 1.25 min
+## 61 · `l6-scoring` · 1.25 min
 
 **I thought all four tools worked** — *Lesson 6 · the one that matters*
 
@@ -633,7 +723,7 @@ The habit: a command that exercises every tool, with no model and no key, that y
 
 Then the bigger version, if you've time: the real score is whether the answer was right, and for that you need ground truth you held back. Everyone in this room has some: closed tickets, last quarter's forecasts. You already know how all of it turned out.
 
-## 41 · `architecture` · 1.75 min
+## 62 · `architecture` · 1.75 min
 
 **Move the slow part off the loop** — *Lesson 4, as a picture*  
 *animated panel*
@@ -650,7 +740,7 @@ Same container image, two entry points. That's the trick, and it's the one that 
 
 Say honestly that this is architecture. The gcloud commands are in the repo, and I've never run them, because there's no billing account behind this talk.
 
-## 42 · `scoreboard-sql` · 1.25 min
+## 63 · `scoreboard-sql` · 1.25 min
 
 **Was it right?** — *Lesson 6, as one query*
 
@@ -664,10 +754,7 @@ And the consequence is human, not technical. Send somebody out into cloud twice 
 
 Finish on the bottom line and make it theirs, because it's the most transferable sentence in the talk. Everybody here already has ground truth and hasn't noticed. Closed tickets. Merged pull requests. Last quarter's forecasts against what actually happened. You already know how all of it turned out. Hold some back and score against it.
 
-
-# CODA — point the same four moves somewhere else
-
-## 43 · `worlds-live` · 1 min
+## 64 · `worlds-live-1` · 15 sec
 
 **Now watch those eight lines run** — *The output · recorded from the live map*  
 *recorded demo, animated*
@@ -676,15 +763,25 @@ They have just read eight lines of code. This is those eight lines running. Say 
 
 Start wide: that whole bruise-shaped feature is Olympus Mons and the aureole of material that has slumped off it over billions of years. Two thousand three hundred kilometres across the frame.
 
+## 65 · `worlds-live-2` · 15 sec
+
+**Now watch those eight lines run** — *The output · recorded from the live map*  
+*recorded demo, animated*
+
 As it closes in, name the scale once: three times the height of Everest, and the base would cover France.
 
 Then the ending, and let it sit there: those nested pits are the summit caldera. Not an impact crater. That's where the magma chamber emptied and the roof collapsed, over and over.
+
+## 66 · `worlds-live-3` · 30 sec
+
+**Now watch those eight lines run** — *The output · recorded from the live map*  
+*recorded demo, animated*
 
 The line that matters for a talk about agents is the one at the bottom. Nobody at NASA built this experience. They published map tiles in the same z/y/x format the whole web already uses, and went home. Everything you've watched tonight is someone else's archive, plus a little code.
 
 Say "recorded" once, honestly. It's recorded because the embedded panels in these slides can't reach the network at all, which is worth knowing if anyone asks why you aren't doing it live.
 
-## 44 · `earth-live` · 1 min
+## 67 · `earth-live-1` · 15 sec
 
 **One day of Earth, from a million miles away** — *The output · 13 real photographs · 1 November 2026*  
 *recorded demo, animated*
@@ -693,15 +790,25 @@ Put it up and say nothing for one full loop. Six seconds. People don't expect th
 
 Then: that's not a render, and it's not a composite of archive imagery. Those are thirteen photographs taken on the first of November, in the order they were taken, by a spacecraft sitting a million miles away. The planet is turning because it turned.
 
+## 68 · `earth-live-2` · 15 sec
+
+**One day of Earth, from a million miles away** — *The output · 13 real photographs · 1 November 2026*  
+*recorded demo, animated*
+
 Point out what is passing: Australia and the Pacific at the start, then Asia and Africa, then the Atlantic and the Americas. Three hundred and twenty-four degrees. Nearly a whole day.
 
 Then the honest note, because somebody will ask: the fade between frames is mine, to make the rotation read. The thirteen pictures are untouched.
+
+## 69 · `earth-live-3` · 30 sec
+
+**One day of Earth, from a million miles away** — *The output · 13 real photographs · 1 November 2026*  
+*recorded demo, animated*
 
 Land on the bottom line and make it theirs: six lines of code, and a spacecraft somebody else paid for. Every one of you can have today's version of this picture before you leave the room.
 
 If they ask whether the agent can use it: it already does. It's latest_earth_image, and it partly answers the question from slide two. Where the clouds are is most of whether it's worth going outside.
 
-## 45 · `worlds-found` · 1.25 min
+## 70 · `worlds-found` · 1.25 min
 
 **Watch the sky fill up** — *One query · no key · every world we know*  
 *animated panel*
@@ -719,14 +826,14 @@ Now the Gemini point, which is why this slide is in a talk about agents and not 
 
 # CLOSE — the six rules, and what to build on Monday
 
-## 46 · `recap-six` · 1 min
+## 71 · `recap-six` · 1 min
 
 **Six rules for agent tools** — *Take a photo of this one*  
 *animated panel*
 
 Stand still. Let them photograph it. Read only the amber column. The grey notes are for the photo, not your voice. Then the closing argument, and it's the reason to give this talk at all: not one of those six rules mentions Gemini. They're true of any model you plug in, this year or next. The model is the part that will change and the part you don't control. Your tools are the part you own. Finish with the inversion of where we started: "I showed you the agent in eight lines at the beginning and told you that was the easy part. These six are the hard part, and they're the part that's still yours." If somebody asks which one matters most: one and six. A tool nobody calls, and a system nobody scored.
 
-## 47 · `tonight` · 1 min
+## 72 · `tonight-1` · 15 sec
 
 **Go and build one of these**
 
@@ -734,13 +841,21 @@ Stand still. Let them photograph this.
 
 Read the three headlines only. The grey lines are for the photo.
 
+## 73 · `tonight-2` · 15 sec
+
+**Go and build one of these**
+
 The third card is the whole talk. Say it properly: not one thing you saw tonight needed astronomy. It needed a tool and a sentence. Swap NASA for their university timetable, their own repository, a spreadsheet their boss cares about. The six rules don't change.
+
+## 74 · `tonight-3` · 30 sec
+
+**Go and build one of these**
 
 If one student does the third card this week, this talk worked.
 
 Good closing beat before the last slide: "You now know something that didn't exist as a skill two years ago, and the whole loop is four moves."
 
-## 48 · `close` · 45 sec
+## 75 · `close` · 45 sec
 
 **Go and point it at something**
 

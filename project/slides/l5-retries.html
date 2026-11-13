@@ -14,7 +14,7 @@
 <p style="font-size:29px;line-height:1.4;color:#D8DEF0">So does the model. <span style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px">gemini-3.8-flash</span> gave me <b style="color:#F2F4FA">503, repeatedly,</b> building this talk.</p>
 </div>
 </div>
-<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Never make a language model reason about HTTP. <b style="color:#F2F4FA">It will apologise instead of trying again.</b></p>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Never make a model reason about HTTP. <b style="color:#F2F4FA">It apologises instead of retrying.</b></p>
 <aside>Three lines, and they're the difference between a demo that works and one that works on stage.
 
 Every one of these endpoints is free and public and occasionally drops a request that succeeds a second later. If that failure reaches the model, it does the polite human thing. It tells the user it couldn't check, and gives up. It won't retry, because nothing told it to.
