@@ -126,8 +126,12 @@ To publish: copy `dist/index.html` and `dist/img/` to the root of
 
 ## Before you present
 
-1. Re-render the sky, cloud and moon charts for the actual date — slides 11,
-   14 and 17 are computed for 5 Nov 2026 over Siliguri
+1. Re-render for the actual date. One command, no key:
+   ```bash
+   ./refresh-live-data.sh
+   ```
+   It redraws slides 11, 14 and 17 from live data and prints every number
+   that depends on them. The deck ships rendered for **13 Nov 2026**
 2. `python demo/tonight.py --tools-only` — expect 4/4
 3. Present from the web view, not a PDF — **10 slides move**
 4. Screenshot Gemini failing the question from your phone; it beats slide 3

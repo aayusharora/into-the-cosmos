@@ -79,8 +79,9 @@ lessons with no measured number behind them.
    Rather than fake one, the deck shows the real tool results and says
    who chose what. If you get a clean run before the talk, add it after
    slide 8.
-3. **The sky is computed for 5 November 2026 over Siliguri** and
-   **`cloud/` has never been executed.**
+3. **The sky on slides 11, 14 and 17 is rendered for one night.**
+   `./refresh-live-data.sh` redraws them for the real date and prints
+   every number that moves. **`cloud/` has never been executed.**
 
 ## Before you present
 

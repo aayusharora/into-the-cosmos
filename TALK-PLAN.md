@@ -26,7 +26,7 @@ Say it out loud and the system designs itself:
 | Will the ISS go over? | Celestrak TLE, propagated locally | ✅ keyless |
 | What can *you* see with what you own? | **Memory** | — |
 
-All five endpoints tested on 5 Nov 2026. None needs a key.
+All five endpoints tested on 13 Nov 2026. None needs a key.
 
 **Tonight in Delhi, really:** cloud cover 0% at 20:00–22:00, Kp 0.67 (quiet).
 The honest answer is *yes, go outside* — and the agent can say so with

@@ -194,8 +194,9 @@ def build():
     w("   Rather than fake one, the deck shows the real tool results and says")
     w("   who chose what. If you get a clean run before the talk, add it after")
     w(f"   slide {at['the-loop']}.")
-    w("3. **The sky is computed for 5 November 2026 over Siliguri** and")
-    w("   **`cloud/` has never been executed.**\n")
+    w("3. **The sky on slides 11, 14 and 17 is rendered for one night.**")
+    w("   `./refresh-live-data.sh` redraws them for the real date and prints")
+    w("   every number that moves. **`cloud/` has never been executed.**\n")
 
     w("## Before you present\n")
     w("- [ ] Re-render the sky, cloud and moon charts for the actual date")
