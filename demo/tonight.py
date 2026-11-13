@@ -106,23 +106,66 @@ def planets_tonight(lat: float = SILIGURI[0], lon: float = SILIGURI[1]) -> dict:
     return {"visible": out} if out else {"visible": [], "note": "nothing up tonight"}
 
 
-def moon_tonight(lat: float = SILIGURI[0], lon: float = SILIGURI[1]) -> dict:
-    """When the Moon comes up, and how bright it is.
+def _ist(utc: str, offset_min: int = 0) -> str:
+    """A Horizons UTC stamp as local Siliguri time, plus an optional offset."""
+    mins = int(utc[-5:-3]) * 60 + int(utc[-2:]) + 330 + offset_min
+    hh, mm = divmod(round(mins) % 1440, 60)
+    return f"{hh:02d}:{mm:02d}"
 
-    A bright Moon above the horizon washes out everything faint. If it rises
-    late, the earlier part of the night is the good part.
+
+def _crossing(a: dict, b: dict) -> str:
+    """Local time the horizon is crossed between two samples, interpolated.
+
+    Horizons is sampled every 30 minutes, so without this a Moon that sets
+    at 19:40 is reported as 19:30 or 20:00.
+    """
+    span = b["el"] - a["el"]
+    frac = 0.0 if span == 0 else -a["el"] / span
+    return _ist(a["utc"], round(30 * frac))
+
+
+def moon_tonight(lat: float = SILIGURI[0], lon: float = SILIGURI[1]) -> dict:
+    """When the Moon gets out of the way, and how bright it is.
+
+    A bright Moon above the horizon washes out everything faint. What
+    matters is the dark window: if the Moon sets early or rises late, the
+    rest of the night is the good part.
     """
     _trace("moon_tonight", lat=lat, lon=lon)
     start, stop = _tonight_window()
     rows = _horizons("301", lat, lon, start, stop)
-    up = [r for r in rows if r["el"] > 0]
-    if not up:
-        return {"above_horizon_tonight": False,
+    if not rows:
+        return {"error": "no ephemeris for the Moon", "can_continue": True}
+
+    if not any(r["el"] > 0 for r in rows):
+        return {"above_horizon_tonight": False, "magnitude": rows[0]["mag"],
+                "dark_all_night": True,
                 "note": "the Moon stays down all night, so the sky is as dark as it gets"}
-    f = up[0]
-    hh, mm = divmod((int(f["utc"][-5:-3]) * 60 + int(f["utc"][-2:]) + 330) % 1440, 60)
-    return {"above_horizon_tonight": True, "rises_local": f"{hh:02d}:{mm:02d}",
-            "magnitude": f["mag"]}
+
+    # Walk the night and find where it actually crosses the horizon. The
+    # first sample above the horizon is NOT a moonrise if the Moon was
+    # already up when the window opened.
+    rise = set_ = None
+    for a, b in zip(rows, rows[1:]):
+        if a["el"] <= 0 < b["el"] and rise is None:
+            rise = _crossing(a, b)
+        elif a["el"] > 0 >= b["el"] and set_ is None:
+            set_ = _crossing(a, b)
+
+    out = {"above_horizon_tonight": True, "magnitude": rows[0]["mag"]}
+    if rows[0]["el"] > 0 and set_:
+        out["already_up_at_dusk"] = True
+        out["sets_local"] = set_
+        out["dark_from_local"] = set_
+        out["note"] = f"the Moon is already up at dusk but sets at {set_}, and the rest of the night is dark"
+    elif rise:
+        out["rises_local"] = rise
+        out["dark_until_local"] = rise
+        out["note"] = f"the sky is dark until the Moon comes up at {rise}"
+    else:
+        out["up_all_night"] = True
+        out["note"] = "the Moon is up all night, so anything faint is washed out"
+    return out
 
 
 def space_weather() -> dict:

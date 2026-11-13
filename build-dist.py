@@ -26,11 +26,11 @@ IMG = os.path.join(DIST, "img")
 
 # Artifact blob id -> the file on disk it was uploaded from.
 BLOBS = {
-    "b78c704c58c45ecf7287dd071cef5e90": "demo/img/siliguri_cloud.webp",
-    "33d88b1709404b87a132c3f949edf152": "demo/img/siliguri_sky.webp",
+    "ad3cbd868db7d7e82f788d59dee1ffb0": "demo/img/siliguri_cloud.webp",
+    "fc800c7c45f8bd5d9bc5df08c788bbd4": "demo/img/siliguri_sky.webp",
     "ba85ff40eaef88d05565b4b307671ae3": "demo/img/olympus_flyover.webp",
     "094d828923a33d7baefc37fd9f759071": "demo/img/earth_day.webp",
-    "c799ba003b2ef5371111b837f6448d87": "demo/img/moon_tonight.png",
+    "818cb2efc012c2c3b0dd79b23be3dae8": "demo/img/moon_tonight.png",
 }
 
 EMBED_HEAD = (

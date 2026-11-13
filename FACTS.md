@@ -1,31 +1,65 @@
 # Facts sheet — every number in the deck
 
-> **Re-render the sky and cloud map on the morning of the talk.** Slides 13
-> and 20 are computed for the night of 5 November 2026 over Siliguri
-> (26.73 N, 88.40 E). A different date means a different sky.
+> **Re-render on the morning of the talk.** One command does it:
+>
+> ```bash
+> python demo/render_night.py
+> ```
+>
+> It redraws the three charts from live data and prints every number in
+> the deck that depends on them, with the slide each one sits on. The sky
+> below is the night of 13 November 2026 over Siliguri (26.73 N, 88.40 E).
+> A different date is a different sky.
 
-## Tonight over Siliguri — 5 Nov 2026, all keyless
+## Tonight over Siliguri, 13 Nov 2026, all keyless
 
 | | | Source |
 |---|---|---|
-| Cloud, 19:00–23:00 | **3%**, falling to 1% by 23:00 | open-meteo |
-| Saturn | **64.2° at 21:00 IST**, magnitude +0.48 | JPL Horizons |
-| Moon | rises **03:00**, magnitude −7.49 | JPL Horizons |
-| Kp index | **0.67** — quiet, no aurora | NOAA SWPC |
+| Cloud, 18:00–23:00 | **15%** over the town, **100%** on the ridge 20 km north | open-meteo |
+| Saturn | **64.1° at 20:30 IST**, magnitude +0.52 | JPL Horizons |
+| Moon | already low at dusk, **sets 19:41**, magnitude −7.89 | JPL Horizons |
+| Kp index | **1.0**, quiet, no aurora | NOAA SWPC |
 
-All four fetched by `demo/tonight.py --tools-only`, no API key, ~7 seconds.
+All four fetched by `demo/tonight.py --tools-only`, no API key, about seven
+seconds.
 
-## Tool latency — measured 5 Nov 2026
+The cloud gradient is real and worth a sentence on stage: Siliguri sits on
+the plain at 15% while the Darjeeling hills 20 km north sit at 100%. The
+animated map shows the band parked on the ridge.
+
+## Tool latency, measured 13 Nov 2026
 
 | Tool | Time |
 |---|---|
-| `sky_conditions` | 1.12s |
-| `planets_tonight` | **4.31s** — four serial Horizons calls, one per planet |
-| `moon_tonight` | 1.08s |
-| `space_weather` | 0.48s |
-| **total** | **6.99s** |
+| `sky_conditions` | 1.11s |
+| `planets_tonight` | **3.54s**, four serial Horizons calls, one per planet |
+| `moon_tonight` | 0.95s |
+| `space_weather` | 1.35s |
+| **total** | **6.95s** |
 
-This is lesson 4 on slide 25.
+This is lesson 4 on slide 38.
+
+## The moonrise bug, found 13 Nov 2026
+
+`moon_tonight` took the first sample above the horizon in its window and
+called it a moonrise. On 5 November that was right by luck: the Moon really
+did come up at 03:00, inside the window.
+
+On 13 November the Moon is already up at dusk and **setting**. The tool
+reported `"rises_local": "17:30"` when the Moon was at 21° and falling, and
+gone by 19:41. A perfect night read as a ruined one, in well-formed JSON,
+with nothing for the model to catch.
+
+It now walks the night, finds the actual horizon crossing and interpolates
+it between the 30-minute samples, and says which way the Moon was going:
+
+```json
+{"above_horizon_tonight": true, "already_up_at_dusk": true,
+ "sets_local": "19:41", "dark_from_local": "19:41"}
+```
+
+Three nights, checked: 13 Nov sets 19:41; 5 Nov rises 02:58; 24 Nov up all
+night at magnitude −12.77. **This is lesson 6 happening twice in one talk.**
 
 ## JPL Horizons takes codes, not names — verified
 

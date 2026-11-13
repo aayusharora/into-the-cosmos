@@ -2,16 +2,16 @@
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Lesson 4 &#183; measured</p>
 <h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">A slow tool can&#8217;t sit inside the loop</h2>
 <div style="position:absolute;left:128px;top:306px;width:1000px;background:#05080F;padding:30px 34px;border:1px solid #2A3A66;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;line-height:1.7;color:#D8DEF0">
-<p style="font-size:30px">sky_conditions&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">1.12s</span></p>
-<p style="font-size:30px">planets_tonight&#160;&#160;&#160;<span style="color:#FF6B5A">4.31s</span></p>
-<p style="font-size:30px">moon_tonight&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">1.08s</span></p>
-<p style="font-size:30px">space_weather&#160;&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">0.48s</span></p>
+<p style="font-size:30px">sky_conditions&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">1.11s</span></p>
+<p style="font-size:30px">planets_tonight&#160;&#160;&#160;<span style="color:#FF6B5A">3.54s</span></p>
+<p style="font-size:30px">moon_tonight&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">0.95s</span></p>
+<p style="font-size:30px">space_weather&#160;&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">1.35s</span></p>
 <p style="font-size:30px;color:#4A5578">&#160;</p>
-<p style="font-size:30px">total&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#FFB454">6.99s</span></p>
+<p style="font-size:30px">total&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#FFB454">6.95s</span></p>
 </div>
 <div style="position:absolute;left:1180px;top:306px;width:612px;display:flex;flex-direction:column;gap:20px">
 <div style="background:#1A1206;padding:26px 28px;border-radius:12px;border-left:5px solid #FF6B5A">
-<p style="font-size:29px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">Why 4.31s?</b> It calls Horizons once per planet. Four round trips, one after another.</p>
+<p style="font-size:29px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">Why 3.54s?</b> It calls Horizons once per planet. Four round trips, one after another.</p>
 </div>
 <div style="background:#121B36;padding:26px 28px;border-radius:12px;border-left:5px solid #7CE0A8">
 <p style="font-size:29px;line-height:1.4;color:#D8DEF0">Fire them off together, or work the whole night out <b style="color:#F2F4FA">before anybody asks.</b></p>

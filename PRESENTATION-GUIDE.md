@@ -86,7 +86,7 @@ lessons with no measured number behind them.
 
 - [ ] Re-render the sky, cloud and moon charts for the actual date
 - [ ] `python demo/tonight.py --tools-only` — expect 4/4
-- [ ] Present from the web view, not a PDF — 10 slides move
+- [ ] Present from the web view, not a PDF — 11 slides move
 - [ ] Screenshot Gemini failing the question from your phone; it beats
       slide 3
 - [ ] QR code on slide 48
@@ -317,8 +317,8 @@ Same JPL endpoint as the planets, body code 301.
 
 ## 17 · `moon-tonight` · 1 min
 
-**The Moon doesn’t turn up until three** — *5 of 10 · Knowing when to go out*  
-*chart from live data*
+**The Moon is gone by twenty to eight** — *5 of 10 · Knowing when to go out*  
+*recorded demo, animated*
 
 One sentence and let them read the chart. The shape says it without you.
 
@@ -414,7 +414,7 @@ Every number in the middle column is a real tool result from tonight.
 
 Walk down it slowly, one row at a time, and say the right-hand column out loud. That's the decision each result forces.
 
-It recalls, so it doesn't ask. It checks the sky, finds it clear, and that's what makes continuing worthwhile. If that had come back at eighty per cent, the right move is to stop here and say so. It checks the Moon and finds it stays down until three, which means the whole evening is usable rather than just the early part. Then it finds Saturn high at nine.
+It recalls, so it doesn't ask. It checks the sky, finds it clear, and that's what makes continuing worthwhile. If that had come back at eighty per cent, the right move is to stop here and say so. It checks the Moon and finds it already setting, which means the whole evening is usable rather than just the early part. Then it finds Saturn high at nine.
 
 Four calls, and not one of them is on a fixed list. The order falls out of what came back.
 
