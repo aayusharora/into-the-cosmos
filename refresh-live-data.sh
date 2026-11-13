@@ -22,11 +22,22 @@ python3 demo/render_night.py "$@" || {
   exit 1
 }
 
-say "2. CHECK EVERY TOOL STILL WORKS"
+say "2. RE-RENDER THE ISS GROUND TRACK"
+# needs the venv: sgp4 is not in the system Python. A TLE goes stale in
+# days, and the slide claims a pass time for tonight, so this is not
+# optional.
+if [ -x .venv/bin/python ]; then
+  .venv/bin/python demo/render_iss.py || echo "  ISS render failed. Slide 64 still shows the previous orbit."
+else
+  echo "  no .venv. Run: python3 -m venv .venv &&"
+  echo "    .venv/bin/pip install --only-binary=:all: sgp4 matplotlib pillow"
+fi
+
+say "3. CHECK EVERY TOOL STILL WORKS"
 python3 demo/tonight.py --tools-only
 TOOLS=$?
 
-say "3. REBUILD THE DECK AND THE GUIDE"
+say "4. REBUILD THE DECK AND THE GUIDE"
 python3 build-dist.py && python3 build-guide.py
 
 say "DONE"
@@ -35,6 +46,7 @@ Then:
   [ ] paste the numbers above into the slides they name
   [ ] update the dated header in FACTS.md
   [ ] copy dist/index.html and dist/img/ to the repo root and push
-  [ ] open the deck and look at slides 11, 14 and 17 before you trust them
+  [ ] open the deck and look at slides 11, 14, 17 and 64 before you trust them
+  [ ] slide 64 names a pass time for tonight. Check it re-rendered.
 EOF
 exit $TOOLS

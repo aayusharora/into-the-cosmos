@@ -31,6 +31,7 @@ BLOBS = {
     "ba85ff40eaef88d05565b4b307671ae3": "demo/img/olympus_flyover.webp",
     "094d828923a33d7baefc37fd9f759071": "demo/img/earth_day.webp",
     "818cb2efc012c2c3b0dd79b23be3dae8": "demo/img/moon_tonight.png",
+    "b64cefccea90fe1aa23ced1532d8b7b7": "demo/img/iss_track.webp",
 }
 
 EMBED_HEAD = (

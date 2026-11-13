@@ -80,6 +80,8 @@ TIME = {
     "l6-scoring": 1.25,
     "architecture": 1.75,
     "scoreboard-sql": 1.25,
+    "iss-live": 1,
+    "iss-code": 0.5,
     "worlds-live-1": 0.25,
     "worlds-live-2": 0.25,
     "worlds-live-3": 0.5,

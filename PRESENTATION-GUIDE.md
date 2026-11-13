@@ -1,6 +1,6 @@
 # Your presentation, explained
 
-**75 slides. 45 minutes as written.** This is the only file you need on the day.
+**77 slides. 46.5 minutes as written.** This is the only file you need on the day.
 
 ---
 
@@ -32,8 +32,8 @@ that anticipation is the reason they exist. Do not read them twice.
 |---|---|---|
 | 1–46 | **Act One.** The question, and the system that answers it | 25.25 min |
 | 50–63 | **Act Two.** Everything you just watched broke | 12.75 min |
-| 64–70 | **Coda.** Point the same four moves somewhere else | 3.25 min |
-| 71–75 | **Close.** The six rules, and what to build on Monday | 2.75 min |
+| 66–72 | **Coda.** Point the same four moves somewhere else | 3.25 min |
+| 73–77 | **Close.** The six rules, and what to build on Monday | 2.75 min |
 
 **Slide 50 is the hinge.** Stop there. The question
 is answered and the room has had its payoff — if you simply carry on
@@ -57,11 +57,11 @@ second half on purpose, then speed up.
 
 | Cut | Slides | Saves | Leaves |
 |---|---|---|---|
-| 1 | the coda — 64, 67, 70 | 3.25 | **41.75** |
-| 2 | `l2-returns` + `the-traps` — 54, 56 | 1.75 | **40** |
-| 3 | MCP — 40, 41 | 1.25 | **38.75** |
-| 4 | Google Cloud — 62, 63 | 3 | **35.75** |
-| 5 | `l3-errors` + `l5-retries` — 55, 60 | 2 | **33.75** |
+| 1 | the coda — 66, 69, 72 | 3.25 | **43.25** |
+| 2 | `l2-returns` + `the-traps` — 54, 56 | 1.75 | **41.5** |
+| 3 | MCP — 40, 41 | 1.25 | **40.25** |
+| 4 | Google Cloud — 62, 63 | 3 | **37.25** |
+| 5 | `l3-errors` + `l5-retries` — 55, 60 | 2 | **35.25** |
 
 Cut evidence last. `l2-returns` and `the-traps` are the only two
 lessons with no measured number behind them.
@@ -87,10 +87,10 @@ lessons with no measured number behind them.
 
 - [ ] Re-render the sky, cloud and moon charts for the actual date
 - [ ] `python demo/tonight.py --tools-only` — expect 4/4
-- [ ] Present from the web view, not a PDF — 15 slides move
+- [ ] Present from the web view, not a PDF — 16 slides move
 - [ ] Screenshot Gemini failing the question from your phone; it beats
       slide 3
-- [ ] QR code on slide 75
+- [ ] QR code on slide 77
 
 ---
 
@@ -754,7 +754,34 @@ And the consequence is human, not technical. Send somebody out into cloud twice 
 
 Finish on the bottom line and make it theirs, because it's the most transferable sentence in the talk. Everybody here already has ground truth and hasn't noticed. Closed tickets. Merged pull requests. Last quarter's forecasts against what actually happened. You already know how all of it turned out. Hold some back and score against it.
 
-## 64 · `worlds-live-1` · 15 sec
+## 64 · `iss-live` · 1 min
+
+**There are people up there** — *Right now · from today’s orbit*  
+*recorded demo, animated*
+
+Let it run a full lap before you say anything. It is about eight seconds.
+
+Then: that is where the station is tonight, recomputed this morning from the orbit Celestrak published today. Four hundred and ten kilometres up, twenty-seven and a half thousand kilometres an hour, once round the planet every ninety-three minutes.
+
+Now the line that makes people look up. Point at the green ring. At one o'clock tonight it comes over Siliguri, sixty-eight degrees above the horizon, which is nearly straight overhead. If the sky holds you can walk outside and watch it cross. It is the brightest thing up there after the Moon and it does not blink.
+
+Say that you did not ask anyone's permission for this and you did not sign up for anything. The orbit is published, the propagator is open source, and the picture is one more tool.
+
+If somebody asks how accurate it is: sgp4 is what NORAD uses, and a TLE fetched today is good to a kilometre or so for a day or two.
+
+## 65 · `iss-code` · 30 sec
+
+**Two lines of text and some trigonometry** — *How that was made*
+
+Twenty seconds. Do not read the code.
+
+Point at the first two lines. That is the entire orbital mechanics: you hand sgp4 the two lines Celestrak publishes and it gives you where the station is in space. The rest is turning that into a latitude and a longitude, which is one rotation by sidereal time.
+
+The three cards are the point. Celestrak gives it away, sgp4 is the same propagator NORAD uses, and the moment you wrap it in a function with a docstring it becomes a tool like any other.
+
+Then the bottom line, and this is why the slide exists: nothing about the loop changed. Four tools or five, the four moves are identical. That is the whole argument of the talk, proved one more time on something that has nothing to do with the weather.
+
+## 66 · `worlds-live-1` · 15 sec
 
 **Now watch those eight lines run** — *The output · recorded from the live map*  
 *recorded demo, animated*
@@ -763,7 +790,7 @@ They have just read eight lines of code. This is those eight lines running. Say 
 
 Start wide: that whole bruise-shaped feature is Olympus Mons and the aureole of material that has slumped off it over billions of years. Two thousand three hundred kilometres across the frame.
 
-## 65 · `worlds-live-2` · 15 sec
+## 67 · `worlds-live-2` · 15 sec
 
 **Now watch those eight lines run** — *The output · recorded from the live map*  
 *recorded demo, animated*
@@ -772,7 +799,7 @@ As it closes in, name the scale once: three times the height of Everest, and the
 
 Then the ending, and let it sit there: those nested pits are the summit caldera. Not an impact crater. That's where the magma chamber emptied and the roof collapsed, over and over.
 
-## 66 · `worlds-live-3` · 30 sec
+## 68 · `worlds-live-3` · 30 sec
 
 **Now watch those eight lines run** — *The output · recorded from the live map*  
 *recorded demo, animated*
@@ -781,7 +808,7 @@ The line that matters for a talk about agents is the one at the bottom. Nobody a
 
 Say "recorded" once, honestly. It's recorded because the embedded panels in these slides can't reach the network at all, which is worth knowing if anyone asks why you aren't doing it live.
 
-## 67 · `earth-live-1` · 15 sec
+## 69 · `earth-live-1` · 15 sec
 
 **One day of Earth, from a million miles away** — *The output · 13 real photographs · 1 November 2026*  
 *recorded demo, animated*
@@ -790,7 +817,7 @@ Put it up and say nothing for one full loop. Six seconds. People don't expect th
 
 Then: that's not a render, and it's not a composite of archive imagery. Those are thirteen photographs taken on the first of November, in the order they were taken, by a spacecraft sitting a million miles away. The planet is turning because it turned.
 
-## 68 · `earth-live-2` · 15 sec
+## 70 · `earth-live-2` · 15 sec
 
 **One day of Earth, from a million miles away** — *The output · 13 real photographs · 1 November 2026*  
 *recorded demo, animated*
@@ -799,7 +826,7 @@ Point out what is passing: Australia and the Pacific at the start, then Asia and
 
 Then the honest note, because somebody will ask: the fade between frames is mine, to make the rotation read. The thirteen pictures are untouched.
 
-## 69 · `earth-live-3` · 30 sec
+## 71 · `earth-live-3` · 30 sec
 
 **One day of Earth, from a million miles away** — *The output · 13 real photographs · 1 November 2026*  
 *recorded demo, animated*
@@ -808,7 +835,7 @@ Land on the bottom line and make it theirs: six lines of code, and a spacecraft 
 
 If they ask whether the agent can use it: it already does. It's latest_earth_image, and it partly answers the question from slide two. Where the clouds are is most of whether it's worth going outside.
 
-## 70 · `worlds-found` · 1.25 min
+## 72 · `worlds-found` · 1.25 min
 
 **Watch the sky fill up** — *One query · no key · every world we know*  
 *animated panel*
@@ -826,14 +853,14 @@ Now the Gemini point, which is why this slide is in a talk about agents and not 
 
 # CLOSE — the six rules, and what to build on Monday
 
-## 71 · `recap-six` · 1 min
+## 73 · `recap-six` · 1 min
 
 **Six rules for agent tools** — *Take a photo of this one*  
 *animated panel*
 
 Stand still. Let them photograph it. Read only the amber column. The grey notes are for the photo, not your voice. Then the closing argument, and it's the reason to give this talk at all: not one of those six rules mentions Gemini. They're true of any model you plug in, this year or next. The model is the part that will change and the part you don't control. Your tools are the part you own. Finish with the inversion of where we started: "I showed you the agent in eight lines at the beginning and told you that was the easy part. These six are the hard part, and they're the part that's still yours." If somebody asks which one matters most: one and six. A tool nobody calls, and a system nobody scored.
 
-## 72 · `tonight-1` · 15 sec
+## 74 · `tonight-1` · 15 sec
 
 **Go and build one of these**
 
@@ -841,13 +868,13 @@ Stand still. Let them photograph this.
 
 Read the three headlines only. The grey lines are for the photo.
 
-## 73 · `tonight-2` · 15 sec
+## 75 · `tonight-2` · 15 sec
 
 **Go and build one of these**
 
 The third card is the whole talk. Say it properly: not one thing you saw tonight needed astronomy. It needed a tool and a sentence. Swap NASA for their university timetable, their own repository, a spreadsheet their boss cares about. The six rules don't change.
 
-## 74 · `tonight-3` · 30 sec
+## 76 · `tonight-3` · 30 sec
 
 **Go and build one of these**
 
@@ -855,7 +882,7 @@ If one student does the third card this week, this talk worked.
 
 Good closing beat before the last slide: "You now know something that didn't exist as a skill two years ago, and the whole loop is four moves."
 
-## 75 · `close` · 45 sec
+## 77 · `close` · 45 sec
 
 **Go and point it at something**
 

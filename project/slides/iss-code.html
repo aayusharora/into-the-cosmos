@@ -1,0 +1,35 @@
+<section id="iss-code" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 120px;display:flex;flex-direction:column;gap:30px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#7CE0A8;letter-spacing:5px;text-transform:uppercase">How that was made</p>
+<h2 style="font-size:62px;font-weight:700;line-height:1.05;width:1664px">Two lines of text and some trigonometry</h2>
+<div style="position:absolute;left:128px;top:292px;width:1010px;background:#05080F;padding:34px 38px;border:1px solid #2A3A66;border-radius:16px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;line-height:1.62;color:#D8DEF0">
+<p style="font-size:27px">sat = <span style="color:#5AC8E8">Satrec.twoline2rv</span>(line1, line2)</p>
+<p style="font-size:27px">e, r, v = sat.<span style="color:#5AC8E8">sgp4</span>(jd, fr)</p>
+<p style="font-size:27px;color:#4A5578">&#160;</p>
+<p style="font-size:27px;color:#6F7A99"># spin it into Earth&#8217;s frame</p>
+<p style="font-size:27px">th = <span style="color:#5AC8E8">gmst</span>(jd + fr)</p>
+<p style="font-size:27px">x = r[<span style="color:#FFB454">0</span>]*cos(th) + r[<span style="color:#FFB454">1</span>]*sin(th)</p>
+<p style="font-size:27px">y = -r[<span style="color:#FFB454">0</span>]*sin(th) + r[<span style="color:#FFB454">1</span>]*cos(th)</p>
+<p style="font-size:27px;color:#4A5578">&#160;</p>
+<p style="font-size:27px"><span style="color:#7CE0A8">lat</span> = degrees(atan2(r[<span style="color:#FFB454">2</span>], hypot(x, y)))</p>
+<p style="font-size:27px"><span style="color:#7CE0A8">lon</span> = degrees(atan2(y, x))</p>
+</div>
+<div style="position:absolute;left:1186px;top:292px;width:606px;display:flex;flex-direction:column;gap:22px">
+<div style="background:#121B36;padding:28px 30px;border-radius:12px;border-left:5px solid #7CE0A8">
+<p style="font-size:30px;line-height:1.4;color:#D8DEF0">Celestrak publishes the orbit. <b style="color:#F2F4FA">No key.</b></p>
+</div>
+<div style="background:#121B36;padding:28px 30px;border-radius:12px;border-left:5px solid #5AC8E8">
+<p style="font-size:30px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">sgp4</b> is the same model NORAD uses.</p>
+</div>
+<div style="background:#1A1206;padding:28px 30px;border-radius:12px;border-left:5px solid #FFB454">
+<p style="font-size:30px;line-height:1.4;color:#D8DEF0">Hand it to Gemini and it answers <b style="color:#FFB454">&#8220;when can I see it?&#8221;</b></p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">A fifth tool, and <b style="color:#F2F4FA">the loop never changed.</b></p>
+<aside>Twenty seconds. Do not read the code.
+
+Point at the first two lines. That is the entire orbital mechanics: you hand sgp4 the two lines Celestrak publishes and it gives you where the station is in space. The rest is turning that into a latitude and a longitude, which is one rotation by sidereal time.
+
+The three cards are the point. Celestrak gives it away, sgp4 is the same propagator NORAD uses, and the moment you wrap it in a function with a docstring it becomes a tool like any other.
+
+Then the bottom line, and this is why the slide exists: nothing about the loop changed. Four tools or five, the four moves are identical. That is the whole argument of the talk, proved one more time on something that has nothing to do with the weather.</aside>
+</section>
