@@ -1,0 +1,26 @@
+<section id="l2-returns" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Lesson 2</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">Empty is an answer</h2>
+<div style="position:absolute;left:128px;top:300px;width:812px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#0E1526;padding:26px 28px;border:2px solid #4A2630;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.5;color:#D8DEF0">
+<p style="font-size:26px"><span style="color:#C9A6F5">if not</span> visible:</p>
+<p style="font-size:26px">&#160;&#160;&#160;&#160;<span style="color:#C9A6F5">raise</span> <span style="color:#FF6B5A">ValueError</span>(<span style="color:#7CE0A8">"nothing up"</span>)</p>
+</div>
+<p style="font-size:29px;line-height:1.4;color:#A8B2CC">The run dies. <b style="color:#F2F4FA">No answer about the clouds, the Moon or the aurora either.</b></p>
+</div>
+<div style="position:absolute;left:980px;top:300px;width:812px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#0E1526;padding:26px 28px;border:2px solid #1F4A38;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.5;color:#D8DEF0">
+<p style="font-size:26px"><span style="color:#C9A6F5">return</span> {<span style="color:#7CE0A8">"visible"</span>: [],</p>
+<p style="font-size:26px">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#7CE0A8">"note"</span>: <span style="color:#7CE0A8">"nothing up tonight"</span>}</p>
+</div>
+<p style="font-size:29px;line-height:1.4;color:#7CE0A8">&#8220;No planets tonight, but it&#8217;s dark and clear. Look for the Milky Way instead.&#8221;</p>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Throw, and the conversation stops. <b style="color:#F2F4FA">Return, and it carries on.</b></p>
+<aside>Short. Forty seconds.
+
+A night with no planets up isn't an error. It's a fact about tonight, and it's one the model can work with. It can still tell you the sky is dark and clear and point you at something else.
+
+Raise instead, and you don't just lose that tool. You lose the whole answer, including the three tools that worked.
+
+The rule: your tool should only raise when the caller genuinely can't continue. "I looked and there was nothing" isn't that.</aside>
+</section>

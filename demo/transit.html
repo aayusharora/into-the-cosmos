@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What a transit looks like</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{--bg:#070C18;--panel:#0E1526;--line:#2A3A66;--ink:#F2F4FA;--dim:#8D97B8;
+        --cyan:#5AC8E8;--amber:#FFB454;--green:#7CE0A8;--red:#FF6B5A}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:var(--bg);color:var(--ink);
+    font-family:'IBM Plex Sans',system-ui,sans-serif;overflow:hidden}
+  .wrap{display:grid;grid-template-columns:1fr 340px;height:100%}
+  .stage{display:flex;flex-direction:column;padding:22px 24px;gap:14px;min-width:0}
+  h1{font-size:23px;font-weight:700}
+  .sub{font-size:14px;color:var(--dim);margin-top:4px}
+  canvas{width:100%;flex:1;min-height:0;border-radius:12px;
+    border:1px solid var(--line);background:#05080F;display:block}
+  .side{border-left:1px solid var(--line);padding:22px;display:flex;
+    flex-direction:column;gap:18px;overflow-y:auto;background:#090E1C}
+  .lbl{font-size:11px;letter-spacing:2.2px;text-transform:uppercase;
+    color:var(--amber);font-weight:700}
+  .ctl{display:flex;flex-direction:column;gap:6px}
+  .ctl .row{display:flex;justify-content:space-between;font-size:14px}
+  .ctl .val{font-family:'JetBrains Mono',monospace;color:var(--cyan)}
+  input[type=range]{width:100%;accent-color:#5AC8E8}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{padding:7px 12px;border-radius:999px;border:1px solid var(--line);
+    background:#121B36;color:var(--dim);font-size:13px;cursor:pointer}
+  .chip:hover{color:var(--ink);border-color:var(--cyan)}
+  .chip.on{border-color:var(--amber);color:var(--amber)}
+  pre{background:#05080F;border:1px solid var(--line);border-radius:10px;
+    padding:14px;font-family:'JetBrains Mono',monospace;font-size:13px;
+    line-height:1.6;color:#D8DEF0;white-space:pre-wrap;word-break:break-word}
+  .k{color:var(--dim)}.n{color:var(--amber)}.s{color:var(--green)}
+  .note{font-size:13px;color:var(--dim);line-height:1.5}
+  label.tog{display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer}
+  @media (max-width:860px){.wrap{grid-template-columns:1fr}.side{border-left:0;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stage">
+    <div>
+      <h1>What a transit looks like</h1>
+      <div class="sub">A planet crosses its star. The starlight dips. That dip is how we found most of the planets we know about.</div>
+    </div>
+    <canvas id="c"></canvas>
+  </div>
+
+  <div class="side">
+    <div>
+      <div class="lbl">Try a real one</div>
+      <div class="chips" id="presets"></div>
+    </div>
+
+    <div class="ctl">
+      <div class="row"><span>Planet size</span><span class="val" id="vR">1.0 R⊕</span></div>
+      <input type="range" id="sR" min="2" max="140" value="10">
+    </div>
+    <div class="ctl">
+      <div class="row"><span>Orbital period</span><span class="val" id="vP">365 d</span></div>
+      <input type="range" id="sP" min="1" max="400" value="365">
+    </div>
+    <div class="ctl">
+      <div class="row"><span>Instrument noise</span><span class="val" id="vN">300 ppm</span></div>
+      <input type="range" id="sN" min="0" max="900" value="300">
+    </div>
+    <label class="tog"><input type="checkbox" id="fold"> Stack every orbit <span style="color:var(--dim)">(fold)</span></label>
+
+    <div>
+      <div class="lbl">What the tool returns</div>
+      <pre id="out"></pre>
+    </div>
+    <div class="note" id="verdict"></div>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const cv=$('c'), g=cv.getContext('2d');
+const SUN_R=109.2;                       // Earth radii per solar radius
+const PRESETS=[
+  ['Earth',1.0,365.25],['Jupiter',11.2,4333],
+  ['Kepler-90 i',1.32,14.45],['Kepler-90 h',11.25,331.6],
+];
+let R=1.0, P=365.25, NOISE=300, FOLD=false, t=0, pts=[], lastU=0, orbits=1;
+
+function depthPPM(r){ const ratio=r/(1.2*SUN_R); return ratio*ratio*1e6; }
+function durationH(p){ return 13*Math.cbrt(p/365.25); }   // rough, for a sun-like star
+
+function sync(){
+  $('vR').textContent=R.toFixed(R<10?2:1)+' R⊕';
+  $('vP').textContent=P<10?P.toFixed(2)+' d':Math.round(P)+' d';
+  $('vN').textContent=NOISE+' ppm';
+  const d=depthPPM(R), dur=durationH(P), snr=d/Math.max(NOISE,1);
+  $('out').innerHTML =
+    '{\n  <span class="k">"period_days"</span>: <span class="n">'+(P<10?P.toFixed(5):P.toFixed(3))+'</span>,\n'+
+    '  <span class="k">"depth_ppm"</span>: <span class="n">'+d.toFixed(1)+'</span>,\n'+
+    '  <span class="k">"duration_hours"</span>: <span class="n">'+dur.toFixed(2)+'</span>,\n'+
+    '  <span class="k">"radius_earth"</span>: <span class="n">'+R.toFixed(2)+'</span>\n}';
+  const v=$('verdict');
+  if(snr>8) v.innerHTML='<span style="color:var(--green)">Easy.</span> The dip is '+snr.toFixed(0)+'× the noise — one look and you have it.';
+  else if(snr>1.5) v.innerHTML='<span style="color:var(--amber)">Hard.</span> Only '+snr.toFixed(1)+'× the noise. You need many orbits stacked before it shows.';
+  else v.innerHTML='<span style="color:var(--red)">Invisible.</span> The dip is smaller than the noise. This is why Kepler-90 i needed a neural network.';
+  pts=[];orbits=1;
+}
+
+function fluxAt(phase){            // phase 0..1, transit centred at 0.5
+  const halfW=(durationH(P)/24)/P/2;
+  const d=Math.abs(phase-0.5);
+  let f=1;
+  if(d<halfW) f=1-depthPPM(R)/1e6*Math.min(1,(halfW-d)/(halfW*0.25));
+  return f;
+}
+
+function draw(){
+  const w=cv.clientWidth, h=cv.clientHeight;
+  if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;pts=[];}
+  g.clearRect(0,0,w,h);
+  const skyH=h*0.46, chartY=skyH+26, chartH=h-chartY-28;
+
+  // --- star + planet ---
+  const sx=w/2, sy=skyH/2+10, sr=Math.min(skyH*0.34,120);
+  const grad=g.createRadialGradient(sx-sr*0.3,sy-sr*0.35,sr*0.1,sx,sy,sr);
+  grad.addColorStop(0,'#FFF4D2');grad.addColorStop(.6,'#FFB454');grad.addColorStop(1,'#C27D1C');
+  g.fillStyle='rgba(255,180,84,.10)';g.beginPath();g.arc(sx,sy,sr*1.35,0,6.2832);g.fill();
+  g.fillStyle=grad;g.beginPath();g.arc(sx,sy,sr,0,6.2832);g.fill();
+
+  // We always frame the transit itself. A 30-hour crossing inside a 4,333-day
+  // orbit is 0.03% of the phase — plot the whole orbit and the dip is one
+  // pixel wide. So one sweep = one observed transit, window scaled to it.
+  const halfW=(durationH(P)/24)/P/2;
+  const win=halfW*3;
+  const u=t%1;
+  const phase=0.5+(u-0.5)*2*win;
+  const px=sx+(u-0.5)*sr*5.2;
+  const pr=Math.max(2.5, sr*(R/(1.2*SUN_R)));
+  g.strokeStyle='rgba(90,200,232,.3)';g.setLineDash([8,10]);g.lineWidth=1.5;
+  g.beginPath();g.moveTo(sx-sr*2.8,sy);g.lineTo(sx+sr*2.8,sy);g.stroke();g.setLineDash([]);
+  g.fillStyle='#070C18';g.beginPath();g.arc(px,sy,pr,0,6.2832);g.fill();
+  g.strokeStyle='#5AC8E8';g.lineWidth=1.5;g.beginPath();g.arc(px,sy,pr,0,6.2832);g.stroke();
+
+  // --- light curve ---
+  const noise=(Math.random()*2-1)*NOISE/1e6;
+  const f=fluxAt(phase)+noise;
+  if(u<lastU){ orbits++; if(!FOLD){pts=[];orbits=1;} }   // new orbit
+  lastU=u;
+  pts.push({x:40+u*(w-70), y:f});
+  if(pts.length>9000) pts.shift();
+
+  const depth=Math.max(depthPPM(R)/1e6, NOISE*3/1e6, 1e-4);
+  const lo=1-depth*1.5, hi=1+depth*0.6;
+  const Y=v=>chartY+chartH-((v-lo)/(hi-lo))*chartH;
+
+  g.strokeStyle='#2A3A66';g.lineWidth=1;
+  g.beginPath();g.moveTo(40,Y(1));g.lineTo(w-30,Y(1));g.stroke();
+  g.fillStyle='#8D97B8';g.font='12px ui-monospace,monospace';
+  g.fillText(FOLD? 'every orbit stacked — '+orbits+' so far'
+                 : 'one orbit at a time', 42, chartY+chartH+18);
+
+  g.fillStyle='#5AC8E8';
+  for(const p of pts){ g.fillRect(p.x, Y(p.y), 1.6, 1.6); }
+
+  // clean model curve on top
+  g.strokeStyle='rgba(255,180,84,.85)';g.lineWidth=2;g.beginPath();
+  for(let i=0;i<=300;i++){
+    const uu=i/300, xx=40+uu*(w-70), yy=Y(fluxAt(0.5+(uu-0.5)*2*win));
+    i?g.lineTo(xx,yy):g.moveTo(xx,yy);
+  }
+  g.stroke();
+
+  t+=0.0032;
+  requestAnimationFrame(draw);
+}
+
+PRESETS.forEach(([n,r,p],i)=>{
+  const b=document.createElement('div');
+  b.className='chip'+(i===0?' on':'');
+  b.textContent=n;
+  b.onclick=()=>{
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+    b.classList.add('on');
+    R=r;P=p;$('sR').value=Math.round(r*10);$('sP').value=Math.min(400,Math.round(p));
+    sync();
+  };
+  $('presets').appendChild(b);
+});
+$('sR').oninput=e=>{R=e.target.value/10;sync();};
+$('sP').oninput=e=>{P=+e.target.value;sync();};
+$('sN').oninput=e=>{NOISE=+e.target.value;sync();};
+$('fold').onchange=e=>{FOLD=e.target.checked;pts=[];orbits=1;};
+sync(); draw();
+</script>
+</body>
+</html>

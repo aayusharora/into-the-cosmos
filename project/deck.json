@@ -1,0 +1,100 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-11-04T09:00:00Z"
+  },
+  "lists": "css",
+  "title": "Into the Cosmos with Gemini",
+  "order": [
+    "cover",
+    "the-question",
+    "cant-answer",
+    "ten-things",
+    "what-were-building",
+    "fifteen-lines",
+    "the-declaration",
+    "the-loop",
+    "cloud-code",
+    "endpoint-to-tool",
+    "cloud-tonight",
+    "gap-eyes",
+    "sky-code",
+    "sky-tonight",
+    "gap-moon",
+    "moon-code",
+    "moon-tonight",
+    "gap-memory",
+    "memory-code",
+    "where-state-lives",
+    "memory-night-one",
+    "memory-night-two",
+    "gap-chain",
+    "the-chain",
+    "gap-silence",
+    "the-silence",
+    "gap-mcp",
+    "mcp",
+    "gap-right",
+    "real-transcript",
+    "the-answer",
+    "what-it-cost",
+    "the-six",
+    "l1-docstring",
+    "l2-returns",
+    "l3-errors",
+    "the-traps",
+    "l4-latency",
+    "l5-retries",
+    "l6-scoring",
+    "architecture",
+    "scoreboard-sql",
+    "worlds-live",
+    "earth-live",
+    "worlds-found",
+    "recap-six",
+    "tonight",
+    "close"
+  ],
+  "sections": {
+    "s1": {
+      "description": "One ordinary question the model cannot answer.",
+      "start": "the-question"
+    },
+    "s2": {
+      "description": "Ten things it needs. We add them one at a time.",
+      "start": "ten-things"
+    },
+    "s3": {
+      "description": "Each gap, the code that fills it, and what comes back.",
+      "start": "cloud-code"
+    },
+    "s4": {
+      "description": "Everything you just watched broke at least once.",
+      "start": "what-it-cost"
+    },
+    "s5": {
+      "description": "Two of those you cannot fix on a laptop.",
+      "start": "architecture"
+    },
+    "s6": {
+      "description": "Point the same four moves somewhere else.",
+      "start": "worlds-live"
+    },
+    "s7": {
+      "description": "The six, in one picture.",
+      "start": "recap-six"
+    }
+  },
+  "faces": {
+    "ibm-plex-sans": {
+      "family": "IBM Plex Sans",
+      "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    },
+    "jetbrains-mono": {
+      "family": "JetBrains Mono",
+      "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    }
+  },
+  "designSystems": []
+}

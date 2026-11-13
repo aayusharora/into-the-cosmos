@@ -1,0 +1,30 @@
+# the virtualenv: google-genai>=2.34, rebuild it with
+#   python3 -m venv .venv
+#   .venv/bin/pip install --only-binary=:all: 'google-genai>=2.34'
+.venv/
+
+# the deploy checkout (index.html and img/ at the repo root ARE the build)
+dist/
+
+# earlier versions of this talk, kept locally, not worth publishing
+archive/
+legacy-v1-slides/
+legacy-python-agent/
+
+# render inputs for the recorded demos. Hundreds of megabytes of NASA
+# tiles and frames that the renderers re-download on demand. The five
+# finished demos in demo/img/ are committed.
+demo/img/tiles/
+demo/img/frames/
+demo/img/epic/
+demo/img/cloud/
+demo/img/sky/
+demo/images/
+demo/*.npz
+demo/mosaic_*.jpg
+demo/contact_sheet.png
+
+__pycache__/
+*.pyc
+.DS_Store
+.claude/

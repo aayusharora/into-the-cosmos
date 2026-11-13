@@ -1,0 +1,38 @@
+<section id="l1-docstring" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 128px;display:flex;flex-direction:column;gap:26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">Lesson 1</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.05;width:1664px">Ask for Mars, get a spacecraft</h2>
+<div style="position:absolute;left:128px;top:300px;width:812px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#0E1526;padding:24px 26px;border:2px solid #4A2630;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;color:#D8DEF0">
+<p style="font-size:27px">COMMAND=<span style="color:#FF6B5A">'Mars'</span></p>
+</div>
+<div style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:25px;line-height:1.7;color:#8D97B8">
+<p style="font-size:25px;color:#FF6B5A">Multiple major-bodies match:</p>
+<p style="font-size:25px">&#160;&#160;&#160;&#160;4&#160;&#160;&#160;Mars Barycenter</p>
+<p style="font-size:25px">&#160;&#160;499&#160;&#160;Mars</p>
+<p style="font-size:25px;color:#FFB454">&#160;&#160;&#160;-3&#160;&#160;Mars Orbiter Mission</p>
+<p style="font-size:25px;color:#FFB454">&#160;&#160;-41&#160;&#160;Mars Express</p>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#A8B2CC">No sky data. <b style="color:#F2F4FA">And no error either.</b></p>
+</div>
+<div style="position:absolute;left:980px;top:300px;width:812px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#0E1526;padding:24px 26px;border:2px solid #1F4A38;border-radius:14px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:27px;line-height:1.5;color:#D8DEF0">
+<p style="font-size:27px">body: {<span style="color:#7CE0A8">"description"</span>:</p>
+<p style="font-size:27px">&#160;&#160;<span style="color:#7CE0A8">"JPL code, not the name.</span></p>
+<p style="font-size:27px">&#160;&#160;<span style="color:#7CE0A8">499 Mars, 699 Saturn."</span>}</p>
+</div>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:25px;line-height:1.7;color:#7CE0A8">&#8594; 79&#176; altitude, magnitude 0.78</p>
+<p style="font-size:28px;line-height:1.4;color:#A8B2CC">One sentence of English. <b style="color:#7CE0A8">First try.</b></p>
+</div>
+<p style="position:absolute;left:128px;bottom:72px;font-size:33px;line-height:1.4;color:#A8B2CC;width:1664px">Your schema, your service names, your table called <span style="font-family:'JetBrains Mono', 'Courier New', monospace;color:#F2F4FA">accounts</span> that everyone calls customers. <b style="color:#F2F4FA">The description is the only place any of that can live.</b></p>
+<aside>This is where the talk stops being advice and starts being evidence. Say that.
+
+The model does the obvious thing: it asks for Mars. And JPL comes back with four things called Mars: the barycentre, the planet, and two spacecraft that are orbiting it right now. Ask for Mars, get a spacecraft.
+
+Now the part that matters: that's not an error. No exception, no 400, no "bad request". It's a perfectly successful HTTP response containing a menu. Your code reads it looking for an ephemeris, finds none, and returns nothing useful. The model has no idea why.
+
+The fix is one sentence on the parameter: it takes a JPL code, not a name, and here are two examples.
+
+Then make it theirs, slowly: nobody's model has heard of your internal service names, or that your customers table is called accounts. There's no recovery path for those. The description is the only place that knowledge can exist.
+
+If asked whether this is just prompt engineering: no. It's on the function, so it travels with the tool into every agent that imports it.</aside>
+</section>

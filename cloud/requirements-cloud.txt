@@ -1,0 +1,4 @@
+google-genai>=1.60
+google-cloud-bigquery>=3.25
+lightkurve>=2.5
+numpy>=1.26

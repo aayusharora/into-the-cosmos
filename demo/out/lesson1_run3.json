@@ -1,0 +1,173 @@
+{
+  "vague": {
+    "calls": [
+      {
+        "call": "planets_of_star",
+        "arguments": {
+          "hostname": "Kepler-90"
+        },
+        "result": {
+          "hostname": "Kepler-90",
+          "found": 0,
+          "hint": "no rows \u2014 the archive may list this star under another name"
+        }
+      },
+      {
+        "call": "exoplanet_count",
+        "arguments": {
+          "where": "hostname LIKE 'Kepler-90%'"
+        },
+        "result": {
+          "condition": "hostname LIKE 'Kepler-90%'",
+          "count": 11
+        }
+      },
+      {
+        "call": "exoplanet_count",
+        "arguments": {
+          "where": "hostname='Kepler-90'"
+        },
+        "result": {
+          "condition": "hostname='Kepler-90'",
+          "count": 0
+        }
+      },
+      {
+        "call": "exoplanet_count",
+        "arguments": {
+          "where": "pl_name LIKE 'Kepler-90%'"
+        },
+        "result": {
+          "condition": "pl_name LIKE 'Kepler-90%'",
+          "count": 12
+        }
+      },
+      {
+        "call": "planets_of_star",
+        "arguments": {
+          "hostname": "KOI-351"
+        },
+        "result": {
+          "hostname": "KOI-351",
+          "found": 8,
+          "planets": [
+            {
+              "name": "KOI-351 b",
+              "period_days": 7.008151,
+              "radius_earth": 1.31,
+              "distance_au": 0.074
+            },
+            {
+              "name": "KOI-351 c",
+              "period_days": 8.719375,
+              "radius_earth": 1.19,
+              "distance_au": 0.089
+            },
+            {
+              "name": "Kepler-90 i",
+              "period_days": 14.44912,
+              "radius_earth": 1.32,
+              "distance_au": 0.1201380843
+            },
+            {
+              "name": "KOI-351 d",
+              "period_days": 59.73667,
+              "radius_earth": 2.87,
+              "distance_au": 0.32
+            },
+            {
+              "name": "KOI-351 e",
+              "period_days": 91.93913,
+              "radius_earth": 2.66,
+              "distance_au": 0.42
+            },
+            {
+              "name": "KOI-351 f",
+              "period_days": 124.9144,
+              "radius_earth": 2.88,
+              "distance_au": 0.48
+            },
+            {
+              "name": "KOI-351 g",
+              "period_days": 210.73514,
+              "radius_earth": 7.718,
+              "distance_au": 0.71704
+            },
+            {
+              "name": "KOI-351 h",
+              "period_days": 331.60296,
+              "radius_earth": 11.252,
+              "distance_au": 0.97062
+            }
+          ]
+        }
+      }
+    ],
+    "answer": "Kepler-90 (also designated in the NASA Exoplanet Archive as **KOI-351**) has **8 confirmed exoplanets**. This ties it with our Solar System for the largest number of known planets orbiting a single star.\n\nListed in order from closest to farthest from the host star, their orbital periods are:\n\n1. **Kepler-90 b**: ~7.01 days (7.008 days)\n2. **Kepler-90 c**: ~8.72 days (8.719 days)\n3. **Kepler-90 i**: ~14.45 days (14.449 days)\n4. **Kepler-90 d**: ~59.74 days (59.737 days)\n5. **Kepler-90 e**: ~91.94 days (91.939 days)\n6. **Kepler-90 f**: ~124.91 days (124.914 days)\n7. **Kepler-90 g**: ~210.74 days (210.735 days)\n8. **Kepler-90 h**: ~331.60 days (331.603 days)"
+  },
+  "fixed": {
+    "calls": [
+      {
+        "call": "planets_of_star",
+        "arguments": {
+          "hostname": "KOI-351"
+        },
+        "result": {
+          "hostname": "KOI-351",
+          "found": 8,
+          "planets": [
+            {
+              "name": "KOI-351 b",
+              "period_days": 7.008151,
+              "radius_earth": 1.31,
+              "distance_au": 0.074
+            },
+            {
+              "name": "KOI-351 c",
+              "period_days": 8.719375,
+              "radius_earth": 1.19,
+              "distance_au": 0.089
+            },
+            {
+              "name": "Kepler-90 i",
+              "period_days": 14.44912,
+              "radius_earth": 1.32,
+              "distance_au": 0.1201380843
+            },
+            {
+              "name": "KOI-351 d",
+              "period_days": 59.73667,
+              "radius_earth": 2.87,
+              "distance_au": 0.32
+            },
+            {
+              "name": "KOI-351 e",
+              "period_days": 91.93913,
+              "radius_earth": 2.66,
+              "distance_au": 0.42
+            },
+            {
+              "name": "KOI-351 f",
+              "period_days": 124.9144,
+              "radius_earth": 2.88,
+              "distance_au": 0.48
+            },
+            {
+              "name": "KOI-351 g",
+              "period_days": 210.73514,
+              "radius_earth": 7.718,
+              "distance_au": 0.71704
+            },
+            {
+              "name": "KOI-351 h",
+              "period_days": 331.60296,
+              "radius_earth": 11.252,
+              "distance_au": 0.97062
+            }
+          ]
+        }
+      }
+    ],
+    "answer": "Kepler-90 (also known as KOI-351) has **8 confirmed planets**. \n\nHere are their orbital periods, listed in order of increasing distance from the star:\n\n1. **Kepler-90b** (KOI-351 b): **~7.01 days** (7.008 days)\n2. **Kepler-90c** (KOI-351 c): **~8.72 days** (8.719 days)\n3. **Kepler-90i**: **~14.45 days** (14.449 days)\n4. **Kepler-90d** (KOI-351 d): **~59.74 days** (59.737 days)\n5. **Kepler-90e** (KOI-351 e): **~91.94 days** (91.939 days)\n6. **Kepler-90f** (KOI-351 f): **~124.91 days** (124.914 days)\n7. **Kepler-90g** (KOI-351 g): **~210.74 days** (210.735 days)\n8. **Kepler-90h** (KOI-351 h): **~331.60 days** (331.603 days)"
+  }
+}

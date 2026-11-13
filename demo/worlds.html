@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Worlds</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  :root{--bg:#070C18;--panel:#0E1526;--line:#2A3A66;--ink:#F2F4FA;--dim:#8D97B8;--cyan:#5AC8E8;--amber:#FFB454}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:var(--bg);color:var(--ink);
+    font-family:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;overflow:hidden}
+  #map{position:absolute;inset:0;background:var(--bg)}
+  .leaflet-container{background:var(--bg)}
+  #hud{position:absolute;left:24px;top:24px;z-index:500;width:330px;
+    background:rgba(14,21,38,.93);border:1px solid var(--line);border-radius:16px;padding:22px}
+  h1{font-size:23px;font-weight:700;letter-spacing:-.2px}
+  .sub{font-size:14px;color:var(--dim);margin-top:6px;line-height:1.45}
+  .worlds{display:flex;gap:8px;margin:18px 0 14px}
+  .worlds button{flex:1;padding:10px;border-radius:10px;border:1px solid var(--line);
+    background:#121B36;color:var(--ink);font-size:14px;font-weight:600;cursor:pointer}
+  .worlds button.on{border-color:var(--amber);color:var(--amber);background:#1B2748}
+  .lbl{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);
+    font-weight:700;margin-bottom:9px}
+  .go{display:block;width:100%;text-align:left;padding:11px 13px;margin-bottom:7px;
+    border-radius:10px;border:1px solid var(--line);background:#121B36;color:var(--ink);
+    font-size:14px;cursor:pointer;transition:.15s}
+  .go:hover{border-color:var(--cyan);background:#16213f}
+  .go small{display:block;color:var(--dim);font-size:12px;margin-top:3px}
+  #where{position:absolute;right:24px;bottom:24px;z-index:500;padding:12px 16px;
+    background:rgba(14,21,38,.93);border:1px solid var(--line);border-radius:12px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:var(--cyan)}
+  #credit{position:absolute;left:24px;bottom:24px;z-index:500;font-size:12px;color:#5A647F}
+  .leaflet-control-attribution{background:rgba(14,21,38,.9)!important;color:#5A647F!important}
+  .leaflet-control-attribution a{color:#8D97B8!important}
+  @media (max-width:760px){#hud{width:auto;right:24px}}
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<div id="hud">
+  <h1>Worlds</h1>
+  <div class="sub">Real mapped surfaces from NASA Trek. Scroll to zoom in — this is actual orbital imagery, not a render.</div>
+  <div class="worlds">
+    <button id="bMars" class="on">Mars</button>
+    <button id="bMoon">The Moon</button>
+  </div>
+  <div class="lbl" id="placesLbl">Fly to</div>
+  <div id="places"></div>
+</div>
+
+<div id="where">—</div>
+<div id="credit">NASA/JPL · USGS Astrogeology · Trek</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const WORLDS = {
+  mars: {
+    url: "https://trek.nasa.gov/tiles/Mars/EQ/Mars_Viking_MDIM21_ClrMosaic_global_232m/1.0.0/default/default028mm/{z}/{y}/{x}.jpg",
+    maxZoom: 7,
+    places: [
+      {n:"Olympus Mons",      d:"Tallest volcano in the solar system — 22 km high", lat:18.65,  lon:-133.80, z:6},
+      {n:"Valles Marineris",  d:"A canyon system 4,000 km long",                    lat:-13.90, lon:-58.60,  z:5},
+      {n:"Jezero Crater",     d:"Perseverance landed here in 2021",                 lat:18.38,  lon:77.58,   z:7},
+      {n:"Gale Crater",       d:"Curiosity has been driving here since 2012",       lat:-5.40,  lon:137.80,  z:7},
+      {n:"Hellas Planitia",   d:"Impact basin seven kilometres deep",               lat:-42.40, lon:70.50,   z:4}
+    ]
+  },
+  moon: {
+    url: "https://trek.nasa.gov/tiles/Moon/EQ/LRO_WAC_Mosaic_Global_303ppd_v02/1.0.0/default/default028mm/{z}/{y}/{x}.jpg",
+    maxZoom: 7,
+    places: [
+      {n:"Tranquility Base",  d:"Apollo 11, July 1969",                    lat:0.67,   lon:23.47,  z:7},
+      {n:"Tycho",             d:"Young crater with the bright ray system", lat:-43.30, lon:-11.40, z:6},
+      {n:"Copernicus",        d:"93 km across, terraced walls",            lat:9.62,   lon:-20.08, z:6},
+      {n:"Mare Imbrium",      d:"A 1,100 km lava plain",                   lat:32.80,  lon:-15.60, z:4},
+      {n:"South Pole–Aitken", d:"The biggest impact basin we know of",     lat:-53.00, lon:169.00, z:3}
+    ]
+  }
+};
+
+const map = L.map("map", {
+  crs: L.CRS.EPSG4326,
+  center: [0, 0],
+  zoom: 2,
+  minZoom: 1,
+  worldCopyJump: true,
+  attributionControl: true
+});
+
+let layer = null, current = null;
+
+function load(key){
+  const w = WORLDS[key];
+  if (layer) map.removeLayer(layer);
+  layer = L.tileLayer(w.url, {
+    tileSize: 256,
+    maxNativeZoom: w.maxZoom,
+    maxZoom: w.maxZoom + 1,
+    noWrap: false,
+    attribution: "NASA/JPL · USGS Astrogeology Science Center"
+  }).addTo(map);
+  map.setMaxZoom(w.maxZoom + 1);
+  map.fitBounds([[-90, -180], [90, 180]], {animate: false});
+
+  const box = document.getElementById("places");
+  box.innerHTML = "";
+  w.places.forEach(p => {
+    const b = document.createElement("button");
+    b.className = "go";
+    b.innerHTML = `${p.n}<small>${p.d}</small>`;
+    b.onclick = () => map.flyTo([p.lat, p.lon], p.z, {duration: 2.2});
+    box.appendChild(b);
+  });
+
+  current = key;
+  document.getElementById("bMars").className = key === "mars" ? "on" : "";
+  document.getElementById("bMoon").className = key === "moon" ? "on" : "";
+  document.getElementById("placesLbl").textContent =
+    "Fly to — " + (key === "mars" ? "Mars" : "the Moon");
+}
+
+document.getElementById("bMars").onclick = () => load("mars");
+document.getElementById("bMoon").onclick = () => load("moon");
+
+function fmt(v, pos, neg){
+  const h = v >= 0 ? pos : neg;
+  return Math.abs(v).toFixed(2) + "°" + h;
+}
+map.on("mousemove", e => {
+  document.getElementById("where").textContent =
+    fmt(e.latlng.lat, "N", "S") + "  " + fmt(e.latlng.lng, "E", "W");
+});
+
+load("mars");
+</script>
+</body>
+</html>

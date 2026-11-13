@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Every world we know</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  :root{--bg:#070C18;--panel:#0E1526;--line:#2A3A66;--ink:#F2F4FA;--dim:#8D97B8;
+        --cyan:#5AC8E8;--amber:#FFB454;--green:#7CE0A8;--red:#FF6B5A;--violet:#C9A6F5}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:var(--bg);color:var(--ink);
+    font-family:'IBM Plex Sans',system-ui,sans-serif;overflow:hidden}
+  .wrap{display:grid;grid-template-columns:1fr 330px;height:100%}
+  .stage{display:flex;flex-direction:column;padding:20px 24px;gap:12px;min-width:0}
+  .top{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap}
+  h1{font-size:23px;font-weight:700}
+  .sub{font-size:14px;color:var(--dim)}
+  canvas{width:100%;flex:1;min-height:0;border-radius:12px;
+    border:1px solid var(--line);background:#05080F;display:block;cursor:crosshair}
+  .side{border-left:1px solid var(--line);padding:22px;display:flex;
+    flex-direction:column;gap:20px;overflow-y:auto;background:#090E1C}
+  .lbl{font-size:11px;letter-spacing:2.2px;text-transform:uppercase;
+    color:var(--amber);font-weight:700}
+  .big{font-family:'JetBrains Mono',monospace;font-size:52px;font-weight:700;
+    color:var(--ink);line-height:1}
+  .yr{font-family:'JetBrains Mono',monospace;font-size:40px;font-weight:700;color:var(--cyan)}
+  input[type=range]{width:100%;accent-color:#5AC8E8}
+  button{padding:10px 18px;border-radius:9px;border:1px solid var(--line);
+    background:#121B36;color:var(--ink);font-size:15px;cursor:pointer;font-weight:600}
+  button:hover{border-color:var(--cyan)}
+  .leg{display:flex;flex-direction:column;gap:9px}
+  .lrow{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--dim)}
+  .dot{width:11px;height:11px;border-radius:50%;flex:none}
+  .note{font-size:13px;color:var(--dim);line-height:1.5}
+  .hit{font-family:'JetBrains Mono',monospace;font-size:13px;color:#D8DEF0;
+    background:#05080F;border:1px solid var(--line);border-radius:9px;padding:12px;
+    min-height:76px;line-height:1.6}
+  @media (max-width:880px){.wrap{grid-template-columns:1fr}.side{border-left:0;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stage">
+    <div class="top">
+      <h1>Every world we know</h1>
+      <div class="sub">Each dot is a confirmed planet around another star. NASA Exoplanet Archive, fetched live.</div>
+    </div>
+    <canvas id="c"></canvas>
+  </div>
+
+  <div class="side">
+    <div>
+      <div class="lbl">Planets known</div>
+      <div class="big" id="count">0</div>
+      <div class="yr" id="year">1992</div>
+    </div>
+
+    <div style="display:flex;gap:10px">
+      <button id="play">▶ Play</button>
+      <button id="reset">Reset</button>
+    </div>
+    <input type="range" id="slider" min="1992" max="2026" value="1992">
+
+    <div>
+      <div class="lbl">How it was found</div>
+      <div class="leg" id="legend"></div>
+    </div>
+
+    <div>
+      <div class="lbl">Nearest planet to cursor</div>
+      <div class="hit" id="hit">move over the chart</div>
+    </div>
+
+    <p class="note" id="beat"></p>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const cv=$('c'), g=cv.getContext('2d');
+
+// Colour by discovery method. Transit dominates, and that is the point:
+// the dip you played with on the last page found three out of every four.
+const METHOD={
+  'Transit':'#5AC8E8', 'Radial Velocity':'#FFB454', 'Microlensing':'#C9A6F5',
+  'Imaging':'#7CE0A8', 'Transit Timing Variations':'#FF6B5A'
+};
+const OTHER='#6F7A99';
+const col=m=>METHOD[m]||OTHER;
+
+// The years worth saying out loud while it runs.
+const BEATS={
+  1992:'The first two. Not around a sun — around a pulsar, a dead star.',
+  1995:'51 Pegasi b. The first planet found around a normal star like ours.',
+  2009:'Kepler launches. It will stare at one patch of sky for four years.',
+  2014:'+872 in one year. Kepler’s backlog, verified all at once.',
+  2016:'+1,504 in a single year. More than existed in total two years earlier.',
+  2017:'Kepler-90 i. Found by a neural network, in data humans had already searched.',
+  2026:'6,451. Every one of them was unknown when most of this room was born.'
+};
+
+let PLANETS=[], year=1992, playing=false, last=0, mouse=null;
+const Y0=1992, Y1=2026;
+
+// log axes: period 0.1–10,000 days, radius 0.3–30 Earth radii
+const LP0=Math.log10(0.1), LP1=Math.log10(10000);
+const LR0=Math.log10(0.3), LR1=Math.log10(30);
+const PAD={l:62,r:18,t:18,b:44};
+
+function xOf(w,p){ return PAD.l+(Math.log10(p)-LP0)/(LP1-LP0)*(w-PAD.l-PAD.r); }
+function yOf(h,r){ return h-PAD.b-(Math.log10(r)-LR0)/(LR1-LR0)*(h-PAD.t-PAD.b); }
+
+function axes(w,h){
+  g.strokeStyle='#1A2440'; g.lineWidth=1;
+  g.fillStyle='#6F7A99'; g.font='12px ui-monospace,monospace';
+  for(const p of [0.1,1,10,100,1000,10000]){
+    const x=xOf(w,p);
+    g.beginPath(); g.moveTo(x,PAD.t); g.lineTo(x,h-PAD.b); g.stroke();
+    g.fillText(p<1?p:p.toLocaleString(), x-12, h-PAD.b+18);
+  }
+  for(const r of [0.3,1,3,10,30]){
+    const y=yOf(h,r);
+    g.beginPath(); g.moveTo(PAD.l,y); g.lineTo(w-PAD.r,y); g.stroke();
+    g.fillText(r+'×', 24, y+4);
+  }
+  g.fillStyle='#8D97B8'; g.font='13px system-ui,sans-serif';
+  g.fillText('orbital period — days  →', w/2-70, h-10);
+  g.save(); g.translate(16,h/2+70); g.rotate(-Math.PI/2);
+  g.fillText('size — Earth radii  →', 0, 0); g.restore();
+}
+
+function marker(w,h,period,radius,label,colour){
+  const x=xOf(w,period), y=yOf(h,radius);
+  g.strokeStyle=colour; g.lineWidth=1.5; g.setLineDash([3,3]);
+  g.beginPath(); g.arc(x,y,9,0,6.2832); g.stroke(); g.setLineDash([]);
+  g.fillStyle=colour; g.font='bold 13px system-ui,sans-serif';
+  g.fillText(label, x+13, y+4);
+}
+
+function draw(){
+  const w=cv.clientWidth, h=cv.clientHeight;
+  if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;}
+  g.clearRect(0,0,w,h);
+  axes(w,h);
+
+  let n=0, nearest=null, nd=1e9;
+  for(const p of PLANETS){
+    if(p[1]>year) continue;
+    n++;
+    if(p[2]==null||p[3]==null) continue;
+    const x=xOf(w,p[2]), y=yOf(h,p[3]);
+    const fresh = p[1]===year;
+    g.fillStyle=col(p[4]);
+    g.globalAlpha = fresh?1:0.62;
+    g.beginPath(); g.arc(x,y,fresh?3.4:2.0,0,6.2832); g.fill();
+    if(mouse){
+      const d=(x-mouse.x)**2+(y-mouse.y)**2;
+      if(d<nd){nd=d;nearest=p;}
+    }
+  }
+  g.globalAlpha=1;
+
+  // our own two, for scale
+  marker(w,h,365.25,1.0,'Earth','#7CE0A8');
+  marker(w,h,4333,11.2,'Jupiter','#FFB454');
+
+  $('count').textContent=n.toLocaleString();
+  $('year').textContent=year;
+  if(nearest && nd<9000){
+    $('hit').innerHTML = `<b style="color:#F2F4FA">${nearest[0]}</b><br>`+
+      `found ${nearest[1]} · ${nearest[4]}<br>`+
+      `period ${nearest[2]} d · ${nearest[3]} R⊕`;
+  }
+  requestAnimationFrame(draw);
+}
+
+function setYear(y){
+  year=Math.max(Y0,Math.min(Y1,y));
+  $('slider').value=year;
+  $('beat').textContent=BEATS[year]||'';
+}
+
+function tick(ts){
+  if(playing && ts-last>420){
+    last=ts;
+    if(year>=Y1){ playing=false; $('play').textContent='▶ Play'; }
+    else setYear(year+1);
+  }
+  requestAnimationFrame(tick);
+}
+
+$('play').onclick=()=>{
+  if(year>=Y1) setYear(Y0);
+  playing=!playing;
+  $('play').textContent=playing?'❚❚ Pause':'▶ Play';
+};
+$('reset').onclick=()=>{playing=false;$('play').textContent='▶ Play';setYear(Y0);};
+$('slider').oninput=e=>{playing=false;$('play').textContent='▶ Play';setYear(+e.target.value);};
+cv.onmousemove=e=>{const r=cv.getBoundingClientRect();mouse={x:e.clientX-r.left,y:e.clientY-r.top};};
+cv.onmouseleave=()=>{mouse=null;$('hit').textContent='move over the chart';};
+
+Object.entries(METHOD).concat([['everything else',OTHER]]).forEach(([m,c])=>{
+  const d=document.createElement('div');
+  d.className='lrow';
+  d.innerHTML=`<span class="dot" style="background:${c}"></span>${m}`;
+  $('legend').appendChild(d);
+});
+
+fetch('data/planets.json')
+  .then(r=>r.json())
+  .then(d=>{ PLANETS=d; setYear(Y0); draw(); requestAnimationFrame(tick); })
+  .catch(e=>{ $('hit').textContent='could not load data/planets.json — '+e; });
+</script>
+</body>
+</html>

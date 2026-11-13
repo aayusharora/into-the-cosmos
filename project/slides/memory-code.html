@@ -1,0 +1,24 @@
+<section id="memory-code" data-transition="fade" style="background:#0B1020;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:44px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:500;color:#FFB454;letter-spacing:5px;text-transform:uppercase">6 of 10 &#183; Remembering you</p>
+<h2 style="font-size:66px;font-weight:700;line-height:1.05;width:1664px">It shouldn&#8217;t have to ask twice</h2>
+<div style="background:#05080F;padding:40px 46px;border:1px solid #2A3A66;border-radius:16px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:33px;line-height:1.6;color:#D8DEF0;width:1664px">
+<p style="font-size:33px"><span style="color:#C9A6F5">def</span> <span style="color:#5AC8E8">recall</span>() -&gt; <span style="color:#C9A6F5">dict</span>:</p>
+<p style="font-size:33px">&#160;&#160;&#160;&#160;<span style="color:#FFB454">"""Call this FIRST, before asking the user anything.</span></p>
+<p style="font-size:33px">&#160;&#160;&#160;&#160;<span style="color:#FFB454">If it already has their location, do not ask again."""</span></p>
+</div>
+<div style="display:flex;gap:28px;width:1664px">
+<div style="flex:1;background:#121B36;padding:28px 30px;border-radius:12px;border-left:5px solid #5AC8E8">
+<p style="font-size:30px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">previous_interaction_id</b> carries the conversation.</p>
+</div>
+<div style="flex:1;background:#121B36;padding:28px 30px;border-radius:12px;border-left:5px solid #FFB454">
+<p style="font-size:30px;line-height:1.4;color:#D8DEF0"><b style="color:#F2F4FA">A file</b> carries what outlives it.</p>
+</div>
+</div>
+<aside>Thirty seconds, and the docstring is the whole slide.
+
+Notice what it says: call this FIRST. That's not documentation, it's instruction, and it's the only way the model knows the order to do things in.
+
+Then the distinction, which is worth being precise about because people conflate them. previous_interaction_id keeps tonight's conversation together: what you said two messages ago. It does nothing for next week. Facts that outlive the conversation need somewhere to sit, and in my case that's a JSON file with three keys in it.
+
+Turn the page and show them the difference it makes.</aside>
+</section>

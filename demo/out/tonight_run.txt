@@ -1,0 +1,3 @@
+[90mmodel gemini-3.5-flash · 6 tools[0m
+> Is it worth stargazing tonight in Siliguri, India?
+
