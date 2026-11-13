@@ -89,6 +89,7 @@ TIME = {
     "earth-live-2": 0.25,
     "earth-live-3": 0.5,
     "worlds-found": 1.25,
+    "the-arsenal": 1,
     "recap-six": 1,
     "tonight-1": 0.25,
     "tonight-2": 0.25,

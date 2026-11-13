@@ -1,6 +1,6 @@
 # Your presentation, explained
 
-**77 slides. 46.5 minutes as written.** This is the only file you need on the day.
+**78 slides. 47.5 minutes as written.** This is the only file you need on the day.
 
 ---
 
@@ -33,7 +33,7 @@ that anticipation is the reason they exist. Do not read them twice.
 | 1–46 | **Act One.** The question, and the system that answers it | 25.25 min |
 | 50–63 | **Act Two.** Everything you just watched broke | 12.75 min |
 | 66–72 | **Coda.** Point the same four moves somewhere else | 3.25 min |
-| 73–77 | **Close.** The six rules, and what to build on Monday | 2.75 min |
+| 74–78 | **Close.** The six rules, and what to build on Monday | 2.75 min |
 
 **Slide 50 is the hinge.** Stop there. The question
 is answered and the room has had its payoff — if you simply carry on
@@ -57,11 +57,11 @@ second half on purpose, then speed up.
 
 | Cut | Slides | Saves | Leaves |
 |---|---|---|---|
-| 1 | the coda — 66, 69, 72 | 3.25 | **43.25** |
-| 2 | `l2-returns` + `the-traps` — 54, 56 | 1.75 | **41.5** |
-| 3 | MCP — 40, 41 | 1.25 | **40.25** |
-| 4 | Google Cloud — 62, 63 | 3 | **37.25** |
-| 5 | `l3-errors` + `l5-retries` — 55, 60 | 2 | **35.25** |
+| 1 | the coda — 66, 69, 72 | 3.25 | **44.25** |
+| 2 | `l2-returns` + `the-traps` — 54, 56 | 1.75 | **42.5** |
+| 3 | MCP — 40, 41 | 1.25 | **41.25** |
+| 4 | Google Cloud — 62, 63 | 3 | **38.25** |
+| 5 | `l3-errors` + `l5-retries` — 55, 60 | 2 | **36.25** |
 
 Cut evidence last. `l2-returns` and `the-traps` are the only two
 lessons with no measured number behind them.
@@ -90,7 +90,7 @@ lessons with no measured number behind them.
 - [ ] Present from the web view, not a PDF — 16 slides move
 - [ ] Screenshot Gemini failing the question from your phone; it beats
       slide 3
-- [ ] QR code on slide 77
+- [ ] QR code on slide 78
 
 ---
 
@@ -850,17 +850,31 @@ Then stop on the final frame and point at Earth, sitting almost on its own in th
 
 Now the Gemini point, which is why this slide is in a talk about agents and not an astronomy lecture: the panel on the right is the entire tool. One SELECT, one GET, no key. Hand that to a model as a single function and it can answer almost any question anyone asks about planets, but it will also inherit this chart's bias without ever knowing it's there. That's your job, not the model's.
 
+## 73 · `the-arsenal` · 1 min
+
+**Ten ways into space. No key. No signup.** — *Take a photo of this one*
+
+This is the slide they will photograph, so stand still and stop talking for a moment. Let them get it.
+
+Then say the only thing that matters about it: every single demo tonight came off this slide. The cloud map, the sky, the Moon, Mars, Earth from a million miles, six thousand planets, the space station over your heads. No key, no signup, no credit card, no rate limit worth worrying about.
+
+Point at the four headings. Look up is the sky from where you are standing. Look down is this planet. Look out is everything further away. And the red one is the Sun trying to ruin it.
+
+Then the bottom line, which is the whole talk in nine words: each one is a function and a docstring away from being a tool. You already know how to write a function. You learned the docstring part tonight.
+
+If you are short of time this is the slide to linger on and the next one to rush, because this is the one they will still have on their phone next week.
+
 
 # CLOSE — the six rules, and what to build on Monday
 
-## 73 · `recap-six` · 1 min
+## 74 · `recap-six` · 1 min
 
 **Six rules for agent tools** — *Take a photo of this one*  
 *animated panel*
 
 Stand still. Let them photograph it. Read only the amber column. The grey notes are for the photo, not your voice. Then the closing argument, and it's the reason to give this talk at all: not one of those six rules mentions Gemini. They're true of any model you plug in, this year or next. The model is the part that will change and the part you don't control. Your tools are the part you own. Finish with the inversion of where we started: "I showed you the agent in eight lines at the beginning and told you that was the easy part. These six are the hard part, and they're the part that's still yours." If somebody asks which one matters most: one and six. A tool nobody calls, and a system nobody scored.
 
-## 74 · `tonight-1` · 15 sec
+## 75 · `tonight-1` · 15 sec
 
 **Go and build one of these**
 
@@ -868,13 +882,13 @@ Stand still. Let them photograph this.
 
 Read the three headlines only. The grey lines are for the photo.
 
-## 75 · `tonight-2` · 15 sec
+## 76 · `tonight-2` · 15 sec
 
 **Go and build one of these**
 
 The third card is the whole talk. Say it properly: not one thing you saw tonight needed astronomy. It needed a tool and a sentence. Swap NASA for their university timetable, their own repository, a spreadsheet their boss cares about. The six rules don't change.
 
-## 76 · `tonight-3` · 30 sec
+## 77 · `tonight-3` · 30 sec
 
 **Go and build one of these**
 
@@ -882,7 +896,7 @@ If one student does the third card this week, this talk worked.
 
 Good closing beat before the last slide: "You now know something that didn't exist as a skill two years ago, and the whole loop is four moves."
 
-## 77 · `close` · 45 sec
+## 78 · `close` · 45 sec
 
 **Go and point it at something**
 
