@@ -123,7 +123,7 @@ Slides that quote tonight's sky: 13, 28, 31, 45, 46.
 
 **12. Everything you need to install.**  &nbsp;&nbsp;`1.1 min`  &nbsp;&nbsp;<sub>setup</sub>
 
-> Three lines and you are set up. It has to be google-genai 2.x, because interactions does not exist in 1.x, and that catches people. The client reads the key out of the environment so you never pass it around. The key is free from AI Studio, about forty seconds, no card.
+> Three lines and you are set up. It has to be google-genai 2.x, because interactions does not exist in 1.x, and that catches people. The client reads the key out of the environment so you never pass it around. If anyone asks about the model, the tool loop hangs on the Gemini 3 flash models, no error and no response, so everything tonight runs on a 4. The key is free from AI Studio, about forty seconds, no card.
 
 **13. cloud map**  &nbsp;&nbsp;`1.2 min`  &nbsp;&nbsp;<sub>cloud-map</sub>
 
@@ -224,7 +224,7 @@ Slides that quote tonight's sky: 13, 28, 31, 45, 46.
 
 **35. It goes in the same list.**  &nbsp;&nbsp;`1.7 min`  &nbsp;&nbsp;<sub>mcp-code</sub>
 
-> Take this slowly. DECLS is the four functions you already built. OBSERVATORY is four lines describing somebody else's server, a type, a name and a URL. Now the last line, which is the whole point. You add them together, same tools argument, same create call, and nothing else in the program changes. The caveat is worth saying out loud: it is remote only, and there is nowhere to put a local process.
+> Take this slowly. DECLS is the four functions you already built. OBSERVATORY is four lines describing somebody else's server, a type, a name and a URL. Now the last line, which is the whole point. You add them together, same tools argument, same create call, and nothing else in the program changes. Then say the caveat out loud, because it is worth more than the slide. On a Gemini 3 model this does not error, it hangs, and you will sit there watching nothing happen. I ran it. Google says Gemini 3 support is coming. It is remote only as well, so there is nowhere to put a local process.
 
 **36. mcp output**  &nbsp;&nbsp;`0.8 min`  &nbsp;&nbsp;<sub>mcp-output</sub>
 
@@ -249,9 +249,9 @@ Slides that quote tonight's sky: 13, 28, 31, 45, 46.
 
 > Three keys, and that is the entire memory system. A JSON file and two tools, one to read it and one to write it. Look at the docstring, Call this FIRST, because that sentence is the only thing stopping it asking me where I live for the eighth time.
 
-**41. Memory is not a feature. It is a parameter.**  &nbsp;&nbsp;`1.6 min`  &nbsp;&nbsp;<sub>memory-code</sub>
+**41. Only one of them lasts.**  &nbsp;&nbsp;`1.6 min`  &nbsp;&nbsp;<sub>memory-code</sub>
 
-> The whole thing in one call, and it is the same call you have been looking at all evening. Tools is what it can do, and that has not changed. system_instruction is what it knows about me, built from the file on disk every single run, and that is the one that lasts. previous_interaction_id is what was said five minutes ago. Point at the amber box, because that is the one people ship thinking it is memory.
+> Same call as all evening. Three things on it could hold what it knows about me, and only one of them does. The memory is recall, sitting in DECLS like any other tool, reading a file off my disk. system_instruction is who it is, not what it knows, and ours actually says answer only from tool results, never from memory. previous_interaction_id carries this conversation and nothing else. Point at the amber box, because that is the one people ship thinking it is memory.
 
 **42. night one**  &nbsp;&nbsp;`0.5 min`  &nbsp;&nbsp;<sub>night-one</sub>
 

@@ -386,7 +386,9 @@ def _walk(interaction, log):
 # flash model returns 503 "high demand" often enough that a live demo without
 # this will embarrass you on stage. Same fix as the tools — retry here, so
 # nothing above this function ever has to reason about HTTP.
-FALLBACKS = ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.5-flash"]
+# Tool loops hang on the Gemini 3 flash models: no error, no response, the
+# request just never comes back. Checked against the live API, 14 Nov 2026.
+FALLBACKS = ["gemini-4-hydrogen", "gemini-4-argon", "gemini-4-carbon"]
 
 
 def make_client():

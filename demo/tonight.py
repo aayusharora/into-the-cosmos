@@ -304,7 +304,7 @@ SYSTEM = ("You are an observational astronomer advising a friend. Answer only "
           "altitudes. End with a clear yes or no, and one thing to look at.")
 
 
-def run_agent(model="gemini-3.5-flash"):
+def run_agent(model="gemini-4-hydrogen"):
     if not os.environ.get("GEMINI_API_KEY"):
         kf = os.path.expanduser("~/.config/gemini/api_key")
         if os.path.exists(kf):
