@@ -47,19 +47,8 @@
   "night-seven",
   "just-a-script",
   "watch-it-choose",
-  "left-out",
   "the-answer",
-  "is-it-right",
-  "fails-quietly",
-  "first-thing",
-  "iss",
-  "olympus",
-  "earth-day",
-  "worlds",
-  "the-arsenal",
-  "go-build",
-  "the-point",
-  "repo"
+  "takeaway"
  ],
  "sections": {
   "s1": {
@@ -99,12 +88,8 @@
    "description": "The question from the opening, finally answered."
   },
   "s10": {
-   "start": "first-thing",
-   "description": "The same loop, pointed at the rest of the solar system."
-  },
-  "s11": {
-   "start": "go-build",
-   "description": "What to build on the train home."
+   "start": "takeaway",
+   "description": "What to take home."
   }
  }
 }

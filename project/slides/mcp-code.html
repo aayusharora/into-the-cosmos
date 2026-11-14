@@ -1,10 +1,13 @@
 <section id="mcp-code" data-transition="push" style="background:#070C18;color:#F2F4FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:72px 110px 84px;display:flex;flex-direction:column;gap:20px;overflow:hidden;">
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:25px;font-weight:500;color:#C9A6F5;letter-spacing:5px;text-transform:uppercase">the whole integration</p><h2 style="font-size:58px;font-weight:700;line-height:1.06;width:1500px;color:#F2F4FA">It goes in the same list.</h2><div style="position:absolute;left:110px;top:238px;width:1700px;background:#0B1020;border-radius:14px;padding:34px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:29px;line-height:1.5;color:#F2F4FA"><div style="white-space:pre">OBSERVATORY = {                       <span style="color:#6F7A99"># someone else's server. not mine.</span></div><div style="white-space:pre">    <span style="color:#7CE0A8">"type"</span>: <span style="color:#7CE0A8">"mcp_server"</span>,</div><div style="white-space:pre">    <span style="color:#7CE0A8">"name"</span>: <span style="color:#7CE0A8">"observatory"</span>,</div><div style="white-space:pre">    <span style="color:#7CE0A8">"url"</span>:  <span style="color:#7CE0A8">"https://mcp.example.org/sky"</span>,</div><div style="white-space:pre">}</div><div style="white-space:pre">&nbsp;</div><div style="white-space:pre">it = client.interactions.create(model=M, input=QUESTION,</div><div style="white-space:pre">                                tools=DECLS + [OBSERVATORY])</div></div><div style="position:absolute;left:110px;top:640px;width:1700px;background:#14100A;border-left:5px solid #FFB454;border-radius:14px;padding:26px;"><p style="font-size:30px;line-height:1.45;color:#A8B2CC"><b style="color:#FFB454">Remote only.</b> The type holds a URL. There is nowhere to put a local process.</p></div><p style="position:absolute;left:110px;bottom:52px;font-size:36px;line-height:1.35;color:#A8B2CC;width:1700px"><b style="color:#7CE0A8">DECLS</b> is your four functions. <b style="color:#C9A6F5">OBSERVATORY</b> is their forty. <b style="color:#F2F4FA">tools=</b> cannot tell the difference.</p>
-<aside>This is the slide that was missing, so take it slowly.
-
-DECLS is the list you already built, your four functions. OBSERVATORY is four lines of dictionary describing somebody else's server. A type, a name, a URL.
-
-And then look at the last line, because that is the whole point. You add them together. Your four and their forty go into the same tools argument, in the same create call you have been looking at since the loop. Nothing else in the program changes. Not the loop, not the handler, not one line.
-
-One honest caveat, because I checked this in the SDK this week and not in a blog post: it is remote only. The type holds a URL, and there is nowhere to put a local process. Say that out loud. It buys you credibility for the whole talk.</aside>
+<aside>Take this slowly.
+· DECLS — the list you already built. your four.
+· OBSERVATORY — four lines describing somebody else's server.
+  a type, a name, a URL.
+· now the last line. this is the whole point.
+· you ADD them. same tools argument. same create call.
+· nothing else changes. not the loop, not the handler, not a line.
+· caveat, worth saying out loud: remote only.
+· the type holds a URL. nowhere to put a local process.
+· checked that in the SDK, not a blog post. say so if challenged.</aside>
 </section>

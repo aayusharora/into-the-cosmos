@@ -50,6 +50,8 @@ TIME = {
     "worlds": 0.6, "the-arsenal": 1.6,
     # act 10
     "go-build": 1.0, "the-point": 1.2, "repo": 0.6,
+    # the close
+    "takeaway": 1.3,
 }
 
 
@@ -109,8 +111,8 @@ def build():
       "came for. Do not rush it.")
     w(f"4. **Slide {order.index('the-mistake') + 1}, the red X.** Gemini never "
       "calls your function. This is the one fact most of the room has wrong.")
-    w(f"5. **Slide {order.index('the-arsenal') + 1}, the arsenal.** Stand "
-      "still and stop talking. That is the slide they photograph.\n")
+    w(f"5. **Slide {order.index('the-answer') + 1}, the answer.** This is the "
+      "question you opened with, finally answered. Do not hurry off it.\n")
 
     w("## The shape\n")
     w("| Slides | Act | Runs |")
