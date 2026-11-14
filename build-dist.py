@@ -184,7 +184,7 @@ function act(k){for(let j=k;j>=0;j--){const a=S[j].dataset.section;if(a)return a
    one thing a presenter view must never make you do. */
 function fitNotes(){
   const n=document.getElementById('pv-notes');
-  let s=26;
+  let s=36;
   n.style.fontSize=s+'px';
   while(s>12&&n.scrollHeight>n.clientHeight+1){s-=1;n.style.fontSize=s+'px';}
 }

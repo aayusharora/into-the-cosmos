@@ -73,475 +73,216 @@ Slides that quote tonight's sky: 13, 28, 31, 45, 46.
 
 **1. Into the Cosmos with Gemini**  &nbsp;&nbsp;`0.4 min`  &nbsp;&nbsp;<sub>title</sub>
 
-> Say nothing yet.
-> · five seconds of sky before you open your mouth
-> → the room goes quiet on its own. let it.
+> Say nothing for five seconds. Let them look at it. The room goes quiet on its own if you do not fill the gap.
 
 **2. When I was a kid, I wanted to see the sky.**  &nbsp;&nbsp;`1 min`  &nbsp;&nbsp;<sub>kid</sub>
 
-> Delhi. Space-obsessed kid.
-> · posters. knew the planets before my times tables
-> · one problem, and nobody warns you about it: WHEN to look
-> " you can read every book about Saturn and still not know
->   whether Saturn is up tonight
-> " so I asked the only API I had. My mother.
-> → do NOT explain the joke. it pays off in act three.
+> Delhi kid, obsessed with space, knew the planets before my times tables. The problem was never wanting to look. It was never knowing when. Then the line about my mother. Do not explain the joke, it pays off in act three.
 
 **3. She took me up to the terrace.**  &nbsp;&nbsp;`1.3 min`  &nbsp;&nbsp;<sub>terrace</sub>
 
-> She never answered from the sofa.
-> · got up, climbed the stairs, stood on the terrace, LOOKED
-> · came back down and told me what she saw
-> · what she saw: black. no moon. no stars.
-> → STOP TALKING. let the laugh finish.
-> · first time, she asked what "check the sky" even meant
-> · I said: go up, look straight up, tell me if you can see through it
-> · one sentence. she never asked again.
-> · fourth floor had a real telescope — plant this, you need it later
+> She never answered from the sofa. She climbed the stairs, looked at the actual sky, came back down. What she saw was black. Stop there and let the laugh finish. Then tell them I explained it to her once, in one sentence, and she never asked again. Plant the fourth floor telescope here, you need it later.
 
 **4. milky way**  &nbsp;&nbsp;`0.5 min`  &nbsp;&nbsp;<sub>milky-way</sub>
 
-> No text on this slide on purpose.
-> " this is what I thought was up there. Turns out it is.
->   I just could not tell you which night.
-> → then three full seconds of silence. count them.
-> · real photograph, taken from the space station
+> Say the line, then give it three full seconds of silence. This is what I thought was up there. Turns out it is. I just could not tell you which night. It is a real photograph, taken from the space station.
 
 
 ### The question, the real answer, and what was missing from it.
 
 **5. Twenty something years later, I asked again.**  &nbsp;&nbsp;`0.5 min`  &nbsp;&nbsp;<sub>asked-again</sub>
 
-> Twenty-odd years later. Siliguri, which unlike Delhi has a sky.
-> · same question I asked my mother
-> · same question. better API.
+> Twenty odd years later, Siliguri, which unlike Delhi has an actual sky. Same question I asked my mother. Better API.
 
 **6. “Should I go outside tonight to see the sky?”**  &nbsp;&nbsp;`0.4 min`  &nbsp;&nbsp;<sub>the-question</sub>
 
-> Read it like you would say it to a friend.
-> · not a prompt. no preamble, no system instruction, no role play
-> · that is the question. that is the whole product.
+> Read it the way you would say it to a friend, not like a prompt. No preamble, no system instruction, no role play. That is the question, and it is the whole product.
 
 **7. what it said**  &nbsp;&nbsp;`1.6 min`  &nbsp;&nbsp;<sub>what-it-said</sub>
 
-> Read the first two lines out loud. Straight. No sarcasm.
-> → you are about to PRAISE it. mean it.
-> · knows the date. knows I am in Siliguri. says it is clear.
-> · gives me Saturn, gives me a set time, even cites sources
-> · two years ago: "it depends on local conditions, check an app"
-> · it does not do that any more
-> · beat. then: "so I went outside."
-> → THIS IS THE HINGE. praise first or the next slide dies.
-> → mock it and somebody in row three stops trusting you.
+> Read the first two lines straight, no sarcasm. You are about to praise it, so mean it. It knows the date, knows I am in Siliguri, gives me Saturn and a set time, and it even cites its sources. Two years ago this would have told me to check a weather app. Beat, then: so I went outside. Praise it first or the next slide does not land.
 
 **8. Then I checked.**  &nbsp;&nbsp;`2 min`  &nbsp;&nbsp;<sub>then-i-checked</sub>
 
-> Clear conditions. Except.
-> · 26% at eight. does not clear till eleven.
-> · daily summary. it sent me out in the WORST hour.
-> · clears LATER — opposite of what the answer implies
-> · it told me when Saturn SETS. 2:40am.
-> · I do not need to know when to stop. I need when to GO. 8:30.
-> · and the one that gets me: never mentions the Moon. not once.
-> · the Moon decides whether a clear sky is worth anything
-> · also hedging on gear, because it has no idea what I own
+> Clear conditions, except it is a quarter clouded at eight and does not clear until eleven. It sent me out in the worst hour of the night. It told me when Saturn sets, twenty to three in the morning, when what I need is when to go, half past eight. And it never mentions the Moon, which is the thing that decides whether a clear sky is worth anything at all.
 
 **9. It read an article about tonight. It did not measure tonight.**  &nbsp;&nbsp;`0.8 min`  &nbsp;&nbsp;<sub>diagnosis</sub>
 
-> What actually happened:
-> · it searched, found two articles. Time and Date, Star Walk.
-> · good sites. generic tables. written for everybody.
-> " it read an article about tonight. It did not measure tonight.
-> → THAT IS THE SENTENCE. let it sit. do not rush on.
-> · want a number nobody published — cloud at my coords at 8:30 —
->   there is nothing to read, so it hedges
+> It searched, found two articles, good sites, generic tables written for everybody. Then say the line: it read an article about tonight, it did not measure tonight. Let that sit. Ask it for a number nobody has published, the cloud at my coordinates at half eight, and there is nothing to read, so it hedges.
 
 **10. So here is what I built.**  &nbsp;&nbsp;`0.8 min`  &nbsp;&nbsp;<sub>flash-forward</sub>
 
-> Play it. Let it run. Cut back.
-> · by tonight this answers that question on its own, every evening,
->   before I am awake
-> " let me show you how I got from there to here
-> → explain NOTHING here. it is a promise, not a lesson.
+> Let it run, then cut straight back. By the end of tonight this answers that question on its own, every evening, before I am awake. Explain nothing here. It is a promise, not a lesson.
 
 
 ### The first tool, and what turns an endpoint into one.
 
 **11. It cannot see tonight’s weather.**  &nbsp;&nbsp;`0.5 min`  &nbsp;&nbsp;<sub>first-problem</sub>
 
-> Start with the one a better model cannot fix.
-> · tonight's cloud did not exist when this thing was trained
-> · no amount of intelligence gets you that number
-> · somebody has to go and measure it
+> Start with the problem a better model cannot fix. Tonight's cloud cover did not exist when this thing was trained. No amount of intelligence gets you that number. Somebody has to go and measure it.
 
 **12. Everything you need to install.**  &nbsp;&nbsp;`1.1 min`  &nbsp;&nbsp;<sub>setup</sub>
 
-> Three lines and you are set up.
-> · pip install google-genai — must be 2.x
-> · interactions does not exist in 1.x. this catches people.
-> · client reads the key from the environment. never pass it around.
-> · pick a model.
-> · key is free, aistudio.google.com, ~40 seconds, no card
-> · JS people: npm i @google/genai, same shapes
+> Three lines and you are set up. It has to be google-genai 2.x, because interactions does not exist in 1.x, and that catches people. The client reads the key out of the environment so you never pass it around. The key is free from AI Studio, about forty seconds, no card.
 
 **13. cloud map**  &nbsp;&nbsp;`1.2 min`  &nbsp;&nbsp;<sub>cloud-map</sub>
 
-> Let it run four seconds before you say anything.
-> · the sky over this building, tonight, hour by hour
-> · 19% average over town. 100% on the ridge 20km north.
-> → point at the band parked on the hills
-> · and it clears LATE. 6% by eleven.
-> · that is the detail the article got wrong.
-> → they see the result before a line of code. deliberate.
+> Let it run for four seconds before you say anything. This is the sky over this building tonight, hour by hour. Nineteen per cent over the town, a hundred on the ridge twenty kilometres north. And it clears late, six per cent by eleven, which is exactly what the article got wrong.
 
 **14. That came from one URL.**  &nbsp;&nbsp;`0.8 min`  &nbsp;&nbsp;<sub>the-url</sub>
 
-> That is the whole weather tool.
-> · no key. no signup. no card. no rate limit worth worrying about.
-> · those two numbers are this town
-> " open it on your phone right now if you like. it works.
+> That is the whole weather tool. No key, no signup, no card. Those two numbers are this town. Tell them to open it on their phone right now if they want to.
 
 **15. But a URL is not a tool yet.**  &nbsp;&nbsp;`1 min`  &nbsp;&nbsp;<sub>byte-grid</sub>
 
-> What came back: 48 hours, hourly. 1,312 bytes of JSON.
-> · the model does not need 1,312 bytes
-> · it needs six numbers and a sentence saying what they mean
-> · that filtering is YOUR job, not the model's
-> · nobody puts this in a tutorial and it is most of the work
+> Forty eight hours of readings came back, thirteen hundred bytes of JSON. The model does not need that. It needs six numbers and a sentence telling it what they mean. That filtering is your job, not the model's, and it is most of the work.
 
 **16. whole tool**  &nbsp;&nbsp;`2 min`  &nbsp;&nbsp;<sub>whole-tool</sub>
 
-> The slide the talk was missing. Do not rush it.
-> · top to bottom, four things:
-> · the docstring — the only part Gemini ever reads
-> · the request — one open-meteo URL
-> · the filter — 1,312 bytes down to 139. that part is you.
-> · the return — six numbers, nothing else
-> · ten lines. no decorator, no base class, no registry, no framework.
-> · a function with a good docstring. that is all.
-> → run it on its own FIRST, with no key and no Gemini
-> → if it fails here it will never work in an agent, and you will
->   waste an evening blaming the model
+> Do not rush this one. Top to bottom: the docstring is the only part Gemini ever reads, the request is one open-meteo URL, the filter takes thirteen hundred bytes down to a hundred and thirty nine, and the return is six numbers. Ten lines, no decorator, no base class, no framework. Tell them to run it on its own first, because if it fails there it will never work inside an agent.
 
 **17. Then you describe it.**  &nbsp;&nbsp;`1.1 min`  &nbsp;&nbsp;<sub>the-note</sub>
 
-> This is the whole tool, as far as Gemini is concerned.
-> · a name. one sentence on when to run it. what comes back.
-> · my mother needed one sentence too, once. then never again.
-> · one sentence is genuinely enough to define an errand.
-> · Gemini never sees your code. not one line.
-> · that sentence is your entire API
-> · write it badly, it runs the wrong errand at the wrong moment
+> This is the whole tool as far as Gemini is concerned. A name, one sentence on when to run it, and what comes back. My mother needed one sentence from me too, once. Gemini never sees your code, so that sentence is your entire API. Write it badly and it runs the wrong errand at the wrong moment.
 
 **18. What the model actually gets.**  &nbsp;&nbsp;`0.8 min`  &nbsp;&nbsp;<sub>the-decl</sub>
 
-> A name. A sentence. Two parameters.
-> · Python SDK builds this from the docstring you already wrote
-> · so the docstring IS the thing the model reads
-> · that is the first tool. the sky is now visible.
+> A name, a sentence, two parameters. The Python SDK builds this from the docstring you already wrote, which means the docstring is the thing the model reads. That is the first tool. The sky is now visible.
 
 **19. Two lines connect everything.**  &nbsp;&nbsp;`1.6 min`  &nbsp;&nbsp;<sub>wiring</sub>
 
-> The bit nobody explains. Two lines.
-> · DECLS — the descriptions, built from docstrings
-> · goes OUT with every call as tools=DECLS
-> · that is how Gemini knows the tool exists at all
-> · IMPL — name to actual function
-> · Gemini says "sky_conditions"; IMPL finds the thing to run
-> · payoff: add a fifth function to TOOLS and it is live
-> · you do not touch the loop. not ever.
+> This is the bit nobody explains, and it is two lines. DECLS is the descriptions, built from the docstrings, and it goes out with every call so Gemini knows the tool exists. IMPL maps a name back to the real function, which is how you find the thing to run. Add a fifth function to TOOLS and it is live. You never touch the loop.
 
 
 ### The loop, then the five step recipe for building one.
 
 **20. So how does Gemini use it?**  &nbsp;&nbsp;`1.4 min`  &nbsp;&nbsp;<sub>three-boxes</sub>
 
-> Three things here. Only one can go outside.
-> · you ask
-> · Gemini works out which errand it needs
-> · it CANNOT run it. sends back the name + arguments. waits.
-> · your code runs it. hands the answer back.
-> · Gemini carries on. needs more? asks again.
-> · that is the loop. that is all it is.
+> Three things in this picture and only one of them can go outside. You ask. Gemini works out which errand it needs, but it cannot run it, so it sends back the name and waits. Your code runs it and hands the answer back. That is the loop.
 
 **21. Gemini never calls your function.**  &nbsp;&nbsp;`1.5 min`  &nbsp;&nbsp;<sub>the-mistake</sub>
 
-> Gemini never calls your function. Not once. Not ever.
-> · no network. no API key. cannot run your Python.
-> · it says a name and waits.
-> · you do not run it → nothing happens. it stops, politely, mid thought.
-> · half the tutorials draw this arrow: model straight to API
-> · that arrow does not exist
-> · biggest reason people get stuck on day one
-> · only one box here has legs. it is yours.
-> · my mother could not tell me about the sky from the sofa either
-> → ONE sentence of callback. do not extend it.
+> Gemini never calls your function. It has no network, no key, and it cannot run your Python. It says a name and waits. If you do not run it, nothing happens, and the agent stops politely mid thought. Half the tutorials draw an arrow straight from the model to the API, and that arrow does not exist. One sentence of callback to my mother, then move on.
 
 **22. Five things you write.**  &nbsp;&nbsp;`1.2 min`  &nbsp;&nbsp;<sub>the-recipe</sub>
 
-> The entire job. Not just this agent. Every agent.
-> · and look where you already are
-> · you wrote the function. you wrote the sentence.
-> · two of five done, neither involved Gemini at all
-> · three left, and those three are the same in every project, forever
-> · write them once, stop thinking about them
+> This is the entire job, not just for this agent but for every one you will ever write. And look where you already are. You wrote the function and you wrote the sentence, so two of the five are done. The three that are left are identical in every project, forever.
 
 **23. step ask**  &nbsp;&nbsp;`1.5 min`  &nbsp;&nbsp;<sub>step-ask</sub>
 
-> One line. Only new thing is tools=DECLS.
-> · now look at what came back. this is the moment it clicks.
-> · there is no answer. output_text is EMPTY.
-> · you asked a question and it did not answer
-> · it sent a request instead: name, arguments, id
-> · it worked out it needs cloud cover
-> · it worked out the coordinates from the word "Siliguri"
-> · now it is waiting for you
+> One line, and the only new thing is tools equals DECLS. Now look at what came back, because this is where it clicks. There is no answer. output_text is empty. It sent a request instead, a name and arguments and an id. It worked out the coordinates from the word Siliguri, and now it is waiting for you.
 
 **24. step run**  &nbsp;&nbsp;`1.6 min`  &nbsp;&nbsp;<sub>step-run</sub>
 
-> Line two is the whole point of this talk.
-> · that is YOU calling your own function
-> · with arguments Gemini chose
-> · nothing clever. you could put a print in there.
-> · then hand it back. two bits of ceremony in the entire API:
-> · reply() — which question you are answering, by id, and what it said
-> · previous_interaction_id — makes it one conversation, not two strangers
-> · that is all the protocol there is. it is in the repo exactly like that.
+> Line two is the whole point of this talk. That is you calling your own function, with arguments Gemini chose. Then you hand it back, and there are exactly two bits of ceremony. reply says which question you are answering. previous_interaction_id makes this one conversation instead of two strangers talking.
 
 **25. step loop**  &nbsp;&nbsp;`1.5 min`  &nbsp;&nbsp;<sub>step-loop</sub>
 
-> Only thing left is to stop doing it by hand.
-> · wrap it in a while
-> · keep going while it is still asking
-> · stop when it asks for nothing — that is how you know it finished
-> · that is when output_text finally has the answer
-> · IMPL is name to function. six entries.
-> · read the loop again: nothing in it about astronomy
-> · swap the six functions and it runs YOUR agent instead of mine
+> Now stop doing it by hand. Wrap it in a while, keep going while it is still asking, and stop when it asks for nothing, because that is when output_text finally has the answer. Read the loop again and notice there is nothing about astronomy in it. Swap the six functions and it runs their agent instead of mine.
 
 **26. whole agent**  &nbsp;&nbsp;`0.6 min`  &nbsp;&nbsp;<sub>whole-agent</sub>
 
-> Fifteen lines. This never changes again.
-> · everything after this is step one and step two, over and over
-> · steps three, four, five are done forever
+> Fifteen lines, and this never changes again. Everything after this is step one and step two, over and over, with different functions.
 
 
 ### Two more tools, fast, now that the pattern is known.
 
 **27. It knows the sky is clear. It has no idea what is in it.**  &nbsp;&nbsp;`0.4 min`  &nbsp;&nbsp;<sub>whats-in-it</sub>
 
-> Clear sky with nothing in it is a wasted evening.
-> · second errand
-> → move fast. they know the shape now.
+> A clear sky with nothing in it is a wasted evening. Second errand. Move fast here, they already know the shape.
 
 **28. Saturn**  &nbsp;&nbsp;`1.1 min`  &nbsp;&nbsp;<sub>sky-chart</sub>
 
-> Saturn. 64 degrees up. 20:30 tonight.
-> · 64 degrees is almost overhead
-> · less atmosphere than any other time tonight
-> · through binoculars it is a tiny oval, not the posters
-> · the first time you see that oval is genuinely a moment
-> · magnitude +0.5 — visible from a lit street
+> Saturn, sixty four degrees up at half past eight. That is almost overhead, so you are looking through less atmosphere than at any other time tonight. Through binoculars it is a tiny oval, not the posters, and the first time you see that oval is genuinely a moment.
 
 **29. No key. No account.**  &nbsp;&nbsp;`0.8 min`  &nbsp;&nbsp;<sub>horizons</sub>
 
-> JPL's own ephemeris. The one they point spacecraft with.
-> · any body in the solar system, from any point on Earth
-> · to the arcsecond. free. no account.
-> · same shape as before: a URL, a filter, a sentence
+> That is JPL's own ephemeris, the one they point spacecraft with. Any body in the solar system, from any point on Earth, free and with no account. Same shape as before: a URL, a filter, and a sentence.
 
 **30. Clear is not the same as dark.**  &nbsp;&nbsp;`0.7 min`  &nbsp;&nbsp;<sub>clear-not-dark</sub>
 
-> Third errand. Learned this by going outside and being disappointed.
-> · a full moon is a floodlight
-> · sky can be perfectly clear and you still see nothing
-> · same sky both sides of this slide. same cloud.
-> · one of them is worth leaving the house for.
+> Third errand, and I only learned this by going outside and being disappointed. A full moon is a floodlight. The sky can be perfectly clear and you will still see almost nothing. Same sky on both sides of this slide. One of them is worth leaving the house for.
 
 **31. moon chart**  &nbsp;&nbsp;`1 min`  &nbsp;&nbsp;<sub>moon-chart</sub>
 
-> Moon sets 20:36. From twenty to nine, the night is dark.
-> · clear sky. Saturn overhead. no moon.
-> · as good as it gets, and I would not have known an hour ago
-> → RE-RENDER ON THE MORNING
-> → if the Moon is near full, say so, and let it tell you to stay in.
->   more convincing, not less.
+> The Moon sets at twenty thirty six, so from twenty to nine the whole night is dark. Clear sky, Saturn overhead, no moon. As good as it gets, and I would not have known an hour ago. Re-render this on the morning, and if the Moon is near full, say so and let the agent tell you to stay in.
 
 **32. The same endpoint. One number changed.**  &nbsp;&nbsp;`0.6 min`  &nbsp;&nbsp;<sub>one-number</sub>
 
-> The moon tool is the planet tool with one number changed.
-> · 301 instead of 699
-> · three errands, same pattern, about twenty minutes of real work
-> → do not linger. they have it.
+> The moon tool is the planet tool with one number changed, three hundred and one instead of six ninety nine. Three errands, the same pattern, about twenty minutes of real work. Do not linger here.
 
 
 ### Tools you did not write, and why you reach for them.
 
 **33. I was about to write a star catalogue.**  &nbsp;&nbsp;`0.7 min`  &nbsp;&nbsp;<sub>the-wall</sub>
 
-> Next I wanted deep sky objects. Nebulae, clusters.
-> · sat down to write a star catalogue tool
-> · then stopped
-> · this list does not end. I would be writing tools for a year.
+> Next I wanted deep sky objects, the things actually worth binoculars. I sat down to write a star catalogue tool, and then I stopped, because that list does not end. I would be writing tools for a year.
 
 **34. I did not build a telescope. I knocked on their door.**  &nbsp;&nbsp;`1.2 min`  &nbsp;&nbsp;<sub>mcp</sub>
 
-> Remember the fourth floor. The telescope.
-> · I did not build a telescope. I knocked on their door.
-> → NOW SAY THE LETTERS. first time the room sees them.
-> · M C P. Model Context Protocol.
-> · one agreed shape for publishing a tool
-> · so an agent can use somebody else's with no glue code
-> · analogy if faces go blank: USB. one plug shape, everything fits.
-> · tie it back: DECLS is a menu you wrote
-> · an MCP server is that same menu, hosted by somebody else
-> · your four and their forty arrive at the same place
-> · the loop cannot tell the difference and does not care
+> Remember the fourth floor. I did not build a telescope, I knocked on their door. Now say the letters, because this is the first time the room sees them. MCP, Model Context Protocol, one agreed shape for publishing a tool so an agent can use somebody else's with no glue code. If faces go blank, say USB. Then tie it back: DECLS is a menu you wrote, and an MCP server is that same menu hosted by somebody else.
 
 **35. It goes in the same list.**  &nbsp;&nbsp;`1.7 min`  &nbsp;&nbsp;<sub>mcp-code</sub>
 
-> Take this slowly.
-> · DECLS — the list you already built. your four.
-> · OBSERVATORY — four lines describing somebody else's server.
->   a type, a name, a URL.
-> · now the last line. this is the whole point.
-> · you ADD them. same tools argument. same create call.
-> · nothing else changes. not the loop, not the handler, not a line.
-> · caveat, worth saying out loud: remote only.
-> · the type holds a URL. nowhere to put a local process.
-> · checked that in the SDK, not a blog post. say so if challenged.
+> Take this slowly. DECLS is the four functions you already built. OBSERVATORY is four lines describing somebody else's server, a type, a name and a URL. Now the last line, which is the whole point. You add them together, same tools argument, same create call, and nothing else in the program changes. The caveat is worth saying out loud: it is remote only, and there is nowhere to put a local process.
 
 **36. mcp output**  &nbsp;&nbsp;`0.8 min`  &nbsp;&nbsp;<sub>mcp-output</sub>
 
-> Four tools I wrote. Any number I did not.
-> · and the loop did not change. still fifteen lines.
-> · that is the whole promise of the protocol
-> · and the reason to reach for it instead of writing your own
+> Four tools I wrote, any number I did not, and the loop did not change. Still fifteen lines. That is the whole promise of the protocol, and the reason to reach for it instead of writing your own.
 
 **37. Nine things can go in that list.**  &nbsp;&nbsp;`1.1 min`  &nbsp;&nbsp;<sub>tools-nine</sub>
 
-> Let them look. This is the one they photograph.
-> · everything arrives at the same door
-> · tools= takes nine kinds of thing. you have seen two.
-> · first: the function you wrote. worth learning — nobody else
->   can write your filter.
-> · second: somebody else's server, on a URL
-> · other seven are built already, a line each
-> · google_search puts the live web in
-> · code_execution lets it write python and run it
-> · computer_use lets it drive a browser
-> → do NOT teach these. just let them see the door is wider.
+> Let them look, this is the one they will photograph. Everything arrives at the same door. That tools argument takes nine kinds of thing and they have now seen two. The function you wrote is the one worth learning, because nobody else can write your filter. The other seven are built already and cost a line each. Do not teach them, just let the room see the door is wider than they thought.
 
 
 ### Memory, and the bug almost everybody ships.
 
 **38. It asked me the same three questions.**  &nbsp;&nbsp;`0.9 min`  &nbsp;&nbsp;<sub>it-keeps-asking</sub>
 
-> Where are you. What gear. What have you seen.
-> · every night. every single night.
-> · my mother asked me those once, in 1998, then never again
-> · that is the difference between an assistant and a form
+> Where are you, what equipment do you have, what have you already seen. Every single night. My mother asked me those questions once, in about 1998, and then never again. That is the difference between an assistant and a form.
 
 **39. Almost everybody ships the wrong one.**  &nbsp;&nbsp;`1.3 min`  &nbsp;&nbsp;<sub>two-forgettings</sub>
 
-> Two kinds of memory. Almost everyone ships the wrong one.
-> · the model holds nothing. learned nothing about you.
-> · the middle one is free and FEELS like memory
-> · carries one conversation beautifully. gone by morning.
-> · the third does not come with the SDK. not the SDK's business.
-> · a file on your disk. you decide what goes in it.
-> · the bug everybody ships: using the second, hoping it is the third
+> Two kinds of memory, and almost everyone ships the wrong one. The model holds nothing. The middle one is free and it feels like memory, it carries one conversation beautifully, and it is gone by morning. The third one is a file on your disk, and it does not come with the SDK because it is not the SDK's business.
 
 **40. memory file**  &nbsp;&nbsp;`1.1 min`  &nbsp;&nbsp;<sub>memory-file</sub>
 
-> Three keys. That is the whole memory system.
-> · a JSON file and two tools. one reads, one writes.
-> · look at the docstring. it is doing real work.
-> · "Call this FIRST."
-> · that sentence is the only thing stopping it asking where I live
->   for the eighth time
-> · step two again. the sentence is the API.
+> Three keys, and that is the entire memory system. A JSON file and two tools, one to read it and one to write it. Look at the docstring, Call this FIRST, because that sentence is the only thing stopping it asking me where I live for the eighth time.
 
 **41. Memory is not a feature. It is a parameter.**  &nbsp;&nbsp;`1.6 min`  &nbsp;&nbsp;<sub>memory-code</sub>
 
-> The whole thing in one call. Same call as all evening.
-> · tools= is what it can DO. unchanged since the last act.
-> · the two new ones are the memory
-> · system_instruction — what it knows about me
-> · built from the JSON file, every single run. this is the one that lasts.
-> · delete the file and it forgets me.
-> · previous_interaction_id — what was said five minutes ago
-> → point at the amber box
-> · this is the one almost everybody ships thinking it is memory
-> · real, useful, gone by morning
-> · three arguments became four. still no framework anywhere.
+> The whole thing in one call, and it is the same call you have been looking at all evening. Tools is what it can do, and that has not changed. system_instruction is what it knows about me, built from the file on disk every single run, and that is the one that lasts. previous_interaction_id is what was said five minutes ago. Point at the amber box, because that is the one people ship thinking it is memory.
 
 **42. night one**  &nbsp;&nbsp;`0.5 min`  &nbsp;&nbsp;<sub>night-one</sub>
 
-> Night one it interrogates me. Fine. Once is fine.
-> → let them read it. do not narrate.
+> Night one it interrogates me. Once is fine. Let them read it, do not narrate it.
 
 **43. night seven**  &nbsp;&nbsp;`1.2 min`  &nbsp;&nbsp;<sub>night-seven</sub>
 
-> Night seven. No questions.
-> · read the second half. this is the bit that got me.
-> · it did not just stop asking
-> · it stopped recommending Saturn
-> · nobody wrote that rule. no "do not repeat yourself" code anywhere.
-> · it read its own notebook, saw Saturn on the 5th, moved on
-> · first moment it felt less like a script and more like somebody
->   who had been paying attention
+> Night seven, no questions. Read the second half, because this is the bit that got me. It did not just stop asking, it stopped recommending Saturn. Nobody wrote that rule. It read its own notebook, saw Saturn on the fifth, and moved on.
 
 
 ### The moment it stops being a script.
 
 **44. Nobody decided anything.**  &nbsp;&nbsp;`0.7 min`  &nbsp;&nbsp;<sub>just-a-script</sub>
 
-> Be honest: this is not an agent yet.
-> · four errands run in order
-> · I could have written that as four calls in a row, no Gemini
-> · that is a script with a very expensive wrapper
-> · here is the night it stopped being that
+> Be honest here, because this is not an agent yet. Four errands that got run in order. I could have written that as four calls in a row and skipped Gemini entirely, which is a script with an expensive wrapper. Here is the night it stopped being that.
 
 **45. Each answer decided the next question.**  &nbsp;&nbsp;`1.6 min`  &nbsp;&nbsp;<sub>watch-it-choose</sub>
 
-> Read the right hand column. That column is the talk.
-> · checked who I was, so it did not ask
-> · saw 19%, so it was worth carrying on
-> · had that said 90, it stops there, tells me to stay in,
->   and never calls the other two at all
-> · found the Moon setting early, so the night was dark
-> · and ONLY THEN went looking for something to point me at
-> · each answer decided the next question
-> · nobody wrote that order down
+> Read the right hand column, because that column is the talk. It checked who I was so it did not ask. It saw nineteen per cent, so carrying on was worth it, and had that said ninety it would have stopped there and never called the other two at all. Then it found the Moon setting early, and only then went looking for something to point me at. Nobody wrote that order down.
 
 
 ### The question from the opening, finally answered.
 
 **46. the answer**  &nbsp;&nbsp;`1.4 min`  &nbsp;&nbsp;<sub>the-answer</sub>
 
-> Same question as the start. Same evening. Same model underneath.
-> · left: go outside, it is clear
-> · right: yes, but wait until twenty to nine
-> · Moon sets 20:36, cloud still at a quarter until then
-> · Saturn 64 degrees at 20:30, best thing in the sky
-> · that is what four tools buy you
-> · not a smarter model. the same model, with legs.
-> → RE-RENDER THESE FOUR NUMBERS ON THE MORNING
+> Same question as the start, same evening, same model underneath. On the left, go outside, it is clear. On the right, wait until twenty to nine, because the Moon sets at twenty thirty six and the cloud is still at a quarter until then. That is what four tools buy you. Not a smarter model, the same model with legs. Re-render these numbers on the morning.
 
 
 ### What to take home.
 
 **47. None of this was really about astronomy.**  &nbsp;&nbsp;`1.3 min`  &nbsp;&nbsp;<sub>takeaway</sub>
 
-> Last slide. Slow down.
->
-> · four things, none of them astronomy
-> · 1 the docstring IS the API
-> · 2 it asks, you run it, you answer
-> · 3 the filter is the work nobody writes about
-> · 4 one list: yours, theirs, the built in ones
-> · repo has all six tools + the loop + the memory file
-> · "go and point it at something"
-> · then STOP. take questions.
+> Last slide, so slow down. Four things and none of them are about astronomy. The docstring is the API. It asks and you run it. The filter is the work nobody writes about. And one list takes all of it. The repo has the six tools, the loop and the memory file. Go and point it at something. Then stop talking and take questions.
 
