@@ -390,7 +390,11 @@ Slides that quote tonight's sky: 13, 28, 31, 45, 47, 51.
 >
 > I did not build a telescope. I knocked on their door.
 >
-> That is what MCP is. Somebody has already built the tool, better than I would, and they have put it on a URL. You hand your agent the address, and from that moment it can send errands up there too.
+> Now say the letters, because this is the first time the room sees them. M C P. Model Context Protocol. One agreed shape for publishing a tool, so that an agent can use somebody else's without a line of glue code.
+>
+> If they need an analogy, it is USB. Before USB every device had its own plug. Now there is one shape and everything fits.
+>
+> And tie it back, because they already know this part. DECLS is a menu you wrote: names, descriptions, what to pass. An MCP server is that same menu, written by somebody else and served off a URL. That is the whole idea.
 >
 > Your four tools and their forty arrive at the same place. The loop does not know the difference and does not care.
 
