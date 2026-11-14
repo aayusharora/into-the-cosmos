@@ -96,6 +96,13 @@ body.presenter #pv{display:grid;position:fixed;inset:0;padding:20px;gap:18px;
 #pv-count{font:700 30px/1.2 'JetBrains Mono',ui-monospace,monospace;color:#F2F4FA;margin-top:16px}
 #pv-act{font-size:19px;line-height:1.4;color:#A8B2CC;margin-top:8px}
 #pv-keys{flex:none;font:500 14px/1.7 ui-monospace,monospace;color:#3b4766;padding:0 4px}
+#help a{color:#5AC8E8;text-decoration:none;border-bottom:1px dotted #39506f}
+#blocked{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:860px;max-width:92vw;background:#0B1020;border:1px solid #FFB454;
+  border-radius:14px;padding:30px 34px;color:#E6EAF5;font-size:21px;line-height:1.55;
+  z-index:50;box-shadow:0 30px 80px #000a}
+#blocked a{display:block;margin-top:14px;color:#5AC8E8;font:500 18px/1.5 ui-monospace,
+  monospace;word-break:break-all}
 </style></head><body>
 <div id="stage"><div id="deck">
 """
@@ -103,7 +110,11 @@ body.presenter #pv{display:grid;position:fixed;inset:0;padding:20px;gap:18px;
 SHELL_TAIL = """</div></div>
 <div id="bar"><i></i></div>
 <div id="n"></div>
-<div id="help">&larr; &rarr; move &middot; P presenter view &middot; N notes &middot; F fullscreen</div>
+<div id="help">&larr; &rarr; move &middot; <a href="#" id="openpv">P presenter view</a>
+  &middot; N notes &middot; F fullscreen</div>
+<div id="blocked"><b style="color:#FFB454">Your browser blocked the second window.</b><br>
+Open this address in a window of its own, and leave it on your laptop screen:
+<a target="_blank" rel="noopener"></a></div>
 <div id="notes"></div>
 <div id="pv">
   <div id="pv-notes"></div>
@@ -209,9 +220,17 @@ function tick(){
 
 function openPresenter(){
   const u=new URL(location.href);u.searchParams.set('presenter','1');
-  window.open(u.toString(),'itc-presenter','width=1400,height=900');
-  document.body.classList.add('clean');
+  let w=null;
+  try{w=window.open(u.toString(),'itc-presenter','width=1400,height=900');}catch(e){}
+  if(w){document.body.classList.add('clean');return;}
+  /* Popup blocked. Never fail silently five minutes before a talk:
+     put the address on screen so it can be opened by hand. */
+  const d=document.getElementById('blocked'), a=d.querySelector('a');
+  a.href=u.toString(); a.textContent=u.toString();
+  d.style.display='block';
 }
+document.getElementById('openpv').addEventListener('click',e=>{
+  e.preventDefault();e.stopPropagation();openPresenter();});
 
 addEventListener('resize',()=>{fit();if(PRESENTER)show(i);});
 addEventListener('keydown',e=>{
