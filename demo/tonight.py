@@ -289,6 +289,16 @@ DECLS = [_decl(recall), _decl(remember, KV),
          _decl(sky_conditions, PLACE), _decl(planets_tonight, PLACE),
          _decl(moon_tonight, PLACE), _decl(space_weather)]
 
+def reply(call, data):
+    """The shape Gemini wants back: which call this answers, and what it said.
+
+    call_id is the whole trick. It is how the model matches an answer to the
+    question it asked, which is what lets it ask several at once.
+    """
+    return {"type": "function_result", "name": call.name, "call_id": call.id,
+            "result": [{"type": "text", "text": json.dumps(data)}]}
+
+
 SYSTEM = ("You are an observational astronomer advising a friend. Answer only "
           "from tool results, never from memory. Be specific about times and "
           "altitudes. End with a clear yes or no, and one thing to look at.")
@@ -320,9 +330,7 @@ def run_agent(model="gemini-3.5-flash"):
             except Exception as exc:
                 out = {"error": f"{type(exc).__name__}: {exc}"}
             log.append({"call": st.name, "arguments": args, "result": out})
-            results.append({"type": "function_result", "name": st.name,
-                            "call_id": st.id,
-                            "result": [{"type": "text", "text": json.dumps(out)}]})
+            results.append(reply(st, out))
         if (getattr(it, "output_text", "") or "").strip():
             answer = it.output_text
         if not results:

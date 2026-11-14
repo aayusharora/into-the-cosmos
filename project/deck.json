@@ -1,130 +1,110 @@
 {
-  "v": 4,
-  "createdOnFiles": {
-    "v": 1,
-    "at": "2026-11-04T09:00:00Z"
+ "v": 1,
+ "title": "Into the Cosmos with Gemini",
+ "order": [
+  "title",
+  "kid",
+  "terrace",
+  "milky-way",
+  "asked-again",
+  "the-question",
+  "what-it-said",
+  "then-i-checked",
+  "diagnosis",
+  "flash-forward",
+  "first-problem",
+  "setup",
+  "cloud-map",
+  "the-url",
+  "byte-grid",
+  "whole-tool",
+  "the-note",
+  "the-decl",
+  "wiring",
+  "three-boxes",
+  "the-mistake",
+  "the-recipe",
+  "step-ask",
+  "step-run",
+  "step-loop",
+  "whole-agent",
+  "whats-in-it",
+  "sky-chart",
+  "horizons",
+  "clear-not-dark",
+  "moon-chart",
+  "one-number",
+  "the-wall",
+  "mcp",
+  "mcp-code",
+  "mcp-output",
+  "tools-nine",
+  "it-keeps-asking",
+  "two-forgettings",
+  "memory-file",
+  "memory-code",
+  "night-one",
+  "night-seven",
+  "just-a-script",
+  "watch-it-choose",
+  "left-out",
+  "the-answer",
+  "is-it-right",
+  "fails-quietly",
+  "first-thing",
+  "iss",
+  "olympus",
+  "earth-day",
+  "worlds",
+  "the-arsenal",
+  "go-build",
+  "the-point",
+  "repo"
+ ],
+ "sections": {
+  "s1": {
+   "start": "title",
+   "description": "A kid, a question, and the agent that finally answered it."
   },
-  "lists": "css",
-  "title": "Into the Cosmos with Gemini",
-  "order": [
-    "cover",
-    "the-question",
-    "cant-answer-1",
-    "cant-answer-2",
-    "cant-answer-3",
-    "ten-things",
-    "what-were-building",
-    "fifteen-lines",
-    "the-declaration",
-    "the-loop-1",
-    "the-loop-2",
-    "the-loop-3",
-    "the-loop-4",
-    "cloud-code",
-    "endpoint-to-tool-1",
-    "endpoint-to-tool-2",
-    "endpoint-to-tool-3",
-    "endpoint-to-tool-4",
-    "cloud-tonight",
-    "gap-eyes",
-    "sky-code",
-    "sky-tonight",
-    "gap-moon",
-    "moon-code",
-    "moon-tonight",
-    "gap-memory",
-    "memory-code",
-    "where-state-lives-1",
-    "where-state-lives-2",
-    "where-state-lives-3",
-    "memory-night-one",
-    "memory-night-two",
-    "gap-chain",
-    "the-chain-1",
-    "the-chain-2",
-    "the-chain-3",
-    "the-chain-4",
-    "gap-silence",
-    "the-silence",
-    "gap-mcp",
-    "mcp-1",
-    "mcp-2",
-    "mcp-3",
-    "gap-right",
-    "real-transcript",
-    "the-answer-1",
-    "the-answer-2",
-    "the-answer-3",
-    "the-answer-4",
-    "what-it-cost",
-    "the-six-1",
-    "the-six-2",
-    "l1-docstring",
-    "l2-returns",
-    "l3-errors",
-    "the-traps-1",
-    "the-traps-2",
-    "the-traps-3",
-    "l4-latency",
-    "l5-retries",
-    "l6-scoring",
-    "architecture",
-    "scoreboard-sql",
-    "iss-live",
-    "iss-code",
-    "worlds-live-1",
-    "worlds-live-2",
-    "worlds-live-3",
-    "earth-live-1",
-    "earth-live-2",
-    "earth-live-3",
-    "worlds-found",
-    "the-arsenal",
-    "recap-six",
-    "tonight-1",
-    "tonight-2",
-    "tonight-3",
-    "close"
-  ],
-  "sections": {
-    "s1": {
-      "description": "One ordinary question the model cannot answer.",
-      "start": "the-question"
-    },
-    "s2": {
-      "description": "Ten things it needs. We add them one at a time.",
-      "start": "ten-things"
-    },
-    "s3": {
-      "description": "Each gap, the code that fills it, and what comes back.",
-      "start": "cloud-code"
-    },
-    "s4": {
-      "description": "Everything you just watched broke at least once.",
-      "start": "what-it-cost"
-    },
-    "s5": {
-      "description": "Two of those you cannot fix on a laptop.",
-      "start": "architecture"
-    },
-    "s6": {
-      "description": "Point the same four moves somewhere else.",
-      "start": "worlds-live"
-    },
-    "s7": {
-      "description": "The six, in one picture.",
-      "start": "recap-six"
-    }
+  "s2": {
+   "start": "asked-again",
+   "description": "The question, the real answer, and what was missing from it."
   },
-  "faces": {
-    "ibm-plex-sans": {
-      "family": "IBM Plex Sans",
-      "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
-    },
-    "jetbrains-mono": {
-      "family": "JetBrains Mono",
-      "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
-    }
+  "s3": {
+   "start": "first-problem",
+   "description": "The first tool, and what turns an endpoint into one."
   },
-  "designSystems": []
+  "s4": {
+   "start": "three-boxes",
+   "description": "The loop, then the five step recipe for building one."
+  },
+  "s5": {
+   "start": "whats-in-it",
+   "description": "Two more tools, fast, now that the pattern is known."
+  },
+  "s6": {
+   "start": "the-wall",
+   "description": "Tools you did not write, and why you reach for them."
+  },
+  "s7": {
+   "start": "it-keeps-asking",
+   "description": "Memory, and the bug almost everybody ships."
+  },
+  "s8": {
+   "start": "just-a-script",
+   "description": "The moment it stops being a script."
+  },
+  "s9": {
+   "start": "the-answer",
+   "description": "The question from the opening, finally answered."
+  },
+  "s10": {
+   "start": "first-thing",
+   "description": "The same loop, pointed at the rest of the solar system."
+  },
+  "s11": {
+   "start": "go-build",
+   "description": "What to build on the train home."
+  }
+ }
 }
